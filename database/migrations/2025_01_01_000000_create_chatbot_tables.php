@@ -1,0 +1,53 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('chatbot_sessions', function (Blueprint $table) {
+            $table->id();
+            $table->string('session_token')->unique();
+            $table->string('user_agent')->nullable();
+            $table->string('ip_address', 45)->nullable();
+            $table->timestamp('last_activity')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('chatbot_messages', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('chatbot_session_id')
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->enum('role', ['user', 'assistant', 'admin', 'system']);
+            $table->text('message');
+            $table->boolean('is_unread')->default(false);
+            $table->timestamps();
+        });
+
+        Schema::create('chatbot_faqs', function (Blueprint $table) {
+            $table->id();
+            $table->string('question');
+            $table->text('answer');
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('chatbot_faqs');
+        Schema::dropIfExists('chatbot_messages');
+        Schema::dropIfExists('chatbot_sessions');
+    }
+};
+
