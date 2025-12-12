@@ -37,16 +37,6 @@
     <!-- About Us Content -->
     <section class="bg-white px-6 py-20 text-gray-900">
       <div class="mx-auto w-full max-w-6xl space-y-16"> 
-        <!-- About Us Heading -->
-        <div class="space-y-4">
-          <h2 class="font-primary text-4xl font-bold">About Us</h2>
-          <div class="grid gap-8 md:grid-cols-1">
-            <p class="font-secondary text-lg leading-relaxed text-gray-700">
-              {!! $tentang->deskripsi !!}
-            </p>
-          </div>
-        </div>
-
         <!-- Stats -->
         @if($tentang && $tentang->hitungan && count($tentang->hitungan) > 0)
           <div class="grid gap-8 md:grid-cols-{{ min(count($tentang->hitungan), 4) }}">
