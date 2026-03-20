@@ -163,6 +163,15 @@
     }
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Aksita Chat Embed -->
+<script>
+  window.AksitaConfig = {
+    agentId: '019ce182-55ef-75ac-a0e9-d2d984c63287',
+    position: 'bottom-right' // or 'bottom-left'
+  };
+</script>
+<script src="https://aksita.ai/embed.js" async></script>
   </head>
 
   <body class="min-h-screen bg-surface text-brand">
@@ -176,7 +185,7 @@
     @yield('content')
 
     @include('template_web.footer')
-    @includeWhen(config('services.openrouter.api_key'), 'components.chatbot')
+    <!-- @includeWhen(config('services.openrouter.api_key'), 'components.chatbot') -->
 
     @yield('script')
     
