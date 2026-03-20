@@ -187,6 +187,18 @@
             </ul>
         </li>
 
+        <!-- Pengaturan -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Sistem</span>
+        </li>
+
+        <li class="menu-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
+            <a href="{{ route('admin.settings.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Pengaturan API</div>
+            </a>
+        </li>
+
         <div class="menu-item text-center" style="margin-bottom: 10px; font-size: 12px;">
             <p>version 1.0.0</p>
         </div>

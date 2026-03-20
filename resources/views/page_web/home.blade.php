@@ -375,6 +375,67 @@
               <img src="{{ asset('web/assets/layanan/itconsul.png') }}" alt="IT Consultation - Konsultasi Teknologi untuk Bisnis" class="service-media__img" width="600" height="400" loading="lazy">
             </div>
           </div>
+          </div>
+
+                 <div
+          class="flex flex-col gap-10 rounded-[32px] border border-gray-200 bg-white p-8  md:flex-row"
+        >
+          <div
+            class="flex w-full items-center justify-center rounded-2xl border border-gray-100 bg-gray-50 p-4 md:w-1/2"
+          >
+            <div class="service-media">
+              <img src="{{ asset('web/assets/layanan/outsourcing.jpg') }}" alt="Company Profile - Jasa Pembuatan Company Profile Profesional" class="service-media__img" width="600" height="400" loading="lazy">
+            </div>
+          </div>
+          <div class="flex w-full flex-col gap-6 md:w-1/2">
+            <div>
+              <a href="{{ route('web.layanan.itoutsourcing') }}"><h3 class="text-3xl font-semibold text-gray-900">IT Outsourcing</h3></a>
+              <p class="mt-3 text-gray-600">
+                Layanan penyediaan tenaga IT profesional seperti Software Developer, UI/UX Designer, System Analyst, dan Project Manager secara terdedikasi. Kami siap mendukung pengembangan proyek teknologi perusahaan Anda dengan sistem kontrak yang transparan dan kompetitif.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <p class="text-base font-semibold text-gray-900">
+                Layanan kami meliputi:
+              </p>
+              <div class="grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
+                <span class="flex items-center gap-3">
+                  <span class="h-px w-6 bg-blue-500"></span>
+                  Dedicated Developers.
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="h-px w-6 bg-blue-500"></span>
+                  Staff Augmentation.
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="h-px w-6 bg-blue-500"></span>
+                  Project-based Teams.
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="h-px w-6 bg-blue-500"></span>
+                  UI/UX Designers & QA.
+                </span>
+              </div>
+            </div>
+            <div
+              class="flex flex-wrap items-center gap-4 text-sm font-semibold"
+            >
+              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
+                >Senior Level</span
+              >
+              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
+                >Mid Level</span
+              >
+              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
+                >On-site</span
+              >
+              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
+                >Remote</span
+              >
+            </div>
+          </div>
+        </div>
+
         </div>
       </div>
     </section>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\TentangController;
 use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\Admin\TimController;
+use App\Http\Controllers\Admin\SettingController;
 
 // Auth Controllers
 use App\Http\Controllers\Auth\LoginController;
@@ -93,6 +94,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::resource('kategoriProduk', KategoriProdukController::class);
     Route::resource('kategoriGambar', KategoriGambarController::class);
 
+    // Settings Route
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
+
     Route::prefix('chatbot')->name('chatbot.')->group(function () {
         Route::get('/sessions', [\App\Http\Controllers\Admin\ChatbotSessionController::class, 'index'])->name('sessions.index');
         Route::get('/sessions/{chatbotSession}', [\App\Http\Controllers\Admin\ChatbotSessionController::class, 'show'])->name('sessions.show');
@@ -122,7 +127,7 @@ Route::prefix('artikel')->name('web.artikel.')->group(function () {
     Route::get('/{slug}', [WebArtikelController::class, 'show'])->name('show');
 });
 
-Route::prefix('produk')->name('web.produk.')->group(function () {
+Route::prefix('portofolio')->name('web.produk.')->group(function () {
     Route::get('/', [WebProdukController::class, 'index'])->name('index');
     Route::get('/{slug}', [WebProdukController::class, 'show'])->name('show');
 });
@@ -143,4 +148,5 @@ Route::prefix('layanan')->name('web.layanan.')->group(function () {
     Route::get('/mobile', [WebLayananController::class, 'mobile'])->name('mobile');
     Route::get('/itconsul', [WebLayananController::class, 'itconsul'])->name('itconsul');
     Route::get('/company', [WebLayananController::class, 'company'])->name('company');
+    Route::get('/itoutsourcing', [WebLayananController::class, 'itoutsourcing'])->name('itoutsourcing');
 });

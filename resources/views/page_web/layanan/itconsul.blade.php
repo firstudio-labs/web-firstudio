@@ -17,8 +17,7 @@
               Kami memberikan saran dan solusi teknologi terkini untuk membantu perusahaan meningkatkan efisiensi dan produktivitas. Dari konsultasi teknologi hingga pengembangan sistem informasi, kami siap membantu transformasi digital bisnis Anda.
             </p>
             <div class="btn-group">
-              <a href="#pricing" class="btn btn-primary">Lihat Paket Konsultasi</a>
-              <a href="#process" class="btn btn-secondary">Pelajari Prosesnya</a>
+              <a href="#process" class="btn btn-primary">Pelajari Prosesnya</a>
             </div>
           </div>
 
@@ -120,8 +119,8 @@
             Konsultasikan kebutuhan teknologi bisnis Anda dengan tim profesional kami. Dapatkan solusi IT terbaik untuk meningkatkan efisiensi dan produktivitas perusahaan Anda.
           </p>
           <div class="cta-actions">
-            <a href="{{ route('web.contact.index') }}" class="btn btn-primary">Konsultasi Gratis</a>
-            <a href="https://wa.me/6285770333333" target="_blank" class="btn btn-secondary">WhatsApp Kami</a>
+            <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-primary">Konsultasi Gratis</a>
+            <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-secondary">WhatsApp Kami</a>
           </div>
         </div>
       </div>

@@ -33,8 +33,19 @@ class WebLayananController extends Controller
     /**
      * Display company profile service page
      */
+    /**
+     * Display company profile service page
+     */
     public function company()
     {
         return view('page_web.layanan.company');
+    }
+
+    /**
+     * Display IT outsourcing service page
+     */
+    public function itoutsourcing()
+    {
+        return view('page_web.layanan.itoutsourcing');
     }
 }

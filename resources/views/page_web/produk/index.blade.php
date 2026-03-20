@@ -113,7 +113,7 @@
             Konsultasikan kebutuhan digital Anda bersama tim profesional kami. Kami siap membantu Anda berkembang!
           </p>
           <a
-            href="{{ route('web.beranda.index') }}#contact"
+            href="{{ route('web.contact.index') }}"
             class="inline-block rounded-full border border-blue-500/40 bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-[0_10px_25px_rgba(59,130,246,0.4)] transition hover:bg-blue-600"
           >
             Konsultasi Gratis

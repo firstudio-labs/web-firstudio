@@ -185,6 +185,35 @@
                     </div>
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="{{ route('web.layanan.itoutsourcing') }}"
+                    class="nav-services-item group flex items-start gap-4 p-4 transition"
+                  >
+                    <div
+                      class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="h-5 w-5"
+                      >
+                        <path
+                          d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c1.68 0 3.282.515 4.75 1.407A.75.75 0 0024 19.5V5.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3c-1.995 0-3.823.707-5.25 1.886v15.75z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="flex-1">
+                      <p class="nav-services-title text-sm font-semibold">
+                        IT Outsourcing
+                      </p>
+                      <p class="nav-services-desc text-xs">
+                        Tim developer profesional & dedicated
+                      </p>
+                    </div>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -253,6 +282,7 @@
           <a href="{{ route('web.layanan.mobile') }}" class="block py-2">Mobile App Development</a>
           <a href="{{ route('web.layanan.company') }}" class="block py-2">Company Profile</a>
           <a href="{{ route('web.layanan.itconsul') }}" class="block py-2">IT Consultation</a>
+          <a href="{{ route('web.layanan.itoutsourcing') }}" class="block py-2">IT Outsourcing</a>
         </div>
         <a href="{{ route('web.produk.index') }}" class="block py-2">Portofolio</a>
         <a href="{{ route('web.artikel.index') }}" class="block py-2">Articles</a>

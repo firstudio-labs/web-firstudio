@@ -1,20 +1,20 @@
+<!-- Hero Section -->
 @extends('template_web.layout')
 
 @section('content')
- <!-- Hero Section -->
- <section class="hero-section bg-black px-6 py-20 text-white">
+<section class="hero-section bg-black px-6 py-20 text-white">
       <div class="mx-auto w-full max-w-6xl">
         <div class="flex flex-col items-center gap-12 lg:flex-row">
           <!-- Left Content -->
           <div class="flex-1 space-y-8">
-            <div class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2">
-              <span class="text-sm font-semibold text-blue-400">Company Profile</span>
+            <div class="inline-block rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2">
+              <span class="text-sm font-semibold text-purple-400">IT Outsourcing</span>
             </div>
             <h1 class="font-primary text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-              Buat Company Profile Profesional untuk Bisnis Anda
+              Tim Ekstensi Profesional untuk Proyek Anda
             </h1>
             <p class="font-secondary text-lg leading-relaxed text-white/80">
-              Kami membantu perusahaan menampilkan identitas dan kredibilitas bisnis yang responsif, aman, dan mudah dikelola. Dari company profile hingga sistem informasi khusus, kami siap mewujudkan kebutuhan digital Anda dengan teknologi terkini.
+              Kami menyediakan tenaga spesialis IT terdedikasi mulai dari Software Developer hingga UI/UX Designer untuk mendukung kebutuhan spesifik perusahaan Anda. Skalakan tim Anda dengan mudah bersama kami.
             </p>
             <div class="btn-group">
               <a href="#process" class="btn btn-primary">Pelajari Prosesnya</a>
@@ -24,11 +24,12 @@
           <!-- Right Image -->
           <div class="flex-1">
             <div class="relative">
-              <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 blur-3xl"></div>
+              <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/20 to-red-500/20 blur-3xl"></div>
               <img 
-                src="{{ asset('web/assets/layanan/company.png') }}" 
-                alt="Company Profile" 
+                src="{{ asset('web/assets/layanan/outsourcing.jpg') }}" 
+                alt="IT Outsourcing" 
                 class="relative z-10 w-full rounded-3xl border border-white/10 shadow-2xl"
+                onerror="this.src='{{ asset('web/assets/layanan/website.png') }}'"
               >
             </div>
           </div>
@@ -41,10 +42,10 @@
       <div class="mx-auto w-full max-w-6xl space-y-12">
         <div class="text-center space-y-4">
           <h2 class="font-primary text-3xl font-bold md:text-4xl">
-            Proses Pengerjaan
+            Proses Outsourcing
           </h2>
           <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto">
-            Kami mengikuti metodologi terstruktur untuk memastikan proyek Anda selesai tepat waktu dengan kualitas terbaik
+            Kami mengikuti metodologi yang terstruktur dalam menyalurkan talent terbaik yang sesuai dengan budaya dan kebutuhan perusahaan Anda.
           </p>
         </div>
 
@@ -52,70 +53,65 @@
           <!-- Step 1 -->
           <div class="process-card">
             <div class="process-card__step">1</div>
-            <h3 class="mb-4 text-xl font-bold">Konsultasi & Discovery</h3>
+            <h3 class="mb-4 text-xl font-bold">Identifikasi Kebutuhan</h3>
             <p class="text-gray-600 leading-relaxed">
-              Kami mendengarkan kebutuhan bisnis Anda, menganalisis target audiens, dan merencanakan struktur website yang optimal.
+              Kami berdiskusi untuk memahami secara spesifik requirement (skillset, pengalaman, dan durasi) yang Anda butuhkan untuk proyek tersebut.
             </p>
           </div>
 
-          <!-- Step 2 -->
           <div class="process-card">
             <div class="process-card__step">2</div>
-            <h3 class="mb-4 text-xl font-bold">Design & Wireframe</h3>
+            <h3 class="mb-4 text-xl font-bold">Pencarian Talent</h3>
             <p class="text-gray-600 leading-relaxed">
-              Tim desainer kami membuat mockup dan wireframe yang mencerminkan identitas brand Anda dengan UI/UX yang menarik.
+              Tim kami memetakan talenta internal (in-house developer) maupun talenta luar (jika diperlukan) yang memiliki kualifikasi paling relevan.
             </p>
           </div>
 
-          <!-- Step 3 -->
           <div class="process-card">
             <div class="process-card__step">3</div>
-            <h3 class="mb-4 text-xl font-bold">Development</h3>
+            <h3 class="mb-4 text-xl font-bold">Wawancara & Kesepakatan</h3>
             <p class="text-gray-600 leading-relaxed">
-              Pengembangan frontend dan backend menggunakan teknologi modern seperti Laravel, React, dan Node.js untuk performa optimal.
+              Kandidat potensial disodorkan kepada Anda untuk assessment. Jika cocok, kita bahas kesepakatan kontrak kerja dan timeline proyek.
             </p>
           </div>
 
-          <!-- Step 4 -->
           <div class="process-card">
             <div class="process-card__step">4</div>
-            <h3 class="mb-4 text-xl font-bold">Testing & QA</h3>
+            <h3 class="mb-4 text-xl font-bold">Onboarding</h3>
             <p class="text-gray-600 leading-relaxed">
-              Pengujian menyeluruh untuk memastikan website berfungsi sempurna di semua device dan browser populer.
+              Kandidat melakukan onboarding di perusahaan Anda agar mereka cepat mengenal sistem dan alur kerja di mana mereka ditugaskan.
             </p>
           </div>
 
-          <!-- Step 5 -->
           <div class="process-card">
             <div class="process-card__step">5</div>
-            <h3 class="mb-4 text-xl font-bold">Deploy & Launch</h3>
+            <h3 class="mb-4 text-xl font-bold">Mulai Bekerja</h3>
             <p class="text-gray-600 leading-relaxed">
-              Website di-deploy ke server dengan konfigurasi optimal, SSL certificate, dan optimasi performa untuk kecepatan loading maksimal.
+              Talent IT outsourcing akan bekerja langsung dalam koordinasi tim internal Anda layaknya pegawai sendiri selama durasi kesepakatan.
             </p>
           </div>
 
-          <!-- Step 6 -->
           <div class="process-card">
             <div class="process-card__step">6</div>
-            <h3 class="mb-4 text-xl font-bold">Maintenance & Support</h3>
+            <h3 class="mb-4 text-xl font-bold">Evaluasi & Reporting</h3>
             <p class="text-gray-600 leading-relaxed">
-              Dukungan teknis berkelanjutan, update konten, dan pemeliharaan rutin untuk memastikan website selalu optimal.
+              Secara berkala kami meminta feedback evaluasi dari Anda, guna memastikan performa pekerja outsourcing selalu berada di standar tinggi.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Section -->
+
     <!-- CTA Section -->
     <section class="cta-section cta-section--dark px-6 py-20">
       <div class="mx-auto w-full max-w-4xl">
         <div class="cta-content">
           <h2 class="font-primary text-3xl font-bold md:text-4xl lg:text-5xl">
-            Siap Membuat Company Profile untuk Bisnis Anda?
+            Siap Transformasi Digital Bisnis Anda?
           </h2>
           <p class="font-secondary text-lg text-white/80">
-            Konsultasikan kebutuhan company profile Anda dengan tim profesional kami. Dapatkan solusi terbaik untuk meningkatkan brand awareness dan kredibilitas bisnis Anda.
+            Konsultasikan kebutuhan teknologi bisnis Anda dengan tim profesional kami. Dapatkan solusi IT terbaik untuk meningkatkan efisiensi dan produktivitas perusahaan Anda.
           </p>
           <div class="cta-actions">
             <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-primary">Konsultasi Gratis</a>
@@ -133,7 +129,7 @@
             Frequently Asked Questions
           </h2>
           <p class="font-secondary text-lg text-gray-600">
-            Pertanyaan yang sering diajukan tentang layanan company profile kami
+            Pertanyaan yang sering diajukan tentang layanan IT Outsourcing kami
           </p>
         </div>
 
@@ -144,7 +140,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="1"
             >
-              <span class="font-semibold text-lg">Berapa lama waktu pengerjaan website?</span>
+              <span class="font-semibold text-lg">Posisi IT apa saja yang tersedia untuk di-outsource?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -156,7 +152,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Untuk paket Lite biasanya 2-3 minggu, paket Pro 4-6 minggu, dan paket X 8-12 minggu. Kami akan memberikan timeline detail setelah konsultasi awal.
+                Kami menyediakan berbagai posisi IT yang sering dibutuhkan industri, antara lain: Frontend Developer (React, Vue, dll), Backend Developer (Laravel, Node.js, dll), Mobile Developer (Flutter, React Native), UI/UX Designer, QA Engineer, DevOps, dan IT Project Manager.
               </p>
             </div>
           </div>
@@ -167,7 +163,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="2"
             >
-              <span class="font-semibold text-lg">Apakah saya bisa request revisi?</span>
+              <span class="font-semibold text-lg">Berapa minimal durasi kontrak untuk tim outsourcing?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -179,7 +175,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Ya, tentu! Setiap paket sudah termasuk revisi. Paket Lite mendapat 2x revisi, paket Pro 4x revisi, dan paket X unlimited revisi. Revisi dilakukan pada tahap desain dan sebelum deploy final.
+                Durasi minimal kontrak standar adalah 3 bulan. Kami merekomendasikan hal tersebut untuk memastikan talent bisa melakukan adaptasi dan fokus maksimal pada delivery project. Kami juga terbuka untuk negosiasi kontrak dalam jangka 6 bulan hingga 1 tahun menyesuaikan panjang ekspektasi produk.
               </p>
             </div>
           </div>
@@ -190,7 +186,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="3"
             >
-              <span class="font-semibold text-lg">Apakah harga sudah termasuk domain dan hosting?</span>
+              <span class="font-semibold text-lg">Apakah konsultasi bisa dilakukan secara online?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -202,7 +198,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Harga yang tertera adalah untuk jasa pembuatan website saja. Domain dan hosting dibeli terpisah. Namun kami akan membantu Anda memilih dan setup domain & hosting yang sesuai kebutuhan. Biaya domain sekitar 150rb-500rb/tahun dan hosting mulai dari 500rb/tahun.
+                Ya, konsultasi dapat dilakukan secara online (via Zoom/Google Meet) atau offline (onsite di kantor Anda). Kami menyesuaikan dengan preferensi dan kebutuhan Anda. Untuk konsultasi online, kami tetap memberikan pengalaman yang sama efektifnya dengan konsultasi offline.
               </p>
             </div>
           </div>
@@ -213,7 +209,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="4"
             >
-              <span class="font-semibold text-lg">Bagaimana sistem pembayarannya?</span>
+              <span class="font-semibold text-lg">Apakah saya akan mendapatkan dokumentasi setelah konsultasi?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -225,7 +221,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Sistem pembayaran dibagi 3 tahap: 30% DP di awal, 40% setelah desain disetujui, dan 30% sisanya setelah website selesai dan siap launch. Kami menerima transfer bank, e-wallet, dan virtual account.
+                Ya, setiap paket sudah termasuk dokumentasi. Paket Basic: dokumentasi ringkas, Paket Professional: dokumentasi lengkap termasuk proposal teknis dan roadmap, Paket Enterprise: dokumentasi enterprise (RFP, SOW, dll). Dokumentasi akan dikirimkan dalam format PDF setelah konsultasi selesai.
               </p>
             </div>
           </div>
@@ -236,7 +232,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="5"
             >
-              <span class="font-semibold text-lg">Apakah website bisa di-update sendiri?</span>
+              <span class="font-semibold text-lg">Apakah konsultasi termasuk implementasi solusi?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -248,7 +244,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Ya! Untuk paket Pro dan X, kami menyediakan CMS (Content Management System) yang user-friendly sehingga Anda bisa update konten sendiri tanpa perlu coding. Kami juga memberikan training penggunaan CMS.
+                Konsultasi fokus pada analisis, rekomendasi, dan roadmap implementasi. Implementasi solusi merupakan layanan terpisah yang dapat dibahas setelah konsultasi. Namun, kami memberikan guidance dan support selama proses implementasi sesuai paket yang dipilih.
               </p>
             </div>
           </div>
@@ -259,7 +255,7 @@
               class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
               data-faq="6"
             >
-              <span class="font-semibold text-lg">Bagaimana dengan maintenance setelah project selesai?</span>
+              <span class="font-semibold text-lg">Bagaimana sistem pembayaran untuk konsultasi?</span>
               <svg
                 class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200"
                 fill="none"
@@ -271,11 +267,11 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Setiap paket sudah include support/maintenance gratis sesuai durasi yang tertera. Setelah periode gratis berakhir, Anda bisa berlangganan maintenance plan mulai dari 500rb/bulan untuk update rutin, backup, dan technical support.
+                Untuk paket Basic: pembayaran penuh di awal. Paket Professional: 50% DP di awal, 50% setelah konsultasi selesai. Paket Enterprise: pembayaran dapat dinegosiasikan sesuai scope proyek. Kami menerima transfer bank, e-wallet, dan virtual account.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-@endsection 
+@endsection

@@ -5,6 +5,7 @@ namespace App\Services;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
+use App\Models\Setting;
 
 class OpenRouterAIService
 {
@@ -17,7 +18,11 @@ class OpenRouterAIService
     public function __construct()
     {
         $this->client = new Client();
-        $this->apiKey = config('services.openrouter.api_key');
+        
+        // Coba ambil dari database terlebih dahulu, jika tidak ada fallback ke .env
+        $dbApiKey = Setting::where('key', 'openrouter_api_key')->value('value');
+        $this->apiKey = !empty($dbApiKey) ? $dbApiKey : config('services.openrouter.api_key');
+        
         $this->baseUrl = 'https://openrouter.ai/api/v1/chat/completions';
 
         // Rekomendasi model di OpenRouter (prioritas kualitas → kecepatan)

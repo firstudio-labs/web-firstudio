@@ -17,7 +17,7 @@
               Kami mengembangkan aplikasi mobile native dan cross-platform yang powerful, user-friendly, dan scalable. Dari iOS hingga Android, kami siap mewujudkan ide aplikasi Anda menjadi kenyataan dengan teknologi terkini seperti Flutter, React Native, dan native development.
             </p>
             <div class="btn-group">
-              <a href="#process" class="btn btn-secondary">Pelajari Prosesnya</a>
+              <a href="#process" class="btn btn-primary">Pelajari Prosesnya</a>
             </div>
           </div>
 
@@ -118,8 +118,8 @@
             Konsultasikan kebutuhan aplikasi mobile Anda dengan tim profesional kami. Dapatkan solusi terbaik untuk mengembangkan bisnis digital Anda melalui aplikasi mobile.
           </p>
           <div class="cta-actions">
-            <a href="#" class="btn btn-primary">Konsultasi Gratis</a>
-            <a href="https://wa.me/6285770333333" target="_blank" class="btn btn-secondary">WhatsApp Kami</a>
+            <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-primary">Konsultasi Gratis</a>
+            <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-secondary">WhatsApp Kami</a>
           </div>
         </div>
       </div>
