@@ -23,12 +23,12 @@
 
           <!-- Right Image -->
           <div class="flex-1">
-            <div class="relative">
+            <div class="relative w-full" style="aspect-ratio: 16/10;">
               <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 blur-3xl"></div>
               <img 
                 src="{{ asset('web/assets/layanan/company.png') }}" 
                 alt="Company Profile" 
-                class="relative z-10 w-full rounded-3xl border border-white/10 shadow-2xl"
+                class="relative z-10 h-full w-full object-cover rounded-3xl border border-white/10 shadow-2xl"
               >
             </div>
           </div>

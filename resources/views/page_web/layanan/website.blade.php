@@ -8,10 +8,10 @@
           <!-- Left Content -->
           <div class="flex-1 space-y-8">
             <div class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2">
-              <span class="text-sm font-semibold text-blue-400">Website Development</span>
+              <span class="text-sm font-semibold text-blue-400">Pembuatan Website & Web App</span>
             </div>
             <h1 class="font-primary text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-              Bangun Website Profesional untuk Bisnis Anda
+              Layanan Website Profesional untuk Berbagai Skala Bisnis
             </h1>
             <p class="font-secondary text-lg leading-relaxed text-white/80">
               Kami merancang dan membangun website yang responsif, aman, dan mudah dikelola. Dari company profile hingga sistem informasi khusus, kami siap mewujudkan kebutuhan digital Anda dengan teknologi terkini.
@@ -23,14 +23,82 @@
 
           <!-- Right Image -->
           <div class="flex-1">
-            <div class="relative">
+            <div class="relative w-full" style="aspect-ratio: 16/10;">
               <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
               <img 
                 src="{{ asset('web/assets/layanan/website.png') }}" 
                 alt="Website Development" 
-                class="relative z-10 w-full rounded-3xl border border-white/10 shadow-2xl"
+                class="relative z-10 h-full w-full object-cover rounded-3xl border border-white/10 shadow-2xl"
               >
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Options Section -->
+    <section class="bg-white px-6 py-20 text-gray-900">
+      <div class="mx-auto w-full max-w-6xl space-y-12">
+        <div class="text-center space-y-4">
+          <h2 class="font-primary text-3xl font-bold md:text-4xl">
+            Pilih Layanan Sesuai Kebutuhan Anda
+          </h2>
+          <p class="font-secondary text-lg text-gray-600 max-w-3xl mx-auto">
+            Kami menyediakan solusi fleksibel, mulai dari website instan untuk peluncuran cepat hingga ekosistem custom app web yang kompleks.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2">
+          <!-- Mainstream Website -->
+          <div class="rounded-[32px] border border-gray-200 bg-white p-8 shadow-lg transition hover:shadow-xl flex flex-col h-full">
+            <div class="mb-6 inline-block rounded-2xl bg-blue-50/50 p-4">
+              <i data-lucide="layout" class="h-8 w-8 text-blue-600"></i>
+            </div>
+            <h3 class="font-primary text-2xl font-bold mb-3">Website Mainstream</h3>
+            <p class="font-secondary text-gray-600 mb-6 flex-grow">
+              Solusi tepat untuk kebutuhan <strong>company profile, landing page, atau blog</strong>. Dibuat dengan cepat menggunakan Web Builder dan CMS seperti WordPress untuk hasil yang elegan dan mudah dikelola.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Waktu pengerjaan cepat (1-3 minggu)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Biaya lebih efisien (Cocok untuk UMKM)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Menggunakan Premium Template / Web Builder</span>
+              </li>
+            </ul>
+            <a href="https://wa.me/" target="_blank" class="btn btn-primary w-full text-center mt-auto">Pilih Website Mainstream</a>
+          </div>
+
+          <!-- Website App -->
+          <div class="rounded-[32px] border border-blue-100 bg-gradient-to-b from-blue-50/50 to-white p-8 shadow-lg transition hover:shadow-xl relative overflow-hidden flex flex-col h-full">
+            <div class="mb-6 inline-block rounded-2xl bg-blue-100 p-4">
+              <i data-lucide="code-2" class="h-8 w-8 text-blue-600"></i>
+            </div>
+            <h3 class="font-primary text-2xl font-bold mb-3">Custom Website App</h3>
+            <p class="font-secondary text-gray-600 mb-6 flex-grow">
+              Sistem aplikasi berbasis web yang kompleks seperti <strong>Sistem Informasi (ERP/CRM), SaaS, atau Portal Custom</strong>. Dibangun dari nol menggunakan framework modern menyesuaikan bisnis Anda.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Custom Business Logic & Skalabilitas Tinggi</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Teknologi Modern (Laravel, React, Node.js)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-700">Database Kompleks & Integrasi API Eksternal</span>
+              </li>
+            </ul>
+            <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-primary w-full text-center mt-auto">Konsultasi Custom App</a>
           </div>
         </div>
       </div>
@@ -61,18 +129,18 @@
           <!-- Step 2 -->
           <div class="process-card">
             <div class="process-card__step">2</div>
-            <h3 class="mb-4 text-xl font-bold">Design & Wireframe</h3>
+            <h3 class="mb-4 text-xl font-bold">Design & Wireframe / Template</h3>
             <p class="text-gray-600 leading-relaxed">
-              Tim desainer kami membuat mockup dan wireframe yang mencerminkan identitas brand Anda dengan UI/UX yang menarik.
+              Tim desainer kami membuat mockup UI/UX khusus untuk Web App, atau pemilihan Premium Template yang sesuai identitas brand untuk Website Mainstream.
             </p>
           </div>
 
           <!-- Step 3 -->
           <div class="process-card">
             <div class="process-card__step">3</div>
-            <h3 class="mb-4 text-xl font-bold">Development</h3>
+            <h3 class="mb-4 text-xl font-bold">Development & Integration</h3>
             <p class="text-gray-600 leading-relaxed">
-              Pengembangan frontend dan backend menggunakan teknologi modern seperti Laravel, React, dan Node.js untuk performa optimal.
+              Kustomisasi WordPress/Web Builder (Mainstream) atau pengembangan custom backend/frontend dengan teknologi modern seperti Laravel dan React (Web App).
             </p>
           </div>
 
@@ -220,7 +288,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Untuk paket Lite biasanya 2-3 minggu, paket Pro 4-6 minggu, dan paket X 8-12 minggu. Kami akan memberikan timeline detail setelah konsultasi awal.
+                Waktu pengerjaan sangat bergantung pada layanan yang dipilih. Untuk <strong>Website Mainstream</strong> biasanya rilis dalam 1-3 minggu. Sedangkan untuk <strong>Custom Website App</strong> membutuhkan waktu 4-12 minggu karena kompleksitas pembuatan sistem dari nol.
               </p>
             </div>
           </div>
@@ -243,7 +311,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Ya, tentu! Setiap paket sudah termasuk revisi. Paket Lite mendapat 2x revisi, paket Pro 4x revisi, dan paket X unlimited revisi. Revisi dilakukan pada tahap desain dan sebelum deploy final.
+                Ya, tentu! Jumlah revisi menyesuaikan tingkat proyek. Website Mainstream umumnya mencakup 2-3x revisi tata letak/konten. Untuk Website App, kami mengadopsi sistem UAT (User Acceptance Testing) di mana perbaikan bug dan penyesuaian fungsi ditangani sebelum rilis akhir.
               </p>
             </div>
           </div>
@@ -312,7 +380,7 @@
             </button>
             <div class="faq-content hidden px-6 pb-6">
               <p class="text-gray-600 leading-relaxed">
-                Ya! Untuk paket Pro dan X, kami menyediakan CMS (Content Management System) yang user-friendly sehingga Anda bisa update konten sendiri tanpa perlu coding. Kami juga memberikan training penggunaan CMS.
+                Pasti! Untuk <strong>Website Mainstream</strong>, Anda mendapat akses ke CMS intuitif (seperti WordPress) untuk update teks dan gambar dengan mudah. Untuk <strong>Website App</strong>, kami membangun custom Dashboard Admin (Panel Kontrol) untuk manajemen data terpadu sesuai level otorisasi staf Anda.
               </p>
             </div>
           </div>

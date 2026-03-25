@@ -23,12 +23,12 @@
 
           <!-- Right Image -->
           <div class="flex-1">
-            <div class="relative">
+            <div class="relative w-full" style="aspect-ratio: 16/10;">
               <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-3xl"></div>
               <img 
                 src="{{ asset('web/assets/layanan/mobile.png') }}" 
                 alt="Mobile App Development" 
-                class="relative z-10 w-full rounded-3xl border border-white/10 shadow-2xl"
+                class="relative z-10 h-full w-full object-cover rounded-3xl border border-white/10 shadow-2xl"
               >
             </div>
           </div>

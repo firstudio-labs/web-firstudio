@@ -76,7 +76,7 @@
                     </div>
                     <div class="flex-1">
                       <p class="nav-services-title text-sm font-semibold">
-                        Website App Development
+                        Pembuatan Website & App
                       </p>
                       <p class="nav-services-desc text-xs">
                         Website responsif dan mudah dikelola
@@ -278,7 +278,7 @@
           hidden
           data-mobile-services-panel
         >
-          <a href="{{ route('web.layanan.website') }}" class="block py-2">Website App Development</a>
+          <a href="{{ route('web.layanan.website') }}" class="block py-2">Pembuatan Website & App</a>
           <a href="{{ route('web.layanan.mobile') }}" class="block py-2">Mobile App Development</a>
           <a href="{{ route('web.layanan.company') }}" class="block py-2">Company Profile</a>
           <a href="{{ route('web.layanan.itconsul') }}" class="block py-2">IT Consultation</a>
