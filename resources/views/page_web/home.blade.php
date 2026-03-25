@@ -322,8 +322,7 @@
               <p class="mt-3 text-gray-600">
                 Kami hadir sebagai partner teknologi Anda, memberikan rekomendasi dan solusi digital terkini yang dirancang untuk 
                 meningkatkan efisiensi operasional dan produktivitas perusahaan. Mulai dari pemilihan teknologi yang tepat, optimalisasi 
-                sistem yang sudah berjalan, hingga strategi pengembangan jangka panjang — kami memastikan setiap solusi yang diberikan benar-benar 
-                relevan, efektif, dan siap mendorong bisnis Anda ke level berikutnya.</p>
+                sistem yang sudah berjalan, hingga strategi pengembangan jangka panjang.</p>
             </div>
             <div class="space-y-4">
               <p class="text-base font-semibold text-gray-900">
@@ -352,13 +351,7 @@
               class="flex flex-wrap items-center gap-4 text-sm font-semibold"
             >
               <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
-                >Google Cloud</span
-              >
-              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
                 >VPS Hosting</span
-              >
-              <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
-                >Cloud Hosting</span
               >
               <span class="rounded-full border border-blue-500/30 bg-blue-500/5 px-4 py-1 text-blue-600"
                 >Domain Hosting</span
