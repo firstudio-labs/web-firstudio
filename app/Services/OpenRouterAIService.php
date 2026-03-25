@@ -49,8 +49,9 @@ class OpenRouterAIService
             ],
         ];
 
-        // Default menggunakan model Mistral (free tier)
-        $this->currentModel = 'mistralai/mistral-small-3.2-24b-instruct:free';
+        // Ambil model dari database jika ada
+        $dbModel = Setting::where('key', 'openrouter_model')->value('value');
+        $this->currentModel = !empty($dbModel) ? $dbModel : 'mistralai/mistral-small-3.2-24b-instruct:free';
     }
 
     /**
@@ -556,8 +557,7 @@ Mulai SEKARANG dengan konten yang sudah dienhance:";
      */
     private function selectOptimalModel($minWords, $customPrompt = null)
     {
-        // Selalu gunakan Mistral free sesuai permintaan pengguna
-        $this->currentModel = 'mistralai/mistral-small-3.2-24b-instruct:free';
+        // Menggunakan model dari pengaturan didatabase (atau default)
         Log::info("Selected OpenRouter model fixed to: {$this->currentModel}");
     }
 
@@ -649,7 +649,7 @@ Generate sekarang:";
                     'success' => true,
                     'descriptions' => $descriptions,
                     'provider' => 'openrouter',
-                    'model' => 'mistralai/mistral-small-3.2-24b-instruct:free'
+                    'model' => $this->currentModel
                 ];
             } else {
                 Log::error('OpenRouter AI response format unexpected', ['response' => $data]);

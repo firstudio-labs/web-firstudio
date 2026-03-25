@@ -97,6 +97,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     // Settings Route
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
+    Route::post('/settings/test-ai', [SettingController::class, 'testAi'])->name('settings.test-ai');
 
     Route::prefix('chatbot')->name('chatbot.')->group(function () {
         Route::get('/sessions', [\App\Http\Controllers\Admin\ChatbotSessionController::class, 'index'])->name('sessions.index');

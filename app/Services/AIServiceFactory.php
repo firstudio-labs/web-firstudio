@@ -15,11 +15,9 @@ class AIServiceFactory
 
     public function __construct()
     {
-        // Define providers - OpenRouter sebagai utama, DeepSeek sebagai fallback
+        // Define providers - Hanya OpenRouter sesuai permintaan
         $this->providers = [
             self::PROVIDER_OPENROUTER => OpenRouterAIService::class,
-            self::PROVIDER_DEEPSEEK => DeepSeekAIService::class,
-            // self::PROVIDER_GEMINI => GeminiAIService::class, // Disabled for performance (404 errors)
         ];
         
         // Determine current provider based on config or availability
@@ -68,8 +66,7 @@ class AIServiceFactory
                 continue;
             }
         }
-        
-        throw new \Exception('Semua layanan AI tidak tersedia. Pastikan DEEPSEEK_API_KEY (dengan kredit) atau GEMINI_API_KEY sudah dikonfigurasi dengan benar di file .env');
+        throw new \Exception('Layanan AI tidak tersedia. Pastikan OpenRouter API Key sudah dikonfigurasi di menu Pengaturan API.');
     }
 
     /**
@@ -253,7 +250,7 @@ class AIServiceFactory
         
         // Provide specific guidance for common issues
         if (strpos($errorDetails, 'insufficient') !== false || strpos($errorDetails, 'kuota') !== false) {
-            throw new \Exception("DeepSeek API kehabisan kredit. Silakan top up di https://platform.deepseek.com (minimum $5) atau gunakan Gemini sebagai alternatif. Detail: {$errorDetails}");
+            throw new \Exception("OpenRouter API kehabisan kredit. Silakan periksa dashboard akun Anda. Detail: {$errorDetails}");
         }
         
         if (strpos($errorDetails, 'not found') !== false || strpos($errorDetails, '404') !== false) {
@@ -412,11 +409,11 @@ class AIServiceFactory
     {
         switch ($provider) {
             case self::PROVIDER_GEMINI:
-                return config('services.gemini.api_key');
+                return \App\Models\Setting::where('key', 'gemini_api_key')->value('value') ?: config('services.gemini.api_key');
             case self::PROVIDER_DEEPSEEK:
-                return config('services.deepseek.api_key');
+                return \App\Models\Setting::where('key', 'deepseek_api_key')->value('value') ?: config('services.deepseek.api_key');
             case self::PROVIDER_OPENROUTER:
-                return config('services.openrouter.api_key');
+                return \App\Models\Setting::where('key', 'openrouter_api_key')->value('value') ?: config('services.openrouter.api_key');
             default:
                 return null;
         }

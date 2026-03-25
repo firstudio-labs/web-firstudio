@@ -18,6 +18,13 @@
                             </div>
                         @endif
 
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul class="mb-0">
@@ -39,7 +46,24 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+                            <div class="mb-3">
+                                <label class="form-label" for="openrouter_model">OpenRouter Model ID</label>
+                                <input type="text" class="form-control" id="openrouter_model" name="openrouter_model" value="{{ old('openrouter_model', $openRouterModel ?? '') }}" placeholder="Contoh: mistralai/mistral-small-3.2-24b-instruct:free" />
+                                <div class="form-text">
+                                    Dapatkan ID Model dari <a href="https://openrouter.ai/models" target="_blank">OpenRouter Models</a>. Kosongkan untuk menggunakan model default.
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 mt-4">
+                                <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+                                <button type="submit" form="test-ai-form" class="btn btn-outline-info">
+                                    <i class='bx bx-check-shield me-1'></i> Test Koneksi AI
+                                </button>
+                            </div>
+                        </form>
+
+                        <form id="test-ai-form" action="{{ route('admin.settings.test-ai') }}" method="POST" class="d-none">
+                            @csrf
                         </form>
                     </div>
                 </div>
