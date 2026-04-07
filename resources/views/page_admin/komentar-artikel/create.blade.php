@@ -6,7 +6,7 @@
         <h4 class="fw-bold py-3 mb-0">
             <span class="text-muted fw-light">Komentar Artikel /</span> Tambah Komentar
         </h4>
-        <a href="{{ route('admin.komentarArtikel.index') }}" class="btn btn-secondary">
+        <a href="{{ route('admin.komentar-artikel.index') }}" class="btn btn-secondary">
             <i class="bx bx-arrow-back"></i> Kembali
         </a>
     </div>
@@ -18,7 +18,7 @@
                     <h5 class="card-title mb-0">Form Tambah Komentar</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.komentarArtikel.store') }}" method="POST">
+                    <form action="{{ route('admin.komentar-artikel.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -98,7 +98,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bx bx-save"></i> Simpan
                             </button>
-                            <a href="{{ route('admin.komentarArtikel.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('admin.komentar-artikel.index') }}" class="btn btn-secondary">
                                 <i class="bx bx-x"></i> Batal
                             </a>
                         </div>

@@ -18,10 +18,10 @@ class GaleriController extends Controller
      */
     public function index(Request $request)
     {
-        $galeris = Galeri::with('kategoriGambar')->paginate(10);
+        $galeris = Galeri::with('kategori_gambar')->paginate(10);
         $filter = $request->filter;
         if ($filter) {
-            $galeris = Galeri::whereHas('kategoriGambar', function ($query) use ($filter) {
+            $galeris = Galeri::whereHas('kategori_gambar', function ($query) use ($filter) {
                 $query->where('kategori_gambar', 'like', '%' . $filter . '%');
             })->paginate(10);
         }
@@ -33,8 +33,8 @@ class GaleriController extends Controller
      */
     public function create()
     {
-        $kategoriGambars = KategoriGambar::all();
-        return view('page_admin.galeri.create', compact('kategoriGambars'));
+        $kategori_gambars = KategoriGambar::all();
+        return view('page_admin.galeri.create', compact('kategori_gambars'));
     }
 
     /**
@@ -119,8 +119,8 @@ class GaleriController extends Controller
      */
     public function edit(Galeri $galeri)
     {
-        $kategoriGambars = KategoriGambar::all();
-        return view('page_admin.galeri.edit', compact('galeri', 'kategoriGambars'));
+        $kategori_gambars = KategoriGambar::all();
+        return view('page_admin.galeri.edit', compact('galeri', 'kategori_gambars'));
     }
 
     /**

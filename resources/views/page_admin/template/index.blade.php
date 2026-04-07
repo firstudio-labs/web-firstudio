@@ -10,7 +10,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Daftar Template Website</h5>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('admin.kategoriTemplate.index') }}" class="btn btn-outline-secondary">
+                            <a href="{{ route('admin.kategori-template.index') }}" class="btn btn-outline-secondary">
                                 <i class="bx bx-category"></i> Kelola Kategori
                             </a>
                             <a href="{{ route('admin.template.create') }}" class="btn btn-primary">

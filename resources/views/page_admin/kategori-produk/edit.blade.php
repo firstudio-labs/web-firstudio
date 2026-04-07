@@ -18,7 +18,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('admin.kategoriProduk.update', $kategoriProduk->id) }}" method="POST">
+                        <form action="{{ route('admin.kategori-produk.update', $kategori_produk->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">
@@ -26,7 +26,7 @@
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('kategori_produk') is-invalid @enderror"
                                         id="kategori_produk" name="kategori_produk"
-                                        value="{{ old('kategori_produk', $kategoriProduk->kategori_produk) }}"
+                                        value="{{ old('kategori_produk', $kategori_produk->kategori_produk) }}"
                                         placeholder="Masukkan kategori produk" />
                                     @error('kategori_produk')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +39,7 @@
                                 <div class="col-sm-10">
                                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
                                         name="deskripsi" rows="5"
-                                        placeholder="Masukkan deskripsi kategori">{{ old('deskripsi', $kategoriProduk->deskripsi) }}</textarea>
+                                        placeholder="Masukkan deskripsi kategori">{{ old('deskripsi', $kategori_produk->deskripsi) }}</textarea>
                                     @error('deskripsi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -51,7 +51,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="bx bx-save"></i> Simpan Perubahan
                                     </button>
-                                    <a href="{{ route('admin.kategoriProduk.index') }}" class="btn btn-secondary">
+                                    <a href="{{ route('admin.kategori-produk.index') }}" class="btn btn-secondary">
                                         <i class="bx bx-x"></i> Batal
                                     </a>
                                 </div>

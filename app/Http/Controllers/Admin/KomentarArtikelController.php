@@ -13,8 +13,8 @@ class KomentarArtikelController extends Controller
      */
     public function index()
     {
-        $komentarArtikels = KomentarArtikel::all();
-        return view('page_admin.komentarArtikel.index', compact('komentarArtikels'));
+        $komentar_artikels = KomentarArtikel::all();
+        return view('page_admin.komentar-artikel.index', compact('komentar_artikels'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KomentarArtikelController extends Controller
      */
     public function create()
     {
-        return view('page_admin.komentarArtikel.create');
+        return view('page_admin.komentar-artikel.create');
     }
 
     /**
@@ -37,30 +37,30 @@ class KomentarArtikelController extends Controller
             'no_hp_komentar' => 'nullable',
         ]);
         
-        $komentarArtikel = KomentarArtikel::create($request->all());
+        $komentar_artikel = KomentarArtikel::create($request->all());
         return redirect()->route('admin.komentar-artikel.index')->with('success', 'Komentar Artikel berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(KomentarArtikel $komentarArtikel)
+    public function show(KomentarArtikel $komentar_artikel)
     {
-        return view('page_admin.komentarArtikel.show', compact('komentarArtikel'));
+        return view('page_admin.komentar-artikel.show', compact('komentar_artikel'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KomentarArtikel $komentarArtikel)
+    public function edit(KomentarArtikel $komentar_artikel)
     {
-        return view('page_admin.komentarArtikel.edit', compact('komentarArtikel'));
+        return view('page_admin.komentar-artikel.edit', compact('komentar_artikel'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KomentarArtikel $komentarArtikel)
+    public function update(Request $request, KomentarArtikel $komentar_artikel)
     {
         $request->validate([
             'komentar' => 'required',
@@ -69,16 +69,16 @@ class KomentarArtikelController extends Controller
             'no_hp_komentar' => 'nullable',
         ]);
         
-        $komentarArtikel->update($request->all());
+        $komentar_artikel->update($request->all());
         return redirect()->route('admin.komentar-artikel.index')->with('success', 'Komentar Artikel berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KomentarArtikel $komentarArtikel)
+    public function destroy(KomentarArtikel $komentar_artikel)
     {
-        $komentarArtikel->delete();
+        $komentar_artikel->delete();
         return redirect()->route('admin.komentar-artikel.index')->with('success', 'Komentar Artikel berhasil dihapus');
     }
 }

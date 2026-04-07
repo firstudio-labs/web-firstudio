@@ -11,14 +11,14 @@
                         <h5 class="mb-0">Form Edit Kategori Gambar</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.kategoriGambar.update', $kategoriGambar->id) }}" method="POST">
+                        <form action="{{ route('admin.kategori-gambar.update', $kategori_gambar->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="kategori_gambar" class="form-label">Kategori Gambar</label>
                                 <input type="text" class="form-control @error('kategori_gambar') is-invalid @enderror"
                                     id="kategori_gambar" name="kategori_gambar"
-                                    value="{{ old('kategori_gambar', $kategoriGambar->kategori_gambar) }}"
+                                    value="{{ old('kategori_gambar', $kategori_gambar->kategori_gambar) }}"
                                     placeholder="Masukkan kategori gambar">
                                 @error('kategori_gambar')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -29,7 +29,7 @@
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
                                 <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
                                     name="deskripsi" rows="3"
-                                    placeholder="Masukkan deskripsi">{{ old('deskripsi', $kategoriGambar->deskripsi) }}</textarea>
+                                    placeholder="Masukkan deskripsi">{{ old('deskripsi', $kategori_gambar->deskripsi) }}</textarea>
                                 @error('deskripsi')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -39,7 +39,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bx bx-save"></i> Simpan Perubahan
                                 </button>
-                                <a href="{{ route('admin.kategoriGambar.index') }}" class="btn btn-secondary">
+                                <a href="{{ route('admin.kategori-gambar.index') }}" class="btn btn-secondary">
                                     <i class="bx bx-x"></i> Batal
                                 </a>
                             </div>

@@ -43,7 +43,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        $kategoriArtikels = KategoriArtikel::all();
+        $kategori_artikels = KategoriArtikel::all();
         $aiRemainingTokens = 0;
         $aiDailyLimit = TokenUsageService::DEFAULT_DAILY_LIMIT;
         if (auth()->check()) {
@@ -51,7 +51,7 @@ class ArtikelController extends Controller
             $aiRemainingTokens = $tokenService->getRemainingTokens(auth()->id());
             $aiDailyLimit = $tokenService->getTodayUsage(auth()->id())->daily_limit;
         }
-        return view('page_admin.artikel.create', compact('kategoriArtikels', 'aiRemainingTokens', 'aiDailyLimit'));
+        return view('page_admin.artikel.create', compact('kategori_artikels', 'aiRemainingTokens', 'aiDailyLimit'));
     }
 
     /**
@@ -143,7 +143,7 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        $kategoriArtikels = KategoriArtikel::all();
+        $kategori_artikels = KategoriArtikel::all();
         $aiRemainingTokens = 0;
         $aiDailyLimit = TokenUsageService::DEFAULT_DAILY_LIMIT;
         if (auth()->check()) {
@@ -151,7 +151,7 @@ class ArtikelController extends Controller
             $aiRemainingTokens = $tokenService->getRemainingTokens(auth()->id());
             $aiDailyLimit = $tokenService->getTodayUsage(auth()->id())->daily_limit;
         }
-        return view('page_admin.artikel.edit', compact('artikel', 'kategoriArtikels', 'aiRemainingTokens', 'aiDailyLimit'));
+        return view('page_admin.artikel.edit', compact('artikel', 'kategori_artikels', 'aiRemainingTokens', 'aiDailyLimit'));
     }
 
     /**
@@ -430,7 +430,7 @@ class ArtikelController extends Controller
             $aiFactory = new AIServiceFactory();
 
             // Strip tags dari content yang akan dienh ance (kecuali HTML tags yang diperlukan)
-            $content = strip_tags($request->content, '<p><h1><h2><h3><h4><strong><em><ul><ol><li><br><a>');
+            $content = strip_tags($request->input('content'), '<p><h1><h2><h3><h4><strong><em><ul><ol><li><br><a>');
 
             $result = $aiFactory->enhanceContent(
                 $content,

@@ -24,7 +24,7 @@
           <a href="{{ route('web.produk.index') }}" class="filter-btn btn {{ $kategori === 'all' ? 'btn-primary active' : 'btn-outline' }}" data-filter="all">
             Semua Project
           </a>
-          @foreach($kategoriProduks as $kat)
+          @foreach($kategori_produks as $kat)
             <a href="{{ route('web.produk.index', ['kategori' => $kat->slug]) }}" class="filter-btn btn {{ $kategori === $kat->slug ? 'btn-primary active' : 'btn-outline' }}" data-filter="{{ $kat->slug }}">
               {{ $kat->kategori_produk }}
             </a>

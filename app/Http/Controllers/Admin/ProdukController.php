@@ -38,14 +38,14 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $kategoriProduks = KategoriProduk::all();
+        $kategori_produks = KategoriProduk::all();
         
         // Get AI token information
         $tokenService = new TokenUsageService();
         $aiDailyLimit = $tokenService->getDailyLimit(auth()->id());
         $aiRemainingTokens = $tokenService->getRemainingTokens(auth()->id());
         
-        return view('page_admin.produk.create', compact('kategoriProduks', 'aiDailyLimit', 'aiRemainingTokens'));
+        return view('page_admin.produk.create', compact('kategori_produks', 'aiDailyLimit', 'aiRemainingTokens'));
     }
 
     /**
@@ -132,14 +132,14 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        $kategoriProduks = KategoriProduk::all();
+        $kategori_produks = KategoriProduk::all();
         
         // Get AI token information
         $tokenService = new TokenUsageService();
         $aiDailyLimit = $tokenService->getDailyLimit(auth()->id());
         $aiRemainingTokens = $tokenService->getRemainingTokens(auth()->id());
         
-        return view('page_admin.produk.edit', compact('produk', 'kategoriProduks', 'aiDailyLimit', 'aiRemainingTokens'));
+        return view('page_admin.produk.edit', compact('produk', 'kategori_produks', 'aiDailyLimit', 'aiRemainingTokens'));
     }
 
     /**

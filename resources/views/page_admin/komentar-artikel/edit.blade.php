@@ -6,7 +6,7 @@
         <h4 class="fw-bold py-3 mb-0">
             <span class="text-muted fw-light">Komentar Artikel /</span> Edit Komentar
         </h4>
-        <a href="{{ route('admin.komentarArtikel.index') }}" class="btn btn-secondary">
+        <a href="{{ route('admin.komentar-artikel.index') }}" class="btn btn-secondary">
             <i class="bx bx-arrow-back"></i> Kembali
         </a>
     </div>
@@ -18,7 +18,7 @@
                     <h5 class="card-title mb-0">Form Edit Komentar</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.komentarArtikel.update', $komentarArtikel->id) }}" method="POST">
+                    <form action="{{ route('admin.komentar-artikel.update', $komentar_artikel->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -32,7 +32,7 @@
                                         <option value="">Pilih Artikel</option>
                                         @foreach($artikels as $artikel)
                                             <option value="{{ $artikel->id }}" 
-                                                {{ $komentarArtikel->artikel_id == $artikel->id ? 'selected' : '' }}>
+                                                {{ $komentar_artikel->artikel_id == $artikel->id ? 'selected' : '' }}>
                                                 {{ $artikel->judul }}
                                             </option>
                                         @endforeach
@@ -48,7 +48,7 @@
                                            class="form-control @error('nama_komentar') is-invalid @enderror" 
                                            id="nama_komentar" 
                                            name="nama_komentar" 
-                                           value="{{ old('nama_komentar', $komentarArtikel->nama_komentar) }}" 
+                                           value="{{ old('nama_komentar', $komentar_artikel->nama_komentar) }}" 
                                            required>
                                     @error('nama_komentar')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -61,7 +61,7 @@
                                            class="form-control @error('email_komentar') is-invalid @enderror" 
                                            id="email_komentar" 
                                            name="email_komentar" 
-                                           value="{{ old('email_komentar', $komentarArtikel->email_komentar) }}" 
+                                           value="{{ old('email_komentar', $komentar_artikel->email_komentar) }}" 
                                            required>
                                     @error('email_komentar')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -74,7 +74,7 @@
                                            class="form-control @error('no_hp_komentar') is-invalid @enderror" 
                                            id="no_hp_komentar" 
                                            name="no_hp_komentar" 
-                                           value="{{ old('no_hp_komentar', $komentarArtikel->no_hp_komentar) }}" 
+                                           value="{{ old('no_hp_komentar', $komentar_artikel->no_hp_komentar) }}" 
                                            required>
                                     @error('no_hp_komentar')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -88,7 +88,7 @@
                                               id="komentar" 
                                               name="komentar" 
                                               rows="10" 
-                                              required>{{ old('komentar', $komentarArtikel->komentar) }}</textarea>
+                                              required>{{ old('komentar', $komentar_artikel->komentar) }}</textarea>
                                     @error('komentar')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -100,7 +100,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bx bx-save"></i> Simpan Perubahan
                             </button>
-                            <a href="{{ route('admin.komentarArtikel.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('admin.komentar-artikel.index') }}" class="btn btn-secondary">
                                 <i class="bx bx-x"></i> Batal
                             </a>
                         </div>

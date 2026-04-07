@@ -19,12 +19,12 @@
     <!-- Articles Section -->
     <section class="bg-black py-20">
         <!-- Filter Buttons -->
-        <!-- @if($kategoriArtikels->count() > 0)
+        <!-- @if($kategori_artikels->count() > 0)
         <div class="filter-controls mb-12">
           <a href="{{ route('web.artikel.index') }}" class="filter-btn btn {{ $kategori === 'all' ? 'btn-primary active' : 'btn-outline' }}" data-filter="all">
             Semua Artikel
           </a>
-          @foreach($kategoriArtikels as $kat)
+          @foreach($kategori_artikels as $kat)
             <a href="{{ route('web.artikel.index', ['kategori' => $kat->slug]) }}" class="filter-btn btn {{ $kategori === $kat->slug ? 'btn-primary active' : 'btn-outline' }}" data-filter="{{ $kat->slug }}">
               {{ $kat->kategori_artikel }}
             </a>

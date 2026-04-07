@@ -51,7 +51,7 @@
                                     <select class="form-select @error('master_kategori_produk_id') is-invalid @enderror"
                                         id="master_kategori_produk_id" name="master_kategori_produk_id">
                                         <option value="">Pilih Kategori</option>
-                                        @foreach ($kategoriProduks as $kategori)
+                                        @foreach ($kategori_produks as $kategori)
                                             <option value="{{ $kategori->id }}" {{ old('master_kategori_produk_id') == $kategori->id ? 'selected' : '' }}>
                                                 {{ $kategori->kategori_produk }}
                                             </option>
@@ -147,7 +147,7 @@
                         <label for="kategoriDeskripsi" class="form-label">Kategori Produk (Opsional)</label>
                         <select class="form-select" id="kategoriDeskripsi">
                             <option value="">Pilih Kategori</option>
-                            @foreach ($kategoriProduks as $kategori)
+                            @foreach ($kategori_produks as $kategori)
                                 <option value="{{ $kategori->id }}">{{ $kategori->kategori_produk }}</option>
                             @endforeach
                         </select>

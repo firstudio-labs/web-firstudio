@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Daftar Kategori Produk</h5>
-                        <a href="{{ route('admin.kategoriProduk.create') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.kategori-produk.create') }}" class="btn btn-primary">
                             <i class="bx bx-plus"></i> Tambah Kategori
                         </a>
                     </div>
@@ -39,19 +39,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($kategoriProduks as $index => $kategoriProduk)
+                                    @forelse ($kategori_produks as $index => $kategori_produk)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $kategoriProduk->kategori_produk }}</td>
-                                            <td>{{ $kategoriProduk->deskripsi }}</td>
+                                            <td>{{ $kategori_produk->kategori_produk }}</td>
+                                            <td>{{ $kategori_produk->deskripsi }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
 
-                                                    <a href="{{ route('admin.kategoriProduk.edit', $kategoriProduk->id) }}"
+                                                    <a href="{{ route('admin.kategori-produk.edit', $kategori_produk->id) }}"
                                                         class="btn btn-sm btn-warning">
                                                         <i class="bx bx-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.kategoriProduk.destroy', $kategoriProduk->id) }}"
+                                                    <form action="{{ route('admin.kategori-produk.destroy', $kategori_produk->id) }}"
                                                         method="POST"
                                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                         @csrf
@@ -71,7 +71,7 @@
                                                     <h5>Belum ada data kategori produk</h5>
                                                     <p class="text-muted">Silakan tambahkan data kategori produk terlebih dahulu
                                                     </p>
-                                                    <a href="{{ route('admin.kategoriProduk.create') }}" class="btn btn-primary">
+                                                    <a href="{{ route('admin.kategori-produk.create') }}" class="btn btn-primary">
                                                         <i class="bx bx-plus"></i> Tambah Kategori
                                                     </a>
                                                 </div>

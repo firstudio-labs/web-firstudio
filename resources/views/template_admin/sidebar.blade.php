@@ -171,29 +171,29 @@
         </li>
 
         <li
-            class="menu-item {{ Request::is('admin/kategoriArtikel*') || Request::is('admin/kategoriProduk*') || Request::is('admin/kategoriGambar*') ? 'active open' : '' }}">
+            class="menu-item {{ Request::is('admin/kategori-artikel*') || Request::is('admin/kategori-produk*') || Request::is('admin/kategori-gambar*') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Analytics">Master</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('admin/kategoriArtikel*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kategoriArtikel.index') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/kategori-artikel*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kategori-artikel.index') }}" class="menu-link">
                         <div data-i18n="Analytics">Kategori Artikel</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/kategoriProduk*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kategoriProduk.index') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/kategori-produk*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kategori-produk.index') }}" class="menu-link">
                         <div data-i18n="Analytics">Kategori Produk</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/kategoriGambar*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kategoriGambar.index') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/kategori-gambar*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kategori-gambar.index') }}" class="menu-link">
                         <div data-i18n="Analytics">Kategori Gambar</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/kategoriTemplate*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kategoriTemplate.index') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/kategori-template*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kategori-template.index') }}" class="menu-link">
                         <div data-i18n="Analytics">Kategori Template</div>
                     </a>
                 </li>

@@ -13,8 +13,8 @@ class KategoriArtikelController extends Controller
      */
     public function index()
     {
-        $kategoriArtikels = KategoriArtikel::latest()->get();
-        return view('page_admin.kategoriArtikel.index', compact('kategoriArtikels'));
+        $kategori_artikels = KategoriArtikel::latest()->get();
+        return view('page_admin.kategori-artikel.index', compact('kategori_artikels'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KategoriArtikelController extends Controller
      */
     public function create()
     {
-        return view('page_admin.kategoriArtikel.create');
+        return view('page_admin.kategori-artikel.create');
     }
 
     /**
@@ -42,39 +42,39 @@ class KategoriArtikelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(KategoriArtikel $kategoriArtikel)
+    public function show(KategoriArtikel $kategori_artikel)
     {
-        return view('page_admin.kategoriArtikel.show', compact('kategoriArtikel'));
+        return view('page_admin.kategori-artikel.show', compact('kategori_artikel'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KategoriArtikel $kategoriArtikel)
+    public function edit(KategoriArtikel $kategori_artikel)
     {
-        return view('page_admin.kategoriArtikel.edit', compact('kategoriArtikel'));
+        return view('page_admin.kategori-artikel.edit', compact('kategori_artikel'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriArtikel $kategoriArtikel)
+    public function update(Request $request, KategoriArtikel $kategori_artikel)
     {
         $request->validate([
             'kategori_artikel' => 'required|string|max:255',
         ]);
 
-        $kategoriArtikel->update($request->all());
+        $kategori_artikel->update($request->all());
 
-        return redirect()->route('admin.kategori-artikel.index')->with('success', 'Kategori Artikel berhasil diubah');    
+        return redirect()->route('admin.kategori-artikel.index')->with('success', 'Kategori Artikel berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriArtikel $kategoriArtikel)
+    public function destroy(KategoriArtikel $kategori_artikel)
     {
-        $kategoriArtikel->delete();
+        $kategori_artikel->delete();
 
         return redirect()->route('admin.kategori-artikel.index')->with('success', 'Kategori Artikel berhasil dihapus');
     }

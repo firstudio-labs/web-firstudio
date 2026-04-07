@@ -13,8 +13,8 @@ class KategoriGambarController extends Controller
      */
     public function index()
     {
-        $kategoriGambars = KategoriGambar::paginate(10);
-        return view('page_admin.kategoriGambar.index', compact('kategoriGambars'));
+        $kategori_gambars = KategoriGambar::paginate(10);
+        return view('page_admin.kategori-gambar.index', compact('kategori_gambars'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KategoriGambarController extends Controller
      */
     public function create()
     {
-        return view('page_admin.kategoriGambar.create');
+        return view('page_admin.kategori-gambar.create');
     }
 
     /**
@@ -42,39 +42,39 @@ class KategoriGambarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(KategoriGambar $kategoriGambar)
+    public function show(KategoriGambar $kategori_gambar)
     {
-        return view('page_admin.kategoriGambar.show', compact('kategoriGambar'));
+        return view('page_admin.kategori-gambar.show', compact('kategori_gambar'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KategoriGambar $kategoriGambar)
+    public function edit(KategoriGambar $kategori_gambar)
     {
-        return view('page_admin.kategoriGambar.edit', compact('kategoriGambar'));
+        return view('page_admin.kategori-gambar.edit', compact('kategori_gambar'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriGambar $kategoriGambar)
+    public function update(Request $request, KategoriGambar $kategori_gambar)
     {
         $request->validate([
-            'kategori_gambar' => 'required|unique:kategori_gambar,kategori_gambar,' . $kategoriGambar->id,
+            'kategori_gambar' => 'required|unique:kategori_gambar,kategori_gambar,' . $kategori_gambar->id,
             'deskripsi' => 'nullable',
         ]);
 
-        $kategoriGambar->update($request->all());
+        $kategori_gambar->update($request->all());
         return redirect()->route('admin.kategori-gambar.index')->with('success', 'Kategori gambar berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriGambar $kategoriGambar)
+    public function destroy(KategoriGambar $kategori_gambar)
     {
-        $kategoriGambar->delete();
+        $kategori_gambar->delete();
         return redirect()->route('admin.kategori-gambar.index')->with('success', 'Kategori gambar berhasil dihapus');
     }
 }

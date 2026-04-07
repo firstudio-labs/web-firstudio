@@ -14,7 +14,7 @@ class KategoriTemplateController extends Controller
     public function index()
     {
         $categories = KategoriTemplate::paginate(10);
-        return view('page_admin.kategori_template.index', compact('categories'));
+        return view('page_admin.kategori-template.index', compact('categories'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KategoriTemplateController extends Controller
      */
     public function create()
     {
-        return view('page_admin.kategori_template.create');
+        return view('page_admin.kategori-template.create');
     }
 
     /**
@@ -36,37 +36,37 @@ class KategoriTemplateController extends Controller
 
         KategoriTemplate::create($request->all());
 
-        return redirect()->route('admin.kategoriTemplate.index')->with('success', 'Kategori template berhasil ditambahkan.');
+        return redirect()->route('admin.kategori-template.index')->with('success', 'Kategori template berhasil ditambahkan.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KategoriTemplate $kategoriTemplate)
+    public function edit(KategoriTemplate $kategori_template)
     {
-        return view('page_admin.kategori_template.edit', compact('kategoriTemplate'));
+        return view('page_admin.kategori-template.edit', compact('kategori_template'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriTemplate $kategoriTemplate)
+    public function update(Request $request, KategoriTemplate $kategori_template)
     {
         $request->validate([
-            'nama_kategori' => 'required|max:255|unique:kategori_templates,nama_kategori,' . $kategoriTemplate->id,
+            'nama_kategori' => 'required|max:255|unique:kategori_templates,nama_kategori,' . $kategori_template->id,
         ]);
 
-        $kategoriTemplate->update($request->all());
+        $kategori_template->update($request->all());
 
-        return redirect()->route('admin.kategoriTemplate.index')->with('success', 'Kategori template berhasil diperbarui.');
+        return redirect()->route('admin.kategori-template.index')->with('success', 'Kategori template berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriTemplate $kategoriTemplate)
+    public function destroy(KategoriTemplate $kategori_template)
     {
-        $kategoriTemplate->delete();
-        return redirect()->route('admin.kategoriTemplate.index')->with('success', 'Kategori template berhasil dihapus.');
+        $kategori_template->delete();
+        return redirect()->route('admin.kategori-template.index')->with('success', 'Kategori template berhasil dihapus.');
     }
 }

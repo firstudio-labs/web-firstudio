@@ -18,7 +18,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('admin.kategoriProduk.store') }}" method="POST">
+                        <form action="{{ route('admin.kategori-produk.store') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="kategori_produk">Kategori Produk</label>
@@ -49,7 +49,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="bx bx-save"></i> Simpan
                                     </button>
-                                    <a href="{{ route('admin.kategoriProduk.index') }}" class="btn btn-secondary">
+                                    <a href="{{ route('admin.kategori-produk.index') }}" class="btn btn-secondary">
                                         <i class="bx bx-x"></i> Batal
                                     </a>
                                 </div>

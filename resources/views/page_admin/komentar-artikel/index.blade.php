@@ -6,7 +6,7 @@
         <h4 class="fw-bold py-3 mb-0">
             <span class="text-muted fw-light">Komentar Artikel /</span> Daftar Komentar
         </h4>
-        <a href="{{ route('admin.komentarArtikel.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.komentar-artikel.create') }}" class="btn btn-primary">
             <i class="bx bx-plus"></i> Tambah Komentar
         </a>
     </div>
@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($komentarArtikels as $index => $komentar)
+                        @forelse($komentar_artikels as $index => $komentar)
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>
@@ -56,19 +56,19 @@
                             <td>{{ $komentar->created_at->format('d/m/Y H:i') }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ route('admin.komentarArtikel.show', $komentar->id) }}" 
+                                    <a href="{{ route('admin.komentar-artikel.show', $komentar->id) }}" 
                                        class="btn btn-sm btn-info" 
                                        data-bs-toggle="tooltip" 
                                        title="Detail">
                                         <i class="bx bx-show"></i>
                                     </a>
-                                    <a href="{{ route('admin.komentarArtikel.edit', $komentar->id) }}" 
+                                    <a href="{{ route('admin.komentar-artikel.edit', $komentar->id) }}" 
                                        class="btn btn-sm btn-warning" 
                                        data-bs-toggle="tooltip" 
                                        title="Edit">
                                         <i class="bx bx-edit"></i>
                                     </a>
-                                    <form action="{{ route('admin.komentarArtikel.destroy', $komentar->id) }}" 
+                                    <form action="{{ route('admin.komentar-artikel.destroy', $komentar->id) }}" 
                                           method="POST" 
                                           class="d-inline"
                                           onsubmit="return confirm('Apakah Anda yakin ingin menghapus komentar ini?')">
@@ -99,7 +99,7 @@
             </div>
             
             <div class="d-flex justify-content-end mt-4">
-                {{ $komentarArtikels->links() }}
+                {{ $komentar_artikels->links() }}
             </div>
         </div>
     </div>

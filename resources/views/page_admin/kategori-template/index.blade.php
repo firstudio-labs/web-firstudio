@@ -37,7 +37,7 @@
                                             <td>{{ $category->nama_kategori }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <form action="{{ route('admin.kategoriTemplate.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Hapus kategori ini? Semua template di dalamnya juga akan terhapus.')" class="d-inline">
+                                                    <form action="{{ route('admin.kategori-template.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Hapus kategori ini? Semua template di dalamnya juga akan terhapus.')" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-icon btn-outline-danger">
@@ -61,7 +61,7 @@
     <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{ route('admin.kategoriTemplate.store') }}" method="POST">
+                <form action="{{ route('admin.kategori-template.store') }}" method="POST">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Tambah Kategori Baru</h5>

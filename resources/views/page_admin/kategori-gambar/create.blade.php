@@ -11,7 +11,7 @@
                         <h5 class="mb-0">Form Tambah Kategori Gambar</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.kategoriGambar.store') }}" method="POST">
+                        <form action="{{ route('admin.kategori-gambar.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="kategori_gambar" class="form-label">Kategori Gambar</label>
@@ -37,7 +37,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bx bx-save"></i> Simpan
                                 </button>
-                                <a href="{{ route('admin.kategoriGambar.index') }}" class="btn btn-secondary">
+                                <a href="{{ route('admin.kategori-gambar.index') }}" class="btn btn-secondary">
                                     <i class="bx bx-x"></i> Batal
                                 </a>
                             </div>

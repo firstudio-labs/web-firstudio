@@ -36,9 +36,9 @@
                                         <select class="form-select @error('kategori_gambar_id') is-invalid @enderror"
                                             id="kategori_gambar_id" name="kategori_gambar_id" required>
                                             <option value="">Pilih Kategori Gambar</option>
-                                            @foreach ($kategoriGambars as $kategoriGambar)
-                                                <option value="{{ $kategoriGambar->id }}" {{ old('kategori_gambar_id') == $kategoriGambar->id ? 'selected' : '' }}>
-                                                    {{ $kategoriGambar->kategori_gambar }}
+                                            @foreach ($kategori_gambars as $kategori_gambar)
+                                                <option value="{{ $kategori_gambar->id }}" {{ old('kategori_gambar_id') == $kategori_gambar->id ? 'selected' : '' }}>
+                                                    {{ $kategori_gambar->kategori_gambar }}
                                                 </option>
                                             @endforeach
                                         </select>

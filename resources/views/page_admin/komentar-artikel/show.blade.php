@@ -7,10 +7,10 @@
             <span class="text-muted fw-light">Komentar Artikel /</span> Detail Komentar
         </h4>
         <div>
-            <a href="{{ route('admin.komentarArtikel.edit', $komentarArtikel->id) }}" class="btn btn-warning">
+            <a href="{{ route('admin.komentar-artikel.edit', $komentar_artikel->id) }}" class="btn btn-warning">
                 <i class="bx bx-edit"></i> Edit
             </a>
-            <a href="{{ route('admin.komentarArtikel.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.komentar-artikel.index') }}" class="btn btn-secondary">
                 <i class="bx bx-arrow-back"></i> Kembali
             </a>
         </div>
@@ -27,8 +27,8 @@
                         <div class="col-md-6">
                             <div class="mb-4">
                                 <h6 class="text-muted mb-2">Artikel</h6>
-                                <a href="{{ route('admin.artikel.show', $komentarArtikel->artikel_id) }}" class="text-primary">
-                                    {{ $komentarArtikel->artikel->judul }}
+                                <a href="{{ route('admin.artikel.show', $komentar_artikel->artikel_id) }}" class="text-primary">
+                                    {{ $komentar_artikel->artikel->judul }}
                                 </a>
                             </div>
 
@@ -36,15 +36,15 @@
                                 <h6 class="text-muted mb-2">Informasi Pengirim</h6>
                                 <div class="d-flex align-items-center mb-2">
                                     <i class="bx bx-user text-primary me-2"></i>
-                                    <span>{{ $komentarArtikel->nama_komentar }}</span>
+                                    <span>{{ $komentar_artikel->nama_komentar }}</span>
                                 </div>
                                 <div class="d-flex align-items-center mb-2">
                                     <i class="bx bx-envelope text-primary me-2"></i>
-                                    <span>{{ $komentarArtikel->email_komentar }}</span>
+                                    <span>{{ $komentar_artikel->email_komentar }}</span>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <i class="bx bx-phone text-primary me-2"></i>
-                                    <span>{{ $komentarArtikel->no_hp_komentar }}</span>
+                                    <span>{{ $komentar_artikel->no_hp_komentar }}</span>
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@
                                 <h6 class="text-muted mb-2">Tanggal Komentar</h6>
                                 <div class="d-flex align-items-center">
                                     <i class="bx bx-calendar text-primary me-2"></i>
-                                    <span>{{ $komentarArtikel->created_at->format('d F Y H:i') }}</span>
+                                    <span>{{ $komentar_artikel->created_at->format('d F Y H:i') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <h6 class="text-muted mb-2">Isi Komentar</h6>
                                 <div class="card bg-light">
                                     <div class="card-body">
-                                        <p class="mb-0">{{ $komentarArtikel->komentar }}</p>
+                                        <p class="mb-0">{{ $komentar_artikel->komentar }}</p>
                                     </div>
                                 </div>
                             </div>

@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Daftar Kategori Artikel</h5>
-                <a href="{{ route('admin.kategoriArtikel.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.kategori-artikel.create') }}" class="btn btn-primary">
                     <i class="bx bx-plus"></i> Tambah Kategori
                 </a>
             </div>
@@ -22,15 +22,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($kategoriArtikels as $kategori)
+                            @forelse ($kategori_artikels as $kategori)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kategori->kategori_artikel }}</td>
                                     <td>
-                                        <a href="{{ route('admin.kategoriArtikel.edit', $kategori->id) }}" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('admin.kategori-artikel.edit', $kategori->id) }}" class="btn btn-sm btn-warning">
                                             <i class="bx bx-edit"></i>
                                         </a>
-                                        <form action="{{ route('admin.kategoriArtikel.destroy', $kategori->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('admin.kategori-artikel.destroy', $kategori->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">

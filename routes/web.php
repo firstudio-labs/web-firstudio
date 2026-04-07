@@ -89,12 +89,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::resource('tentang', TentangController::class);
     Route::resource('testimoni', TestimoniController::class);
     Route::resource('tim', TimController::class);
-    Route::resource('kategoriArtikel', KategoriArtikelController::class);
-    Route::resource('komentarArtikel', KomentarArtikelController::class);
-    Route::resource('kategoriProduk', KategoriProdukController::class);
-    Route::resource('kategoriGambar', KategoriGambarController::class);
+    Route::resource('kategori-artikel', KategoriArtikelController::class);
+    Route::resource('komentar-artikel', KomentarArtikelController::class);
+    Route::resource('kategori-produk', KategoriProdukController::class);
+    Route::resource('kategori-gambar', KategoriGambarController::class);
     Route::resource('template', \App\Http\Controllers\Admin\TemplateController::class);
-    Route::resource('kategoriTemplate', \App\Http\Controllers\Admin\KategoriTemplateController::class);
+    Route::resource('kategori-template', \App\Http\Controllers\Admin\KategoriTemplateController::class);
 
     // Settings Route
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');

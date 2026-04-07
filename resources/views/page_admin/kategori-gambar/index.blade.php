@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Daftar Kategori Gambar</h5>
-                        <a href="{{ route('admin.kategoriGambar.create') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.kategori-gambar.create') }}" class="btn btn-primary">
                             <i class="bx bx-plus"></i> Tambah Kategori Gambar
                         </a>
                     </div>
@@ -40,23 +40,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($kategoriGambars as $index => $kategoriGambar)
+                                    @forelse ($kategori_gambars as $index => $kategori_gambar)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $kategoriGambar->kategori_gambar }}</td>
-                                            <td>{{ $kategoriGambar->slug }}</td>
-                                            <td>{{ Str::limit($kategoriGambar->deskripsi, 50) }}</td>
+                                            <td>{{ $kategori_gambar->kategori_gambar }}</td>
+                                            <td>{{ $kategori_gambar->slug }}</td>
+                                            <td>{{ Str::limit($kategori_gambar->deskripsi, 50) }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <a href="{{ route('admin.kategoriGambar.show', $kategoriGambar->id) }}"
+                                                    <a href="{{ route('admin.kategori-gambar.show', $kategori_gambar->id) }}"
                                                         class="btn btn-sm btn-info">
                                                         <i class="bx bx-show"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.kategoriGambar.edit', $kategoriGambar->id) }}"
+                                                    <a href="{{ route('admin.kategori-gambar.edit', $kategori_gambar->id) }}"
                                                         class="btn btn-sm btn-warning">
                                                         <i class="bx bx-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.kategoriGambar.destroy', $kategoriGambar->id) }}"
+                                                    <form action="{{ route('admin.kategori-gambar.destroy', $kategori_gambar->id) }}"
                                                         method="POST"
                                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                         @csrf
@@ -76,7 +76,7 @@
                                                     <h5>Belum ada data kategori gambar</h5>
                                                     <p class="text-muted">Silakan tambahkan data kategori gambar terlebih dahulu
                                                     </p>
-                                                    <a href="{{ route('admin.kategoriGambar.create') }}" class="btn btn-primary">
+                                                    <a href="{{ route('admin.kategori-gambar.create') }}" class="btn btn-primary">
                                                         <i class="bx bx-plus"></i> Tambah Kategori Gambar
                                                     </a>
                                                 </div>
@@ -87,7 +87,7 @@
                             </table>
                         </div>
                         <div class="mt-3">
-                            {{ $kategoriGambars->links() }}
+                            {{ $kategori_gambars->links() }}
                         </div>
                     </div>
                 </div>
