@@ -15,7 +15,7 @@ class WebProdukController extends Controller
     public function index(Request $request)
     {
         $kategori = $request->get('kategori', 'all');
-        $kategoriProduks = KategoriProduk::all();
+        $kategori_produks = KategoriProduk::all();
         
         $query = Produk::with('kategoriProduk');
         
@@ -27,7 +27,7 @@ class WebProdukController extends Controller
         
         $produks = $query->latest()->get();
         
-        return view('page_web.produk.index', compact('produks', 'kategoriProduks', 'kategori'));
+        return view('page_web.produk.index', compact('produks', 'kategori_produks', 'kategori'));
     }
 
     /**

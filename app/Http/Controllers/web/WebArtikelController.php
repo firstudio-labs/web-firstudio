@@ -15,7 +15,7 @@ class WebArtikelController extends Controller
     public function index(Request $request)
     {
         $kategori = $request->get('kategori', 'all');
-        $kategoriArtikels = KategoriArtikel::all();
+        $kategori_artikels = KategoriArtikel::all();
         
         $query = Artikel::with('kategoriArtikel')
             ->where('status', 'Publik');
@@ -28,7 +28,7 @@ class WebArtikelController extends Controller
         
         $artikels = $query->latest()->paginate(12);
         
-        return view('page_web.artikel.index', compact('artikels', 'kategoriArtikels', 'kategori'));
+        return view('page_web.artikel.index', compact('artikels', 'kategori_artikels', 'kategori'));
     }
 
     /**
