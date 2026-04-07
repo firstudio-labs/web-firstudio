@@ -84,8 +84,10 @@ class ArtikelController extends Controller
             $artikel->status = $request->status;
 
             if ($request->hasFile('gambar')) {
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar = $request->file('gambar');
-                $gambarName = time() . '.webp';
+                $gambarName = time() . '.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/artikel');
@@ -94,11 +96,17 @@ class ArtikelController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                Log::info('Memulai konversi gambar ke WebP');
-                // Konversi ke WebP
+                Log::info('Memulai konversi gambar');
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar);
-                $image->toWebp(80); // 80 adalah kualitas kompresi
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambarName);
 
                 $artikel->gambar = $gambarName;
@@ -175,8 +183,10 @@ class ArtikelController extends Controller
                     unlink(public_path('storage/artikel/' . $artikel->gambar));
                 }
 
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar = $request->file('gambar');
-                $gambarName = time() . '.webp';
+                $gambarName = time() . '.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/artikel');
@@ -184,10 +194,16 @@ class ArtikelController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                // Konversi ke WebP
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar);
-                $image->toWebp(80); // 80 adalah kualitas kompresi
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambarName);
 
                 $artikel->gambar = $gambarName;

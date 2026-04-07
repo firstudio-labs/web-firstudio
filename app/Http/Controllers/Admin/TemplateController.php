@@ -53,8 +53,10 @@ class TemplateController extends Controller
             $template = new Template($request->except('gambar'));
 
             if ($request->hasFile('gambar')) {
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar = $request->file('gambar');
-                $gambarName = time() . '.webp';
+                $gambarName = time() . '.' . $extension;
                 $path = public_path('storage/template');
 
                 if (!file_exists($path)) {
@@ -63,7 +65,13 @@ class TemplateController extends Controller
 
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar);
-                $image->toWebp(80);
+
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+
                 $image->save($path . '/' . $gambarName);
 
                 $template->gambar = $gambarName;
@@ -107,8 +115,10 @@ class TemplateController extends Controller
                     unlink(public_path('storage/template/' . $template->gambar));
                 }
 
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar = $request->file('gambar');
-                $gambarName = time() . '.webp';
+                $gambarName = time() . '.' . $extension;
                 $path = public_path('storage/template');
 
                 if (!file_exists($path)) {
@@ -117,7 +127,13 @@ class TemplateController extends Controller
 
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar);
-                $image->toWebp(80);
+
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+
                 $image->save($path . '/' . $gambarName);
 
                 $template->gambar = $gambarName;

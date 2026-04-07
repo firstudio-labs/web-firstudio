@@ -51,8 +51,10 @@ class BerandaController extends Controller
 
             // Proses gambar utama
             if ($request->hasFile('gambar_utama')) {
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar_utama = $request->file('gambar_utama');
-                $gambar_utama_name = time() . '_utama.webp';
+                $gambar_utama_name = time() . '_utama.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/beranda');
@@ -61,11 +63,17 @@ class BerandaController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                Log::info('Memulai konversi gambar utama ke WebP');
-                // Konversi ke WebP
+                Log::info('Memulai konversi gambar utama');
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar_utama);
-                $image->toWebp(80); // 80 adalah kualitas kompresi
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambar_utama_name);
 
                 $beranda->gambar_utama = $gambar_utama_name;
@@ -73,8 +81,10 @@ class BerandaController extends Controller
 
             // Proses gambar sekunder
             if ($request->hasFile('gambar_sekunder')) {
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar_sekunder = $request->file('gambar_sekunder');
-                $gambar_sekunder_name = time() . '_sekunder.webp';
+                $gambar_sekunder_name = time() . '_sekunder.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/beranda');
@@ -83,11 +93,17 @@ class BerandaController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                Log::info('Memulai konversi gambar sekunder ke WebP');
-                // Konversi ke WebP
+                Log::info('Memulai konversi gambar sekunder');
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar_sekunder);
-                $image->toWebp(80); // 80 adalah kualitas kompresi
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambar_sekunder_name);
 
                 $beranda->gambar_sekunder = $gambar_sekunder_name;
@@ -148,8 +164,10 @@ class BerandaController extends Controller
                     unlink(public_path('storage/beranda/' . $beranda->gambar_utama));
                 }
 
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar_utama = $request->file('gambar_utama');
-                $gambar_utama_name = time() . '_utama.webp';
+                $gambar_utama_name = time() . '_utama.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/beranda');
@@ -157,10 +175,16 @@ class BerandaController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                // Konversi ke WebP
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar_utama);
-                $image->toWebp(80);
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambar_utama_name);
 
                 $beranda->gambar_utama = $gambar_utama_name;
@@ -173,8 +197,10 @@ class BerandaController extends Controller
                     unlink(public_path('storage/beranda/' . $beranda->gambar_sekunder));
                 }
 
+                $isWebpSupported = function_exists('imagewebp');
+                $extension = $isWebpSupported ? 'webp' : 'jpg';
                 $gambar_sekunder = $request->file('gambar_sekunder');
-                $gambar_sekunder_name = time() . '_sekunder.webp';
+                $gambar_sekunder_name = time() . '_sekunder.' . $extension;
 
                 // Pastikan direktori ada
                 $path = public_path('storage/beranda');
@@ -182,10 +208,16 @@ class BerandaController extends Controller
                     mkdir($path, 0777, true);
                 }
 
-                // Konversi ke WebP
+                // Konversi gambar
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($gambar_sekunder);
-                $image->toWebp(80);
+                
+                if ($isWebpSupported) {
+                    $image->toWebp(80);
+                } else {
+                    $image->toJpeg(80);
+                }
+                
                 $image->save($path . '/' . $gambar_sekunder_name);
 
                 $beranda->gambar_sekunder = $gambar_sekunder_name;
