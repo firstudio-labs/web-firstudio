@@ -15,6 +15,16 @@ class WebLayananController extends Controller
     }
 
     /**
+     * Display website template catalog page
+     */
+    public function katalog()
+    {
+        $categories = \App\Models\KategoriTemplate::withCount('templates')->get();
+        $templates = \App\Models\Template::with('kategori')->get();
+        return view('page_web.layanan.katalog', compact('categories', 'templates'));
+    }
+
+    /**
      * Display mobile app development service page
      */
     public function mobile()

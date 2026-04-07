@@ -142,6 +142,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ Request::is('admin/template*') ? 'active' : '' }}">
+            <a href="{{ route('admin.template.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Analytics">Katalog Template</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ Request::is('admin/tentang*') ? 'active' : '' }}">
             <a href="{{ route('admin.tentang.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
@@ -163,7 +170,8 @@
             </a>
         </li>
 
-        <li class="menu-item {{ Request::is('admin/kategoriArtikel*') || Request::is('admin/kategoriProduk*') || Request::is('admin/kategoriGambar*') ? 'active open' : '' }}">
+        <li
+            class="menu-item {{ Request::is('admin/kategoriArtikel*') || Request::is('admin/kategoriProduk*') || Request::is('admin/kategoriGambar*') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Analytics">Master</div>
@@ -182,6 +190,11 @@
                 <li class="menu-item {{ Request::is('admin/kategoriGambar*') ? 'active' : '' }}">
                     <a href="{{ route('admin.kategoriGambar.index') }}" class="menu-link">
                         <div data-i18n="Analytics">Kategori Gambar</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/kategoriTemplate*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kategoriTemplate.index') }}" class="menu-link">
+                        <div data-i18n="Analytics">Kategori Template</div>
                     </a>
                 </li>
             </ul>

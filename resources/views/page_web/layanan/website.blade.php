@@ -72,7 +72,10 @@
                 <span class="text-gray-700">Menggunakan Premium Template / Web Builder</span>
               </li>
             </ul>
-            <a href="https://wa.me/" target="_blank" class="btn btn-primary w-full text-center mt-auto">Pilih Website Mainstream</a>
+            <div class="space-y-3 mt-auto">
+              <a href="https://wa.me/" target="_blank" class="btn btn-primary w-full text-center">Pilih Website Mainstream</a>
+              <a href="{{ route('web.layanan.website.katalog') }}" class="btn btn-secondary w-full text-center">Pilih Template Website</a>
+            </div>
           </div>
 
           <!-- Website App -->

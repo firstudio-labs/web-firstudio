@@ -75,19 +75,19 @@
           <div class="space-y-4">
             <h4 class="text-base font-semibold text-white">Contact Us</h4>
             <ul class="space-y-3 text-sm text-gray-400">
-              <li>Address: {{ $profil->alamat_perusahaan }}</li>
+              <li>Address: {{ $profil->alamat_perusahaan ?? '-' }}</li>
               <li>
                 <a
-                  href="tel:{{ $profil->no_telp_perusahaan }}"
+                  href="tel:{{ $profil->no_telp_perusahaan ?? '#' }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Phone: {{ $profil->no_telp_perusahaan }}</a
+                  >Phone: {{ $profil->no_telp_perusahaan ?? '-' }}</a
                 >
               </li>
               <li>
                 <a
-                  href="mailto:{{ $profil->email_perusahaan }}"
+                  href="mailto:{{ $profil->email_perusahaan ?? '#' }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Email: {{ $profil->email_perusahaan }}</a
+                  >Email: {{ $profil->email_perusahaan ?? '-' }}</a
                 >
               </li>
             </ul>
@@ -98,7 +98,7 @@
             <h4 class="text-base font-semibold text-white">Follow Us</h4>
             <div class="flex items-center gap-3">
               <a
-                href="facebook.com/{{ $profil->facebook_perusahaan }}"
+                href="facebook.com/{{ $profil->facebook_perusahaan ?? '#' }}"
                 class="social-icon flex h-10 w-10 items-center justify-center rounded-full border border-white/20 dark:border-gray-900/20 text-gray-400 transition hover:border-white hover:bg-white hover:text-black"
               >
                 <svg
@@ -113,7 +113,7 @@
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/{{ $profil->linkedin_perusahaan }}"
+                href="https://linkedin.com/in/{{ $profil->linkedin_perusahaan ?? '#' }}"
                 class="social-icon flex h-10 w-10 items-center justify-center rounded-full border border-white/20 dark:border-gray-900/20 text-gray-400 transition hover:border-white hover:bg-white hover:text-black"
               >
                 <svg
@@ -128,7 +128,7 @@
                 </svg>
               </a>
               <a
-                href="https://instagram.com/{{ $profil->instagram_perusahaan }}"
+                href="https://instagram.com/{{ $profil->instagram_perusahaan ?? '#' }}"
                 class="social-icon flex h-10 w-10 items-center justify-center rounded-full border border-white/20 dark:border-gray-900/20 text-gray-400 transition hover:border-white hover:bg-white hover:text-black"
               >
                 <svg
@@ -143,7 +143,7 @@
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/{{ $profil->linkedin_perusahaan }}"
+                href="https://linkedin.com/in/{{ $profil->linkedin_perusahaan ?? '#' }}"
                 class="social-icon flex h-10 w-10 items-center justify-center rounded-full border border-white/20 dark:border-gray-900/20 text-gray-400 transition hover:border-white hover:bg-white hover:text-black"
               >
                 <svg
@@ -165,7 +165,7 @@
         <div
           class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-400 md:flex-row"
         >
-          <p>© <script>document.write(new Date().getFullYear());</script> {{ $profil->nama_perusahaan }}. All rights reserved.</p>
+          <p>© <script>document.write(new Date().getFullYear());</script> {{ $profil->nama_perusahaan ?? 'Firstudio' }}. All rights reserved.</p>
           <div class="flex gap-6">
             <a href="#" class="footer-link text-gray-400 transition hover:text-white"
               >Privacy Policy</a

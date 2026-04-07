@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             static $profilCache = null;
 
             if ($profilCache === null) {
-                $profilCache = Profil::first();
+                $profilCache = Profil::first() ?? new Profil();
             }
 
             $view->with('profil', $profilCache);

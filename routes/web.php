@@ -93,6 +93,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::resource('komentarArtikel', KomentarArtikelController::class);
     Route::resource('kategoriProduk', KategoriProdukController::class);
     Route::resource('kategoriGambar', KategoriGambarController::class);
+    Route::resource('template', \App\Http\Controllers\Admin\TemplateController::class);
+    Route::resource('kategoriTemplate', \App\Http\Controllers\Admin\KategoriTemplateController::class);
 
     // Settings Route
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
@@ -146,6 +148,7 @@ Route::get('/about', [WebTentangController::class, 'index'])->name('web.about.in
 
 Route::prefix('layanan')->name('web.layanan.')->group(function () {
     Route::get('/website', [WebLayananController::class, 'website'])->name('website');
+    Route::get('/website/katalog', [WebLayananController::class, 'katalog'])->name('website.katalog');
     Route::get('/mobile', [WebLayananController::class, 'mobile'])->name('mobile');
     Route::get('/itconsul', [WebLayananController::class, 'itconsul'])->name('itconsul');
     Route::get('/company', [WebLayananController::class, 'company'])->name('company');
