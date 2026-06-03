@@ -11,7 +11,7 @@
     DEFAULT_SCROLL_AMOUNT: 380,
     CHEVRON_ROTATION_OPEN: '180deg',
     CHEVRON_ROTATION_CLOSE: '0deg',
-    TESTIMONIAL_AUTOPLAY_MS: 6000,
+    TESTIMONIAL_AUTOPLAY_MS: 5000,
   };
 
   // Selectors
@@ -527,6 +527,9 @@
       this.prevButton = null;
       this.currentIndex = 0;
       this.autoplayTimer = null;
+      this.isPausedByUser = false;
+      this.observer = null;
+      this.isVisible = true;
       this.init();
     }
 
@@ -549,32 +552,61 @@
       }
 
       this.attachEventListeners();
+      this.observeVisibility();
       this.startAutoplay();
+    }
+
+    observeVisibility() {
+      if (!('IntersectionObserver' in window) || !this.root) {
+        return;
+      }
+
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          this.isVisible = entry?.isIntersecting ?? true;
+          if (this.isVisible && !this.isPausedByUser) {
+            this.startAutoplay();
+          } else {
+            this.stopAutoplay();
+          }
+        },
+        { threshold: 0.25 }
+      );
+
+      this.observer.observe(this.root);
+    }
+
+    pauseByUser() {
+      this.isPausedByUser = true;
+      this.stopAutoplay();
+      window.setTimeout(() => {
+        this.isPausedByUser = false;
+        if (this.isVisible) {
+          this.startAutoplay();
+        }
+      }, CONSTANTS.TESTIMONIAL_AUTOPLAY_MS * 2);
     }
 
     attachEventListeners() {
       this.avatars.forEach((btn, index) => {
         btn.addEventListener('click', () => {
           this.goTo(index);
-          this.restartAutoplay();
+          this.pauseByUser();
         });
       });
 
       this.nextButton?.addEventListener('click', () => {
         this.goTo(this.currentIndex + 1);
-        this.restartAutoplay();
+        this.pauseByUser();
       });
 
       this.prevButton?.addEventListener('click', () => {
         this.goTo(this.currentIndex - 1);
-        this.restartAutoplay();
+        this.pauseByUser();
       });
 
       this.root.addEventListener('keydown', (e) => this.handleKeydown(e));
-      this.root.addEventListener('mouseenter', () => this.stopAutoplay());
-      this.root.addEventListener('mouseleave', () => this.startAutoplay());
-      this.root.addEventListener('focusin', () => this.stopAutoplay());
-      this.root.addEventListener('focusout', () => this.startAutoplay());
     }
 
     goTo(index) {
@@ -594,6 +626,12 @@
         const active = i === normalized;
         avatar.classList.toggle('testimonial-avatar--active', active);
         avatar.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      this.avatars[normalized]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
       });
     }
 
@@ -624,12 +662,17 @@
       e.preventDefault();
       const delta = e.key === 'ArrowRight' ? 1 : -1;
       this.goTo(this.currentIndex + delta);
-      this.restartAutoplay();
+      this.pauseByUser();
       this.avatars[this.currentIndex]?.focus();
     }
 
     startAutoplay() {
-      if (this.avatars.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (
+        this.avatars.length <= 1 ||
+        !this.isVisible ||
+        this.isPausedByUser ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
         return;
       }
       this.stopAutoplay();
@@ -652,6 +695,7 @@
 
     destroy() {
       this.stopAutoplay();
+      this.observer?.disconnect();
     }
   }
 

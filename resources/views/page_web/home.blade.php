@@ -612,7 +612,7 @@
 
           <blockquote class="testimonial-quote-block relative mx-auto max-w-3xl px-8 md:px-14">
             <span class="testimonial-quote-mark testimonial-quote-mark--open" aria-hidden="true">&ldquo;</span>
-            <p id="testimonial-quote" class="testimonial-quote-text text-xl font-bold leading-relaxed text-gray-900 md:text-2xl lg:text-3xl">
+            <p id="testimonial-quote" class="testimonial-quote-text text-xl font-bold leading-relaxed text-gray-900 md:text-2xl lg:text-3xl" aria-live="polite">
               {{ $testimoni->first()->testimoni }}
             </p>
             <span class="testimonial-quote-mark testimonial-quote-mark--close" aria-hidden="true">&rdquo;</span>
