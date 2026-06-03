@@ -36,11 +36,9 @@
     emptyState: '#empty-state',
     flipWord: '.flip-word',
     testimonialCarousel: '#testimonial-carousel',
-    testimonialNext: '[data-testimonial-next]',
-    testimonialPrev: '[data-testimonial-prev]',
-    testimonialQuote: '#testimonial-quote',
-    testimonialAuthorPill: '#testimonial-author-pill',
-    testimonialAvatar: '.testimonial-avatar',
+    testimonialTrack: '.testimonial-cards-track',
+    testimonialCard: '.testimonial-card-v2',
+    testimonialDots: '.testimonial-cards-dots',
   };
 
   /**
@@ -515,21 +513,25 @@
   }
 
   /**
-   * Testimonial carousel — picker layout with auto-play
+   * Testimonial card carousel — 3 cards desktop, 1 mobile, dots + autoplay
    */
   class TestimonialCarousel {
     constructor() {
       this.root = null;
-      this.quoteEl = null;
-      this.pillEl = null;
-      this.avatars = [];
-      this.nextButton = null;
-      this.prevButton = null;
-      this.currentIndex = 0;
+      this.viewport = null;
+      this.track = null;
+      this.cards = [];
+      this.dotsContainer = null;
+      this.dots = [];
+      this.currentSlide = 0;
+      this.totalSlides = 0;
+      this.cardsPerView = 3;
       this.autoplayTimer = null;
       this.isPausedByUser = false;
       this.observer = null;
       this.isVisible = true;
+      this.resizeHandler = null;
+      this.mobileQuery = window.matchMedia('(max-width: 768px)');
       this.init();
     }
 
@@ -539,21 +541,111 @@
         return;
       }
 
-      this.quoteEl = document.querySelector(SELECTORS.testimonialQuote);
-      this.pillEl = document.querySelector(SELECTORS.testimonialAuthorPill);
-      this.avatars = Array.from(this.root.querySelectorAll(SELECTORS.testimonialAvatar));
-      this.nextButton = document.querySelector(SELECTORS.testimonialNext);
-      this.prevButton = document.querySelector(SELECTORS.testimonialPrev);
+      this.viewport = this.root.querySelector('.testimonial-cards-viewport');
+      this.track = this.root.querySelector(SELECTORS.testimonialTrack);
+      this.cards = Array.from(this.root.querySelectorAll(SELECTORS.testimonialCard));
+      this.dotsContainer = this.root.querySelector(SELECTORS.testimonialDots);
 
-      if (this.avatars.length <= 1) {
-        this.nextButton?.setAttribute('hidden', '');
-        this.prevButton?.setAttribute('hidden', '');
+      if (!this.track || this.cards.length === 0) {
         return;
       }
 
-      this.attachEventListeners();
+      this.updateLayout();
+      this.renderDots();
+
       this.observeVisibility();
-      this.startAutoplay();
+
+      this.resizeHandler = () => {
+        const prevPerView = this.cardsPerView;
+        this.updateLayout();
+        if (prevPerView !== this.cardsPerView) {
+          this.renderDots();
+          this.currentSlide = Math.min(this.currentSlide, this.totalSlides - 1);
+        }
+        this.goToSlide(this.currentSlide, false);
+      };
+
+      window.addEventListener('resize', this.resizeHandler);
+      this.mobileQuery.addEventListener('change', this.resizeHandler);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.goToSlide(0, false);
+          if (this.totalSlides > 1) {
+            this.startAutoplay();
+          }
+        });
+      });
+    }
+
+    updateLayout() {
+      this.cardsPerView = this.mobileQuery.matches ? 1 : 3;
+      this.totalSlides = Math.max(1, Math.ceil(this.cards.length / this.cardsPerView));
+    }
+
+    getSlideOffset(slideIndex) {
+      if (!this.cards[0] || !this.viewport) {
+        return 0;
+      }
+
+      const cardWidth = this.cards[0].offsetWidth;
+      const gap = parseFloat(getComputedStyle(this.track).gap) || CONSTANTS.CAROUSEL_GAP;
+      const cardIndex = slideIndex * this.cardsPerView;
+      return cardIndex * (cardWidth + gap);
+    }
+
+    renderDots() {
+      if (!this.dotsContainer) {
+        return;
+      }
+
+      this.dotsContainer.innerHTML = '';
+      this.dots = [];
+
+      if (this.totalSlides <= 1) {
+        this.dotsContainer.hidden = true;
+        return;
+      }
+
+      this.dotsContainer.hidden = false;
+
+      for (let i = 0; i < this.totalSlides; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.role = 'tab';
+        btn.setAttribute('aria-label', 'Slide testimoni ' + (i + 1));
+        btn.setAttribute('aria-selected', i === this.currentSlide ? 'true' : 'false');
+        btn.classList.toggle('is-active', i === this.currentSlide);
+        btn.addEventListener('click', () => {
+          this.goToSlide(i);
+          this.pauseByUser();
+        });
+        this.dotsContainer.appendChild(btn);
+        this.dots.push(btn);
+      }
+    }
+
+    goToSlide(index, animate) {
+      if (animate === undefined) {
+        animate = true;
+      }
+
+      if (this.totalSlides <= 0) {
+        return;
+      }
+
+      const normalized = ((index % this.totalSlides) + this.totalSlides) % this.totalSlides;
+      this.currentSlide = normalized;
+
+      const offset = this.getSlideOffset(normalized);
+      this.track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+      this.track.style.transform = 'translateX(-' + offset + 'px)';
+
+      this.dots.forEach((dot, i) => {
+        const active = i === normalized;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
     }
 
     observeVisibility() {
@@ -565,7 +657,7 @@
         (entries) => {
           const entry = entries[0];
           this.isVisible = entry?.isIntersecting ?? true;
-          if (this.isVisible && !this.isPausedByUser) {
+          if (this.isVisible && !this.isPausedByUser && this.totalSlides > 1) {
             this.startAutoplay();
           } else {
             this.stopAutoplay();
@@ -582,102 +674,25 @@
       this.stopAutoplay();
       window.setTimeout(() => {
         this.isPausedByUser = false;
-        if (this.isVisible) {
+        if (this.isVisible && this.totalSlides > 1) {
           this.startAutoplay();
         }
       }, CONSTANTS.TESTIMONIAL_AUTOPLAY_MS * 2);
     }
 
-    attachEventListeners() {
-      this.avatars.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-          this.goTo(index);
-          this.pauseByUser();
-        });
-      });
-
-      this.nextButton?.addEventListener('click', () => {
-        this.goTo(this.currentIndex + 1);
-        this.pauseByUser();
-      });
-
-      this.prevButton?.addEventListener('click', () => {
-        this.goTo(this.currentIndex - 1);
-        this.pauseByUser();
-      });
-
-      this.root.addEventListener('keydown', (e) => this.handleKeydown(e));
-    }
-
-    goTo(index) {
-      if (!this.avatars.length) {
-        return;
-      }
-
-      const normalized = ((index % this.avatars.length) + this.avatars.length) % this.avatars.length;
-      this.currentIndex = normalized;
-      const btn = this.avatars[normalized];
-      const quote = btn.getAttribute('data-quote');
-      const author = btn.getAttribute('data-author');
-
-      this.updateContent(quote, author);
-
-      this.avatars.forEach((avatar, i) => {
-        const active = i === normalized;
-        avatar.classList.toggle('testimonial-avatar--active', active);
-        avatar.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-
-      this.avatars[normalized]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
-    }
-
-    updateContent(quote, author) {
-      if (!this.quoteEl || !this.pillEl) {
-        return;
-      }
-
-      this.quoteEl.classList.add('is-changing');
-      this.pillEl.classList.add('is-changing');
-
-      window.setTimeout(() => {
-        if (quote) {
-          this.quoteEl.textContent = quote;
-        }
-        if (author) {
-          this.pillEl.textContent = author;
-        }
-        this.quoteEl.classList.remove('is-changing');
-        this.pillEl.classList.remove('is-changing');
-      }, 180);
-    }
-
-    handleKeydown(e) {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-        return;
-      }
-      e.preventDefault();
-      const delta = e.key === 'ArrowRight' ? 1 : -1;
-      this.goTo(this.currentIndex + delta);
-      this.pauseByUser();
-      this.avatars[this.currentIndex]?.focus();
-    }
-
     startAutoplay() {
       if (
-        this.avatars.length <= 1 ||
+        this.totalSlides <= 1 ||
         !this.isVisible ||
         this.isPausedByUser ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
       ) {
         return;
       }
+
       this.stopAutoplay();
       this.autoplayTimer = window.setInterval(() => {
-        this.goTo(this.currentIndex + 1);
+        this.goToSlide(this.currentSlide + 1);
       }, CONSTANTS.TESTIMONIAL_AUTOPLAY_MS);
     }
 
@@ -688,14 +703,13 @@
       }
     }
 
-    restartAutoplay() {
-      this.stopAutoplay();
-      this.startAutoplay();
-    }
-
     destroy() {
       this.stopAutoplay();
       this.observer?.disconnect();
+      if (this.resizeHandler) {
+        window.removeEventListener('resize', this.resizeHandler);
+        this.mobileQuery.removeEventListener('change', this.resizeHandler);
+      }
     }
   }
 

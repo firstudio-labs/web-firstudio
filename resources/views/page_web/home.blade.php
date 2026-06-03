@@ -591,82 +591,49 @@
 
     <!-- Testimonials Section -->
     @if($testimoni && $testimoni->count() > 0)
-    <section id="testimonials" class="testimonials-section bg-slate-100 px-6 py-20 text-gray-900">
-      <div class="mx-auto w-full max-w-4xl text-center">
-        <h2 class="font-primary mb-12 text-3xl font-semibold text-gray-800 md:text-4xl" data-i18n="home.testimonials.title">
-          Apa Kata Klien Kami
-        </h2>
+    <section id="testimonials" class="testimonials-section bg-white px-6 py-20 text-gray-900">
+      <div class="mx-auto w-full max-w-6xl">
+        <header class="mb-12 text-center">
+          <p class="mb-3 text-xs font-medium uppercase tracking-widest text-gray-400" data-i18n="home.testimonials.eyebrow">
+            Testimoni
+          </p>
+          <h2 class="font-primary text-3xl font-bold text-gray-900 md:text-4xl" data-i18n="home.testimonials.title">
+            Apa Kata Klien Kami
+          </h2>
+        </header>
 
-        <div id="testimonial-carousel" class="testimonial-picker relative">
-          <button
-            type="button"
-            class="testimonial-nav-btn testimonial-nav-btn--prev"
-            data-testimonial-prev
-            data-i18n-aria="home.testimonials.prev"
-            aria-label="Testimoni sebelumnya"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
-              <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 010 1.06L8.06 10l3.72 3.72a.75.75 0 11-1.06 1.06l-4.25-4.25a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0z" clip-rule="evenodd" />
-            </svg>
-          </button>
-
-          <blockquote class="testimonial-quote-block relative mx-auto max-w-3xl px-8 md:px-14">
-            <span class="testimonial-quote-mark testimonial-quote-mark--open" aria-hidden="true">&ldquo;</span>
-            <p id="testimonial-quote" class="testimonial-quote-text text-xl font-bold leading-relaxed text-gray-900 md:text-2xl lg:text-3xl" aria-live="polite">
-              {{ $testimoni->first()->testimoni }}
-            </p>
-            <span class="testimonial-quote-mark testimonial-quote-mark--close" aria-hidden="true">&rdquo;</span>
-          </blockquote>
-
-          <div class="mt-8 flex flex-col items-center">
-            <div id="testimonial-author-pill" class="testimonial-author-pill">
-              {{ $testimoni->first()->nama }}, {{ $testimoni->first()->jabatan }}
+        <div id="testimonial-carousel" class="testimonial-cards-carousel" data-total="{{ $testimoni->count() }}">
+          <div class="testimonial-cards-viewport">
+            <div class="testimonial-cards-track" role="list">
+              @foreach($testimoni as $item)
+                <article class="testimonial-card-v2" role="listitem">
+                  <span class="testimonial-card-v2__quote" aria-hidden="true">&ldquo;</span>
+                  <p class="testimonial-card-v2__text">{{ $item->testimoni }}</p>
+                  <div class="testimonial-card-v2__author">
+                    @if($item->gambar)
+                      <img
+                        src="{{ asset('storage/testimoni/' . $item->gambar) }}"
+                        alt="{{ $item->nama }}"
+                        class="testimonial-card-v2__avatar"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                      />
+                    @else
+                      <span class="testimonial-card-v2__avatar testimonial-card-v2__avatar--initial" aria-hidden="true">
+                        {{ strtoupper(substr($item->nama, 0, 1)) }}
+                      </span>
+                    @endif
+                    <div class="testimonial-card-v2__meta">
+                      <p class="testimonial-card-v2__name">{{ $item->nama }}</p>
+                      <p class="testimonial-card-v2__role">{{ $item->jabatan }}</p>
+                    </div>
+                  </div>
+                </article>
+              @endforeach
             </div>
           </div>
-
-          <div
-            class="testimonial-avatars mt-10 flex flex-wrap items-center justify-center gap-4"
-            role="tablist"
-            aria-label="Pilih testimoni"
-          >
-            @foreach($testimoni as $index => $item)
-              <button
-                type="button"
-                role="tab"
-                class="testimonial-avatar {{ $index === 0 ? 'testimonial-avatar--active' : '' }}"
-                aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
-                aria-controls="testimonial-quote"
-                data-testimonial-index="{{ $index }}"
-                data-quote="{{ htmlspecialchars($item->testimoni, ENT_QUOTES, 'UTF-8') }}"
-                data-author="{{ htmlspecialchars($item->nama . ', ' . $item->jabatan, ENT_QUOTES, 'UTF-8') }}"
-              >
-                @if($item->gambar)
-                  <img
-                    src="{{ asset('storage/testimoni/' . $item->gambar) }}"
-                    alt="{{ $item->nama }}"
-                    class="h-full w-full object-cover"
-                    width="56"
-                    height="56"
-                    loading="lazy"
-                  />
-                @else
-                  <span class="testimonial-avatar__initial" aria-hidden="true">{{ strtoupper(substr($item->nama, 0, 1)) }}</span>
-                @endif
-              </button>
-            @endforeach
-          </div>
-
-          <button
-            type="button"
-            class="testimonial-nav-btn testimonial-nav-btn--next"
-            data-testimonial-next
-            data-i18n-aria="home.testimonials.next"
-            aria-label="Testimoni berikutnya"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
-              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 11-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 010-1.06z" clip-rule="evenodd" />
-            </svg>
-          </button>
+          <div class="testimonial-cards-dots" role="tablist" aria-label="Navigasi testimoni"></div>
         </div>
       </div>
     </section>
