@@ -156,6 +156,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ Request::is('admin/ads*') ? 'active' : '' }}">
+            <a href="{{ route('admin.ads.edit') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-megaphone"></i>
+                <div data-i18n="Analytics">Meta Ads</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ Request::is('admin/testimoni*') ? 'active' : '' }}">
             <a href="{{ route('admin.testimoni.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-message-square-dots"></i>

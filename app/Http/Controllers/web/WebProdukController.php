@@ -35,7 +35,7 @@ class WebProdukController extends Controller
      */
     public function show($slug)
     {
-        $produk = Produk::where('slug', $slug)->firstOrFail();
+        $produk = Produk::with('kategoriProduk')->where('slug', $slug)->firstOrFail();
         return view('page_web.produk.show', compact('produk'));
     }
 }

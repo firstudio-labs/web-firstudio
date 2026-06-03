@@ -7,16 +7,17 @@
         <div class="grid gap-12 md:grid-cols-4">
           <!-- Column 1: Newsletter -->
           <div class="space-y-6 md:col-span-1">
-            <h3 class="font-primary text-2xl font-bold text-white">
-              Stay Connected
+            <h3 class="font-primary text-2xl font-bold text-white" data-i18n="footer.newsletter.title">
+              Tetap Terhubung
             </h3>
-            <p class="text-sm text-gray-400">
-              Join our newsletter for the latest updates and exclusive offers.
+            <p class="text-sm text-gray-400" data-i18n="footer.newsletter.desc">
+              Berlangganan newsletter untuk update terbaru dan penawaran eksklusif.
             </p>
             <div class="relative">
               <input
                 type="email"
-                placeholder="Enter your email"
+                data-i18n-placeholder="footer.newsletter.placeholder"
+                placeholder="Masukkan email Anda"
                 class="w-full rounded-lg border border-white/20 dark:border-gray-900/20 bg-white/5 px-4 py-3 pr-12 text-sm text-white placeholder-gray-500 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
               />
               <button
@@ -38,26 +39,29 @@
 
           <!-- Column 2: Quick Links -->
           <div class="space-y-4">
-            <h4 class="text-base font-semibold text-white">Quick Links</h4>
+            <h4 class="text-base font-semibold text-white" data-i18n="footer.quickLinks">Tautan Cepat</h4>
             <ul class="space-y-3 text-sm">
               <li>
                 <a
                   href="{{ route('web.beranda.index') }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Home</a
+                  data-i18n="nav.home"
+                  >Beranda</a
                 >
               </li>
               <li>
                 <a
                   href="{{ route('web.about.index') }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >About Us</a
+                  data-i18n="nav.about"
+                  >Tentang Kami</a
                 >
               </li>
               <li>
                 <a
                   href="{{ route('web.produk.index') }}"
                   class="footer-link text-gray-400 transition hover:text-white"
+                  data-i18n="nav.portfolio"
                   >Portofolio</a
                 >
               </li>
@@ -65,7 +69,8 @@
                 <a
                   href="{{ route('web.contact.index') }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Contact</a
+                  data-i18n="nav.contact"
+                  >Kontak</a
                 >
               </li>
             </ul>
@@ -73,21 +78,21 @@
 
           <!-- Column 3: Contact Us -->
           <div class="space-y-4">
-            <h4 class="text-base font-semibold text-white">Contact Us</h4>
+            <h4 class="text-base font-semibold text-white" data-i18n="footer.contactUs">Hubungi Kami</h4>
             <ul class="space-y-3 text-sm text-gray-400">
-              <li>Address: {{ $profil->alamat_perusahaan ?? '-' }}</li>
+              <li><span data-i18n="footer.address">Alamat</span>: {{ $profil->alamat_perusahaan ?? '-' }}</li>
               <li>
                 <a
                   href="tel:{{ $profil->no_telp_perusahaan ?? '#' }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Phone: {{ $profil->no_telp_perusahaan ?? '-' }}</a
+                  ><span data-i18n="footer.phone">Telepon</span>: {{ $profil->no_telp_perusahaan ?? '-' }}</a
                 >
               </li>
               <li>
                 <a
                   href="mailto:{{ $profil->email_perusahaan ?? '#' }}"
                   class="footer-link text-gray-400 transition hover:text-white"
-                  >Email: {{ $profil->email_perusahaan ?? '-' }}</a
+                  ><span data-i18n="footer.email">Email</span>: {{ $profil->email_perusahaan ?? '-' }}</a
                 >
               </li>
             </ul>
@@ -95,7 +100,7 @@
 
           <!-- Column 4: Follow Us -->
           <div class="space-y-4">
-            <h4 class="text-base font-semibold text-white">Follow Us</h4>
+            <h4 class="text-base font-semibold text-white" data-i18n="footer.followUs">Ikuti Kami</h4>
             <div class="flex items-center gap-3">
               <a
                 href="facebook.com/{{ $profil->facebook_perusahaan ?? '#' }}"
@@ -165,16 +170,19 @@
         <div
           class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-400 md:flex-row"
         >
-          <p>© <script>document.write(new Date().getFullYear());</script> {{ $profil->nama_perusahaan ?? 'Firstudio' }}. All rights reserved.</p>
+          <p>© <script>document.write(new Date().getFullYear());</script> {{ $profil->nama_perusahaan ?? 'Firstudio' }}. <span data-i18n="footer.rights">Hak cipta dilindungi.</span></p>
           <div class="flex gap-6">
             <a href="#" class="footer-link text-gray-400 transition hover:text-white"
-              >Privacy Policy</a
+              data-i18n="footer.privacy"
+              >Kebijakan Privasi</a
             >
             <a href="#" class="footer-link text-gray-400 transition hover:text-white"
-              >Terms of Service</a
+              data-i18n="footer.terms"
+              >Syarat Layanan</a
             >
             <a href="#" class="footer-link text-gray-400 transition hover:text-white"
-              >Cookie Settings</a
+              data-i18n="footer.cookies"
+              >Pengaturan Cookie</a
             >
           </div>
         </div>

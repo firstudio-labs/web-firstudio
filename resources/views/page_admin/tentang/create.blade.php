@@ -154,6 +154,66 @@
                                 </div>
                             </div>
 
+                            <hr class="my-4">
+                            <h6 class="mb-3 text-muted">Bahasa Inggris (opsional)</h6>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="judul_en">Judul (EN)</label>
+                                    <input type="text" class="form-control @error('judul_en') is-invalid @enderror" id="judul_en"
+                                        name="judul_en" placeholder="Enter title in English" />
+                                    @error('judul_en')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="deskripsi_en">Deskripsi (EN)</label>
+                                    <textarea class="form-control @error('deskripsi_en') is-invalid @enderror" id="deskripsi_en"
+                                        name="deskripsi_en" rows="6" placeholder="Enter description in English"></textarea>
+                                    @error('deskripsi_en')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Keterangan Hitungan (EN)</label>
+                                    <div class="row">
+                                        @for ($i = 0; $i < 4; $i++)
+                                        <div class="col-md-3 mb-2">
+                                            <input type="text"
+                                                class="form-control @error('keterangan_hitungan_en.' . $i) is-invalid @enderror"
+                                                name="keterangan_hitungan_en[]"
+                                                placeholder="Label {{ $i + 1 }} (EN)" />
+                                            @error('keterangan_hitungan_en.' . $i)
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        @endfor
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="keterangan_memilih_en">Keterangan Memilih (EN)</label>
+                                    <textarea class="form-control @error('keterangan_memilih_en') is-invalid @enderror"
+                                        id="keterangan_memilih_en" name="keterangan_memilih_en" rows="5"
+                                        placeholder="Enter reason to choose in English"></textarea>
+                                    @error('keterangan_memilih_en')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="keterangan_nilai_en">Keterangan Nilai (EN)</label>
+                                    <textarea class="form-control @error('keterangan_nilai_en') is-invalid @enderror"
+                                        id="keterangan_nilai_en" name="keterangan_nilai_en" rows="5"
+                                        placeholder="Enter values description in English"></textarea>
+                                    @error('keterangan_nilai_en')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary me-2">Simpan</button>
                                 <a href="{{ route('admin.tentang.index') }}" class="btn btn-outline-secondary">Kembali</a>
@@ -262,5 +322,14 @@
             .catch(error => {
                 console.error('Error initializing CKEditor for keterangan_nilai:', error);
             });
+
+        ['#deskripsi_en', '#keterangan_memilih_en', '#keterangan_nilai_en'].forEach((selector) => {
+            const el = document.querySelector(selector);
+            if (el) {
+                ClassicEditor.create(el, editorConfig).catch((error) => {
+                    console.error('Error initializing CKEditor for ' + selector + ':', error);
+                });
+            }
+        });
     </script>
 @endsection

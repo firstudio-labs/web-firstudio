@@ -61,25 +61,36 @@ class TentangController extends Controller
             $request->validate([
                 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'judul' => 'required',
+                'judul_en' => 'nullable|string',
                 'deskripsi' => 'required',
+                'deskripsi_en' => 'nullable|string',
                 'hitungan' => 'nullable|array|min:1',
                 'hitungan.*' => 'nullable|numeric',
                 'keterangan_hitungan' => 'nullable|array|min:1',
                 'keterangan_hitungan.*' => 'nullable|string',
+                'keterangan_hitungan_en' => 'nullable|array|min:1',
+                'keterangan_hitungan_en.*' => 'nullable|string',
                 'keterangan_memilih' => 'nullable',
+                'keterangan_memilih_en' => 'nullable|string',
                 'gambar_nilai' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'keterangan_nilai' => 'nullable',
+                'keterangan_nilai_en' => 'nullable|string',
             ]);
 
             Log::info('Validasi berhasil, memproses file gambar');
 
             $tentang = new Tentang();
             $tentang->judul = $request->judul;
+            $tentang->judul_en = $request->judul_en;
             $tentang->deskripsi = $request->deskripsi;
+            $tentang->deskripsi_en = $request->deskripsi_en;
             $tentang->hitungan = $request->hitungan;
             $tentang->keterangan_hitungan = $request->keterangan_hitungan;
+            $tentang->keterangan_hitungan_en = $request->keterangan_hitungan_en;
             $tentang->keterangan_memilih = $request->keterangan_memilih;
+            $tentang->keterangan_memilih_en = $request->keterangan_memilih_en;
             $tentang->keterangan_nilai = $request->keterangan_nilai;
+            $tentang->keterangan_nilai_en = $request->keterangan_nilai_en;
 
             if ($request->hasFile('gambar')) {
                 $gambar = $request->file('gambar');
@@ -165,23 +176,34 @@ class TentangController extends Controller
         $request->validate([
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'judul' => 'required',
+            'judul_en' => 'nullable|string',
             'deskripsi' => 'required',
+            'deskripsi_en' => 'nullable|string',
             'hitungan' => 'nullable|array|min:1',
             'hitungan.*' => 'nullable|numeric',
             'keterangan_hitungan' => 'nullable|array|min:1',
             'keterangan_hitungan.*' => 'nullable|string',
+            'keterangan_hitungan_en' => 'nullable|array|min:1',
+            'keterangan_hitungan_en.*' => 'nullable|string',
             'keterangan_memilih' => 'nullable',
+            'keterangan_memilih_en' => 'nullable|string',
             'gambar_nilai' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan_nilai' => 'nullable',
+            'keterangan_nilai_en' => 'nullable|string',
         ]);
 
         try {
             $tentang->judul = $request->judul;
+            $tentang->judul_en = $request->judul_en;
             $tentang->deskripsi = $request->deskripsi;
+            $tentang->deskripsi_en = $request->deskripsi_en;
             $tentang->hitungan = $request->hitungan;
             $tentang->keterangan_hitungan = $request->keterangan_hitungan;
+            $tentang->keterangan_hitungan_en = $request->keterangan_hitungan_en;
             $tentang->keterangan_memilih = $request->keterangan_memilih;
+            $tentang->keterangan_memilih_en = $request->keterangan_memilih_en;
             $tentang->keterangan_nilai = $request->keterangan_nilai;
+            $tentang->keterangan_nilai_en = $request->keterangan_nilai_en;
 
             if ($request->hasFile('gambar')) {
                 // Hapus gambar lama jika ada

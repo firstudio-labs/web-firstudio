@@ -7,9 +7,14 @@
         <!-- Left Content -->
         <div class="flex-1 space-y-6">
           <h1 class="font-primary text-5xl font-bold leading-tight md:text-6xl">
-              We are<br />Firstudio
+              <span data-i18n="about.hero.line1">Kami adalah</span><br /><span data-i18n="about.hero.line2">Firstudio</span>
           </h1>
-          <p class="font-secondary text-lg leading-relaxed text-white/90">
+          <p
+            class="font-secondary text-lg leading-relaxed text-white/90"
+            data-cms-locale-html
+            data-cms-id="{{ strip_tags($tentang->deskripsi) }}"
+            data-cms-en="{{ strip_tags($tentang->deskripsi_en ?? $tentang->deskripsi) }}"
+          >
             {!! strip_tags($tentang->deskripsi) !!}
           </p>
         </div>
@@ -44,7 +49,12 @@
               @if($hitungan && isset($tentang->keterangan_hitungan[$index]))
                 <div class="space-y-2">
                   <h3 class="font-primary text-5xl font-bold text-blue-500">{{ $hitungan }}</h3>
-                  <p class="font-secondary text-lg text-gray-600">
+                  <p
+                    class="font-secondary text-lg text-gray-600"
+                    data-cms-locale
+                    data-cms-id="{{ $tentang->keterangan_hitungan[$index] }}"
+                    data-cms-en="{{ $tentang->keterangan_hitungan_en[$index] ?? $tentang->keterangan_hitungan[$index] }}"
+                  >
                     {{ $tentang->keterangan_hitungan[$index] }}
                   </p>
                 </div>
@@ -55,20 +65,20 @@
           <div class="grid gap-8 md:grid-cols-3">
             <div class="space-y-2">
               <h3 class="font-primary text-5xl font-bold text-blue-500">12+</h3>
-              <p class="font-secondary text-lg text-gray-600">
-                Years of Experience
+              <p class="font-secondary text-lg text-gray-600" data-i18n="about.stats.experience">
+                Tahun Pengalaman
               </p>
             </div>
             <div class="space-y-2">
               <h3 class="font-primary text-5xl font-bold text-blue-500">150+</h3>
-              <p class="font-secondary text-lg text-gray-600">
-                Projects Completed
+              <p class="font-secondary text-lg text-gray-600" data-i18n="about.stats.projects">
+                Proyek Selesai
               </p>
             </div>
             <div class="space-y-2">
               <h3 class="font-primary text-5xl font-bold text-blue-500">98%</h3>
-              <p class="font-secondary text-lg text-gray-600">
-                Client Satisfaction
+              <p class="font-secondary text-lg text-gray-600" data-i18n="about.stats.satisfaction">
+                Kepuasan Klien
               </p>
             </div>
           </div>
@@ -80,9 +90,14 @@
     @if($tentang && $tentang->keterangan_nilai)
     <section class="bg-gray-50 px-6 py-20 text-gray-900">
       <div class="mx-auto w-full max-w-6xl">
-        <h2 class="font-primary text-4xl font-bold mb-12">Our Values</h2>
+        <h2 class="font-primary text-4xl font-bold mb-12" data-i18n="about.values.title">Nilai Kami</h2>
         <div class="prose prose-lg max-w-none">
-          <div class="font-secondary leading-relaxed text-gray-700 whitespace-pre-line">
+        <div
+          class="font-secondary leading-relaxed text-gray-700 whitespace-pre-line"
+          data-cms-locale-html
+          data-cms-id="{{ $tentang->keterangan_nilai }}"
+          data-cms-en="{{ $tentang->keterangan_nilai_en ?? $tentang->keterangan_nilai }}"
+        >
             {!! $tentang->keterangan_nilai !!}
           </div>
         </div>
@@ -92,42 +107,42 @@
     <!-- We Are Section -->
     <section class="bg-gray-50 px-6 py-20 text-gray-900">
       <div class="mx-auto w-full max-w-6xl">
-        <h2 class="font-primary text-4xl font-bold mb-12">Our Values</h2>
+        <h2 class="font-primary text-4xl font-bold mb-12" data-i18n="about.values.title">Nilai Kami</h2>
         <div class="grid gap-8 md:grid-cols-3">
           <!-- Future -->
           <div class="space-y-4 rounded-2xl bg-blue-500 p-8 text-white">
-            <h3 class="font-primary text-2xl font-bold">Future</h3>
-            <p class="font-secondary leading-relaxed text-white/90">
+            <h3 class="font-primary text-2xl font-bold" data-i18n="about.values.future.title">Future</h3>
+            <p class="font-secondary leading-relaxed text-white/90" data-i18n="about.values.future.desc">
               Kami selalu melihat ke depan dan mengadopsi teknologi terbaru untuk memberikan solusi yang relevan dan berkelanjutan bagi klien kami.
             </p>
           </div>
 
           <!-- Innovative -->
           <div class="space-y-4 rounded-2xl bg-white p-8 shadow-lg">
-            <h3 class="font-primary text-2xl font-bold text-gray-900">
+            <h3 class="font-primary text-2xl font-bold text-gray-900" data-i18n="about.values.innovative.title">
               Innovative
             </h3>
-            <p class="font-secondary leading-relaxed text-gray-700">
+            <p class="font-secondary leading-relaxed text-gray-700" data-i18n="about.values.innovative.desc">
               Kami berkomitmen untuk memberikan solusi inovatif yang dapat membantu bisnis Anda berkembang dan bersaing di era digital.
             </p>
           </div>
 
           <!-- Research -->
           <div class="space-y-4 rounded-2xl bg-white p-8 shadow-lg">
-            <h3 class="font-primary text-2xl font-bold text-gray-900">
+            <h3 class="font-primary text-2xl font-bold text-gray-900" data-i18n="about.values.research.title">
               Research
             </h3>
-            <p class="font-secondary leading-relaxed text-gray-700">
+            <p class="font-secondary leading-relaxed text-gray-700" data-i18n="about.values.research.desc">
               Setiap proyek dimulai dengan riset mendalam untuk memahami kebutuhan dan tantangan bisnis Anda secara menyeluruh.
             </p>
           </div>
 
           <!-- Solution -->
           <div class="space-y-4 rounded-2xl bg-white p-8 shadow-lg">
-            <h3 class="font-primary text-2xl font-bold text-gray-900">
+            <h3 class="font-primary text-2xl font-bold text-gray-900" data-i18n="about.values.solution.title">
               Solution
             </h3>
-            <p class="font-secondary leading-relaxed text-gray-700">
+            <p class="font-secondary leading-relaxed text-gray-700" data-i18n="about.values.solution.desc">
               Kami fokus pada solusi yang tepat guna dan dapat diimplementasikan dengan efektif untuk mencapai tujuan bisnis Anda.
             </p>
           </div>
@@ -136,10 +151,10 @@
           <div
             class="space-y-4 rounded-2xl bg-white p-8 shadow-lg md:col-span-2"
           >
-            <h3 class="font-primary text-2xl font-bold text-gray-900">
+            <h3 class="font-primary text-2xl font-bold text-gray-900" data-i18n="about.values.technology.title">
               Technology
             </h3>
-            <p class="font-secondary leading-relaxed text-gray-700">
+            <p class="font-secondary leading-relaxed text-gray-700" data-i18n="about.values.technology.desc">
               Kami menggunakan teknologi terkini dan terbaik untuk memastikan produk dan layanan yang kami berikan memiliki performa optimal dan dapat diandalkan.
             </p>
           </div>

@@ -34,20 +34,28 @@ class BerandaController extends Controller
 
             $request->validate([
                 'judul_utama' => 'required',
+                'judul_utama_en' => 'nullable|string',
                 'gambar_utama' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'slogan' => 'required',
+                'slogan_en' => 'nullable|string',
                 'gambar_sekunder' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'judul_sekunder' => 'required',
+                'judul_sekunder_en' => 'nullable|string',
                 'keterangan' => 'required',
+                'keterangan_en' => 'nullable|string',
             ]);
 
             Log::info('Validasi berhasil, memproses file gambar');
 
             $beranda = new Beranda();
             $beranda->judul_utama = $request->judul_utama;
+            $beranda->judul_utama_en = $request->judul_utama_en;
             $beranda->slogan = $request->slogan;
+            $beranda->slogan_en = $request->slogan_en;
             $beranda->judul_sekunder = $request->judul_sekunder;
+            $beranda->judul_sekunder_en = $request->judul_sekunder_en;
             $beranda->keterangan = $request->keterangan;
+            $beranda->keterangan_en = $request->keterangan_en;
 
             // Proses gambar utama
             if ($request->hasFile('gambar_utama')) {
@@ -144,18 +152,26 @@ class BerandaController extends Controller
     {
         $request->validate([
             'judul_utama' => 'required',
+            'judul_utama_en' => 'nullable|string',
             'gambar_utama' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'slogan' => 'required',
+            'slogan_en' => 'nullable|string',
             'gambar_sekunder' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'judul_sekunder' => 'required',
+            'judul_sekunder_en' => 'nullable|string',
             'keterangan' => 'required',
+            'keterangan_en' => 'nullable|string',
         ]);
 
         try {
             $beranda->judul_utama = $request->judul_utama;
+            $beranda->judul_utama_en = $request->judul_utama_en;
             $beranda->slogan = $request->slogan;
+            $beranda->slogan_en = $request->slogan_en;
             $beranda->judul_sekunder = $request->judul_sekunder;
+            $beranda->judul_sekunder_en = $request->judul_sekunder_en;
             $beranda->keterangan = $request->keterangan;
+            $beranda->keterangan_en = $request->keterangan_en;
 
             // Proses gambar utama
             if ($request->hasFile('gambar_utama')) {

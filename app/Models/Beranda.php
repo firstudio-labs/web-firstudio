@@ -9,11 +9,15 @@ class Beranda extends Model
 {
     use HasFactory;
     protected $fillable = [
-    'judul_utama', 
-    'gambar_utama', 
-    'slogan', 
-    'gambar_sekunder', 
-    'judul_sekunder', 
+    'judul_utama',
+    'judul_utama_en',
+    'gambar_utama',
+    'slogan',
+    'slogan_en',
+    'gambar_sekunder',
+    'judul_sekunder',
+    'judul_sekunder_en',
     'keterangan',
+    'keterangan_en',
     ];
 }

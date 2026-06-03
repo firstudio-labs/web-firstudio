@@ -2,6 +2,14 @@
 <html lang="id">
 
 <head>
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('firstudio_locale');
+        if (l === 'en' || l === 'id') document.documentElement.lang = l;
+      } catch (e) {}
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,6 +23,8 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NSW99PRB');</script>
   <!-- End Google Tag Manager -->
+
+  @include('components.web.meta-pixel', ['layoutContext' => 'main'])
 
   <!-- AI CS Chatbot Widget -->
   <script src="https://chatbot.firstudio.id/chatbot.js" data-bot-id="1" defer></script>

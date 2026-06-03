@@ -5,15 +5,15 @@
     <div class="mx-auto w-full max-w-7xl space-y-12">
         <!-- Header -->
         <div class="text-center space-y-4">
-            <h1 class="font-primary text-4xl font-bold md:text-5xl">Katalog Template Website</h1>
-            <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto">
+            <h1 class="font-primary text-4xl font-bold md:text-5xl" data-i18n="katalog.title">Katalog Template Website</h1>
+            <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="katalog.subtitle">
                 Pilih desain yang paling sesuai dengan identitas bisnis Anda. Semua template didesain profesional, responsif, dan siap kami kustomisasi.
             </p>
         </div>
 
         <!-- Filters -->
         <div class="flex flex-wrap justify-center gap-3">
-            <button class="filter-btn active" data-category="semua">Semua</button>
+            <button class="filter-btn active" data-category="semua" data-i18n="katalog.filter.all">Semua</button>
             @foreach($categories as $category)
                 @if($category->templates_count > 0)
                     <button class="filter-btn" data-category="{{ \Illuminate\Support\Str::slug($category->nama_kategori) }}">
@@ -41,7 +41,7 @@
                                     <p class="text-xs text-gray-500">{{ $template->jumlah_pemilih }} orang memilih ini</p>
                                 </div>
                                 @if($template->link)
-                                    <a href="{{ $template->link }}" target="_blank" class="block w-full text-center text-sm font-bold text-gray-900 border-t pt-4 hover:text-blue-600 transition">Lihat Preview</a>
+                                    <a href="{{ $template->link }}" target="_blank" class="block w-full text-center text-sm font-bold text-gray-900 border-t pt-4 hover:text-blue-600 transition" data-i18n="katalog.card.preview">Lihat Preview</a>
                                 @endif
                             </div>
                         </div>
@@ -52,10 +52,10 @@
 
         <!-- CTA -->
         <div class="text-center pt-12">
-            <p class="font-secondary text-gray-600 mb-6">Penasaran dengan desain lainnya atau ingin request custom?</p>
+            <p class="font-secondary text-gray-600 mb-6" data-i18n="katalog.cta.hint">Penasaran dengan desain lainnya atau ingin request custom?</p>
             <a href="{{ route('web.contact.index') }}" class="btn btn-primary inline-flex items-center gap-2">
                 <i data-lucide="message-square" class="h-5 w-5"></i>
-                Konsultasikan Pilihan Anda
+                <span data-i18n="katalog.cta.button">Konsultasikan Pilihan Anda</span>
             </a>
         </div>
     </div>

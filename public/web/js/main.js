@@ -34,6 +34,10 @@
     portfolioItem: '#portfolio-grid article[data-category]',
     emptyState: '#empty-state',
     flipWord: '.flip-word',
+    testimonialPicker: '#testimonial-picker',
+    testimonialQuote: '#testimonial-quote',
+    testimonialAuthorPill: '#testimonial-author-pill',
+    testimonialAvatar: '.testimonial-avatar',
   };
 
   /**
@@ -418,11 +422,33 @@
    */
   class FlipWordsAnimation {
     constructor() {
-      this.words = ['Kami', 'Website', 'Mobile App', 'IT Solutions', 'Terbaik'];
+      this.words = this.getWordsForLocale();
       this.currentIndex = 0;
       this.flipWordElement = document.querySelector(SELECTORS.flipWord);
       this.animationInterval = null;
+      this.onLocaleChange = () => this.updateWordsForLocale();
+      document.addEventListener('localechange', this.onLocaleChange);
       this.init();
+    }
+
+    getWordsForLocale() {
+      const locale = document.documentElement.lang === 'en' ? 'en' : 'id';
+      const defaults = {
+        id: ['Kami', 'Website', 'Mobile App', 'IT Solutions', 'Terbaik'],
+        en: ['Us', 'Website', 'Mobile App', 'IT Solutions', 'The Best'],
+      };
+      if (window.firstudioFlipWords && window.firstudioFlipWords[locale]) {
+        return window.firstudioFlipWords[locale];
+      }
+      return defaults[locale] || defaults.id;
+    }
+
+    updateWordsForLocale() {
+      this.words = this.getWordsForLocale();
+      this.currentIndex = 0;
+      if (this.flipWordElement) {
+        this.flipWordElement.textContent = this.words[0];
+      }
     }
 
     init() {
@@ -478,6 +504,66 @@
         this.animationInterval = null;
       }
     }
+
+    destroy() {
+      document.removeEventListener('localechange', this.onLocaleChange);
+      this.stopAnimation();
+    }
+  }
+
+  /**
+   * Testimonial avatar picker
+   */
+  class TestimonialPicker {
+    constructor() {
+      this.root = document.querySelector(SELECTORS.testimonialPicker);
+      if (!this.root) return;
+
+      this.quoteEl = document.querySelector(SELECTORS.testimonialQuote);
+      this.pillEl = document.querySelector(SELECTORS.testimonialAuthorPill);
+      this.avatars = Array.from(this.root.querySelectorAll(SELECTORS.testimonialAvatar));
+      this.currentIndex = 0;
+
+      this.avatars.forEach((btn, index) => {
+        btn.addEventListener('click', () => this.select(index));
+      });
+
+      this.root.addEventListener('keydown', (e) => this.handleKeydown(e));
+      this.avatars.forEach((btn) => btn.setAttribute('tabindex', '0'));
+      if (this.avatars[0]) {
+        this.avatars[0].setAttribute('tabindex', '0');
+      }
+    }
+
+    select(index) {
+      if (!this.avatars[index]) return;
+      this.currentIndex = index;
+      const btn = this.avatars[index];
+      const quote = btn.getAttribute('data-quote');
+      const author = btn.getAttribute('data-author');
+
+      if (this.quoteEl && quote) {
+        this.quoteEl.textContent = quote;
+      }
+      if (this.pillEl && author) {
+        this.pillEl.textContent = author;
+      }
+
+      this.avatars.forEach((avatar, i) => {
+        const active = i === index;
+        avatar.classList.toggle('testimonial-avatar--active', active);
+        avatar.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    handleKeydown(e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      const delta = e.key === 'ArrowRight' ? 1 : -1;
+      const next = (this.currentIndex + delta + this.avatars.length) % this.avatars.length;
+      this.select(next);
+      this.avatars[next]?.focus();
+    }
   }
 
   /**
@@ -490,6 +576,7 @@
       this.articleCarousel = null;
       this.portfolioFilter = null;
       this.flipWordsAnimation = null;
+      this.testimonialPicker = null;
     }
 
     init() {
@@ -511,6 +598,7 @@
         this.articleCarousel = new ArticleCarousel();
         this.portfolioFilter = new PortfolioFilter();
         this.flipWordsAnimation = new FlipWordsAnimation();
+        this.testimonialPicker = new TestimonialPicker();
       } catch (error) {
         console.error('Error initializing components:', error);
       }

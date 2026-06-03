@@ -1,20 +1,15 @@
 @extends('template_web.layout')
 
 @section('content')
-<!-- Breadcrumb -->
 <section class="bg-black/50 py-4">
-      <div class="mx-auto w-full max-w-4xl px-6">
-        <nav class="flex items-center gap-2 text-sm text-gray-400">
-          <a href="{{ route('web.beranda.index') }}" class="hover:text-white transition">Home</a>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-          <a href="{{ route('web.artikel.index') }}" class="hover:text-white transition">Articles</a>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-          <span class="text-white">{{ $artikel->judul }}</span>
-        </nav>
+      <div class="mx-auto w-full max-w-4xl px-6 text-gray-400">
+        @include('components.web.breadcrumb', [
+          'items' => [
+            ['url' => route('web.beranda.index'), 'label' => 'Beranda', 'i18n' => 'nav.home', 'class' => 'hover:text-white transition'],
+            ['url' => route('web.artikel.index'), 'label' => 'Artikel', 'i18n' => 'nav.articles', 'class' => 'hover:text-white transition'],
+            ['label' => $artikel->judul, 'current' => true, 'class' => 'text-white'],
+          ],
+        ])
       </div>
     </section>
 
@@ -34,7 +29,7 @@
         <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
           @if($artikel->penulis)
           <div class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="article-arrow-icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
             <span>{{ $artikel->penulis }}</span>
@@ -42,17 +37,17 @@
           @endif
           @if($artikel->created_at)
           <div class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="article-arrow-icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <span>{{ $artikel->created_at->format('d F Y') }}</span>
           </div>
           @endif
           <div class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="article-arrow-icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>{{ ceil(str_word_count(strip_tags($artikel->isi)) / 200) }} min read</span>
+            <span>{{ ceil(str_word_count(strip_tags($artikel->isi)) / 200) }} <span data-i18n="articles.minRead">menit baca</span></span>
           </div>
         </div>
       </div>
@@ -130,7 +125,7 @@
     @if($relatedArtikels->count() > 0)
     <section class="bg-black py-16">
       <div class="mx-auto w-full max-w-6xl px-6">
-        <h2 class="mb-8 text-3xl font-bold text-white">Artikel Terkait</h2>
+        <h2 class="mb-8 text-3xl font-bold text-white" data-i18n="articles.related">Artikel Terkait</h2>
         <div class="grid gap-6 md:grid-cols-3">
           @foreach($relatedArtikels as $related)
             <a href="{{ route('web.artikel.show', $related->slug) }}" class="group">

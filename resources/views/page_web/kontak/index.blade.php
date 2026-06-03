@@ -5,12 +5,12 @@
  <section class="hero-section hero-section--slim text-white">
       <div class="mx-auto w-full max-w-6xl">
         <h1 class="hero-heading">
-          Contact
+          <span data-i18n="contact.hero">Hubungi</span>
           <span class="flip-words-container text-blue-500">
             <span class="flip-word" data-word="Kami">Kami</span>
           </span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n="contact.hero.subtitle">
           Hubungi kami untuk konsultasi gratis dan diskusikan kebutuhan digital Anda. Tim kami siap membantu mewujudkan visi bisnis Anda.
         </p>
       </div>
@@ -39,15 +39,15 @@
           <!-- Contact Form -->
           <div class="space-y-8">
             <div>
-              <h2 class="font-primary text-3xl font-bold text-white mb-4">Kirim Pesan</h2>
-              <p class="text-gray-400">Isi formulir di bawah ini dan kami akan menghubungi Anda segera.</p>
+              <h2 class="font-primary text-3xl font-bold text-white mb-4" data-i18n="contact.form.title">Kirim Pesan</h2>
+              <p class="text-gray-400" data-i18n="contact.form.desc">Isi formulir di bawah ini dan kami akan menghubungi Anda segera.</p>
             </div>
 
             <form action="{{ route('web.contact.store') }}" method="POST" class="space-y-6" id="contact-form">
               @csrf
               <div>
                 <label for="nama" class="block text-sm font-medium text-white mb-2">
-                  Nama Lengkap <span class="text-red-400">*</span>
+                  <span data-i18n="contact.form.name">Nama Lengkap</span> <span class="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
@@ -56,13 +56,14 @@
                   required
                   value="{{ old('nama') }}"
                   class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition"
+                  data-i18n-placeholder="contact.placeholder.name"
                   placeholder="Masukkan nama lengkap"
                 />
               </div>
 
               <div>
                 <label for="email" class="block text-sm font-medium text-white mb-2">
-                  Email <span class="text-red-400">*</span>
+                  <span data-i18n="contact.form.email">Email</span> <span class="text-red-400">*</span>
                 </label>
                 <input
                   type="email"
@@ -71,13 +72,14 @@
                   required
                   value="{{ old('email') }}"
                   class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition"
+                  data-i18n-placeholder="contact.placeholder.email"
                   placeholder="nama@email.com"
                 />
               </div>
 
               <div>
                 <label for="no_hp" class="block text-sm font-medium text-white mb-2">
-                  Nomor Telepon <span class="text-red-400">*</span>
+                  <span data-i18n="contact.form.phone">Nomor Telepon</span> <span class="text-red-400">*</span>
                 </label>
                 <input
                   type="tel"
@@ -86,13 +88,14 @@
                   required
                   value="{{ old('no_hp') }}"
                   class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition"
+                  data-i18n-placeholder="contact.placeholder.phone"
                   placeholder="08xxxxxxxxxx"
                 />
               </div>
 
               <div>
                 <label for="pesan" class="block text-sm font-medium text-white mb-2">
-                  Pesan <span class="text-red-400">*</span>
+                  <span data-i18n="contact.form.message">Pesan</span> <span class="text-red-400">*</span>
                 </label>
                 <textarea
                   id="pesan"
@@ -100,13 +103,14 @@
                   rows="5"
                   required
                   class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition resize-none"
+                  data-i18n-placeholder="contact.placeholder.message"
                   placeholder="Tuliskan pesan Anda di sini...">{{ old('pesan') }}</textarea>
               </div>
 
               @if(config('services.hcaptcha.site_key'))
                 <div>
                   <label class="block text-sm font-medium text-white mb-2">
-                    Verifikasi Keamanan <span class="text-red-400">*</span>
+                    <span data-i18n="contact.form.captcha">Verifikasi Keamanan</span> <span class="text-red-400">*</span>
                   </label>
                   <div class="h-captcha" data-sitekey="{{ config('services.hcaptcha.site_key') }}"></div>
                   @error('h-captcha-response')
@@ -118,6 +122,7 @@
               <button
                 type="submit"
                 class="w-full rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(59,130,246,0.4)] transition hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+                data-i18n="contact.form.submit"
               >
                 Kirim Pesan
               </button>
@@ -127,8 +132,8 @@
           <!-- Contact Info -->
           <div class="space-y-8">
             <div>
-              <h2 class="font-primary text-3xl font-bold text-white mb-4">Informasi Kontak</h2>
-              <p class="text-gray-400">Anda juga bisa menghubungi kami melalui informasi di bawah ini.</p>
+              <h2 class="font-primary text-3xl font-bold text-white mb-4" data-i18n="contact.info.title">Informasi Kontak</h2>
+              <p class="text-gray-400" data-i18n="contact.info.desc">Anda juga bisa menghubungi kami melalui informasi di bawah ini.</p>
             </div>
 
             <div class="space-y-6">
@@ -149,7 +154,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-semibold text-white mb-1">Alamat</h3>
+                  <h3 class="text-lg font-semibold text-white mb-1" data-i18n="footer.address">Alamat</h3>
                   <p class="text-gray-400">
                     @if($profil && $profil->alamat_perusahaan)
                       {!! nl2br(e($profil->alamat_perusahaan)) !!}
@@ -179,7 +184,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-semibold text-white mb-1">Telepon</h3>
+                  <h3 class="text-lg font-semibold text-white mb-1" data-i18n="footer.phone">Telepon</h3>
                   <a
                     href="tel:{{ $profil && $profil->no_telp_perusahaan ? $profil->no_telp_perusahaan : '+6285770333333' }}"
                     class="text-blue-400 hover:text-blue-300 transition"
@@ -203,7 +208,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
+                  <h3 class="text-lg font-semibold text-white mb-1" data-i18n="footer.email">Email</h3>
                   <a
                     href="mailto:{{ $profil && $profil->email_perusahaan ? $profil->email_perusahaan : 'firstudio24@gmail.com' }}"
                     class="text-blue-400 hover:text-blue-300 transition"
@@ -230,10 +235,10 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-semibold text-white mb-1">Jam Operasional</h3>
+                  <h3 class="text-lg font-semibold text-white mb-1" data-i18n="contact.info.hours">Jam Operasional</h3>
                   <p class="text-gray-400">
-                    Senin - Jumat: 09:00 - 18:00 WIB<br />
-                    Sabtu - Minggu: Tutup
+                    <span data-i18n="contact.hours.weekdays">Senin - Jumat: 09:00 - 18:00 WIB</span><br />
+                    <span data-i18n="contact.hours.closed">Sabtu - Minggu: Tutup</span>
                   </p>
                 </div>
               </div>
@@ -241,7 +246,7 @@
 
             <!-- Social Media -->
             <div class="pt-6 border-t border-white/10">
-              <h3 class="text-lg font-semibold text-white mb-4">Ikuti Kami</h3>
+              <h3 class="text-lg font-semibold text-white mb-4" data-i18n="footer.followUs">Ikuti Kami</h3>
               <div class="flex items-center gap-3">
                 @if($profil && $profil->facebook_perusahaan)
                   <a

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Profil;
+use App\Models\Setting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,22 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('profil', $profilCache);
         });
+
+        View::composer(
+            ['template_web.layout', 'template_web.layout-ads', 'components.web.meta-pixel'],
+            function ($view) {
+                static $metaPixelCache = null;
+
+                if ($metaPixelCache === null) {
+                    $metaPixelCache = [
+                        'id' => Setting::where('key', 'meta_pixel_id')->value('value'),
+                        'enabled' => Setting::where('key', 'meta_pixel_enabled')->value('value') === '1',
+                        'scope' => Setting::where('key', 'meta_pixel_scope')->value('value') ?? 'ads_only',
+                    ];
+                }
+
+                $view->with('metaPixel', $metaPixelCache);
+            }
+        );
     }
 }

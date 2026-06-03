@@ -14,16 +14,16 @@
       <span class="text-white">Firstudio</span>
     </a>
 
-    <div class="hidden items-center gap-8 md:flex">
+    <div class="hidden items-center gap-6 md:flex">
       <a href="{{ route('web.beranda.index') }}"
-        class="{{ $isActive('web.beranda.index') }} text-sm font-medium text-white/80 hover:text-white">Home</a>
+        class="{{ $isActive('web.beranda.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.home">Beranda</a>
       <a href="{{ route('web.about.index') }}"
-        class="{{ $isActive('web.about.index') }} text-sm font-medium text-white/80 hover:text-white">About Us</a>
+        class="{{ $isActive('web.about.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.about">Tentang Kami</a>
       <div class="relative" id="services-menu">
         <button
-          class="relative top-[1px] flex items-center gap-1 text-sm font-medium text-white/80 transition hover:text-white {{ $isActive(['web.layanan.website', 'web.layanan.mobile', 'web.layanan.company', 'web.layanan.itconsul']) }}"
+          class="relative top-[1px] flex items-center gap-1 text-sm font-medium text-white/80 transition hover:text-white {{ $isActive(['web.layanan.website', 'web.layanan.mobile', 'web.layanan.company', 'web.layanan.itconsul', 'web.layanan.itoutsourcing']) }}"
           data-services-button aria-expanded="false">
-          Services
+          <span data-i18n="nav.services">Layanan</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200"
             fill="none" stroke="currentColor" stroke-width="1.5" data-chevron>
             <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
@@ -46,10 +46,10 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold">
+                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.website.title">
                     Pembuatan Website & App
                   </p>
-                  <p class="nav-services-desc text-xs">
+                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.website.desc">
                     Website responsif dan mudah dikelola
                   </p>
                 </div>
@@ -67,10 +67,10 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold">
-                    Mobile App Development
+                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.mobile.title">
+                    Pengembangan Aplikasi Mobile
                   </p>
-                  <p class="nav-services-desc text-xs">
+                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.mobile.desc">
                     Aplikasi native dan cross-platform
                   </p>
                 </div>
@@ -87,10 +87,10 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold">
+                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.company.title">
                     Company Profile
                   </p>
-                  <p class="nav-services-desc text-xs">
+                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.company.desc">
                     Tampilkan identitas bisnis secara profesional
                   </p>
                 </div>
@@ -110,10 +110,10 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold">
-                    IT Consultation
+                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.itconsul.title">
+                    Konsultasi IT
                   </p>
-                  <p class="nav-services-desc text-xs">
+                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.itconsul.desc">
                     Solusi teknologi untuk efisiensi bisnis
                   </p>
                 </div>
@@ -129,10 +129,10 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold">
+                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.outsourcing.title">
                     IT Outsourcing
                   </p>
-                  <p class="nav-services-desc text-xs">
+                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.outsourcing.desc">
                     Tim developer profesional & dedicated
                   </p>
                 </div>
@@ -142,40 +142,53 @@
         </div>
       </div>
       <a href="{{ route('web.produk.index') }}"
-        class="{{ $isActive('web.produk.index') }} text-sm font-medium text-white/80 hover:text-white">Portofolio</a>
+        class="{{ $isActive(['web.produk.index', 'web.produk.show']) }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.portfolio">Portofolio</a>
       <a href="{{ route('web.artikel.index') }}"
-        class="{{ $isActive('web.artikel.index') }} text-sm font-medium text-white/80 hover:text-white">Articles</a>
+        class="{{ $isActive(['web.artikel.index', 'web.artikel.show']) }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.articles">Artikel</a>
       <a href="{{ route('web.contact.index') }}"
-        class="{{ $isActive('web.contact.index') }} text-sm font-medium text-white/80 hover:text-white">Contact</a>
+        class="{{ $isActive('web.contact.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.contact">Kontak</a>
+
+      <div class="locale-toggle" role="group" aria-label="Pilih bahasa">
+        <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id" aria-pressed="true">ID</button>
+        <span class="locale-toggle__sep" aria-hidden="true">|</span>
+        <button type="button" class="locale-toggle__btn" data-locale-toggle="en" aria-pressed="false">EN</button>
+      </div>
     </div>
 
-    <button class="md:hidden" id="mobile-toggle" aria-label="Buka navigasi">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-white" fill="none"
-        stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+    <div class="flex items-center gap-3 md:hidden">
+      <div class="locale-toggle" role="group" aria-label="Pilih bahasa">
+        <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id" aria-pressed="true">ID</button>
+        <span class="locale-toggle__sep" aria-hidden="true">|</span>
+        <button type="button" class="locale-toggle__btn" data-locale-toggle="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="md:hidden" id="mobile-toggle" data-i18n-aria="nav.open" aria-label="Buka navigasi">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-white" fill="none"
+          stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <div id="mobile-menu" class="border-t border-white/10 bg-black px-6 py-4 text-sm text-white/80 md:hidden" hidden>
-    <a href="{{ route('web.beranda.index') }}" class="{{ $isActive('web.beranda.index') }} block py-2">Home</a>
-    <a href="{{ route('web.about.index') }}" class="{{ $isActive('web.about.index') }} block py-2">About Us</a>
+    <a href="{{ route('web.beranda.index') }}" class="{{ $isActive('web.beranda.index') }} block py-2" data-i18n="nav.home">Beranda</a>
+    <a href="{{ route('web.about.index') }}" class="{{ $isActive('web.about.index') }} block py-2" data-i18n="nav.about">Tentang Kami</a>
     <button class="flex w-full items-center justify-between py-2" data-mobile-services>
-      <span>Services</span>
+      <span data-i18n="nav.services">Layanan</span>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
         stroke-width="1.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
       </svg>
     </button>
     <div class="space-y-3 border-l border-white/10 pl-4 text-xs" hidden data-mobile-services-panel>
-      <a href="{{ route('web.layanan.website') }}" class="block py-2">Pembuatan Website & App</a>
-      <a href="{{ route('web.layanan.mobile') }}" class="block py-2">Mobile App Development</a>
-      <a href="{{ route('web.layanan.company') }}" class="block py-2">Company Profile</a>
-      <a href="{{ route('web.layanan.itconsul') }}" class="block py-2">IT Consultation</a>
-      <a href="{{ route('web.layanan.itoutsourcing') }}" class="block py-2">IT Outsourcing</a>
+      <a href="{{ route('web.layanan.website') }}" class="block py-2" data-i18n="nav.svc.website.title">Pembuatan Website & App</a>
+      <a href="{{ route('web.layanan.mobile') }}" class="block py-2" data-i18n="nav.svc.mobile.title">Pengembangan Aplikasi Mobile</a>
+      <a href="{{ route('web.layanan.company') }}" class="block py-2" data-i18n="nav.svc.company.title">Company Profile</a>
+      <a href="{{ route('web.layanan.itconsul') }}" class="block py-2" data-i18n="nav.svc.itconsul.title">Konsultasi IT</a>
+      <a href="{{ route('web.layanan.itoutsourcing') }}" class="block py-2" data-i18n="nav.svc.outsourcing.title">IT Outsourcing</a>
     </div>
-    <a href="{{ route('web.produk.index') }}" class="block py-2">Portofolio</a>
-    <a href="{{ route('web.artikel.index') }}" class="block py-2">Articles</a>
-    <a href="{{ route('web.contact.index') }}" class="block py-2">Contact</a>
+    <a href="{{ route('web.produk.index') }}" class="block py-2" data-i18n="nav.portfolio">Portofolio</a>
+    <a href="{{ route('web.artikel.index') }}" class="block py-2" data-i18n="nav.articles">Artikel</a>
+    <a href="{{ route('web.contact.index') }}" class="block py-2" data-i18n="nav.contact">Kontak</a>
   </div>
 </header>

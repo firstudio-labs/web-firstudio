@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\TentangController;
 use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\Admin\TimController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\MetaAdsController;
 
 // Auth Controllers
 use App\Http\Controllers\Auth\LoginController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\web\ChatbotController;
 use App\Http\Controllers\web\WebArtikelController;
 use App\Http\Controllers\web\WebBerandaController;
+use App\Http\Controllers\web\WebAdsController;
 use App\Http\Controllers\web\WebKontakController;
 use App\Http\Controllers\web\WebProdukController;
 use App\Http\Controllers\web\WebTentangController;
@@ -96,6 +98,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::resource('template', \App\Http\Controllers\Admin\TemplateController::class);
     Route::resource('kategori-template', \App\Http\Controllers\Admin\KategoriTemplateController::class);
 
+    // Meta Ads CMS
+    Route::get('/ads', [MetaAdsController::class, 'edit'])->name('ads.edit');
+    Route::put('/ads', [MetaAdsController::class, 'update'])->name('ads.update');
+
     // Settings Route
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
@@ -145,6 +151,8 @@ Route::post('/chatbot', ChatbotController::class)
     ->middleware('throttle:30,1');
 
 Route::get('/about', [WebTentangController::class, 'index'])->name('web.about.index');
+
+Route::get('/ads', [WebAdsController::class, 'index'])->name('web.ads.index');
 
 Route::prefix('layanan')->name('web.layanan.')->group(function () {
     Route::get('/website', [WebLayananController::class, 'website'])->name('website');

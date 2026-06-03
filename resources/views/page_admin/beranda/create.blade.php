@@ -85,6 +85,51 @@
                                 @enderror
                             </div>
 
+                            <hr class="my-4">
+                            <h6 class="mb-3 text-muted">Bahasa Inggris (opsional)</h6>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="judul_utama_en" class="form-label">Judul Utama (EN)</label>
+                                        <input type="text" class="form-control @error('judul_utama_en') is-invalid @enderror"
+                                            id="judul_utama_en" name="judul_utama_en" value="{{ old('judul_utama_en') }}">
+                                        @error('judul_utama_en')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="judul_sekunder_en" class="form-label">Judul Sekunder (EN)</label>
+                                        <input type="text"
+                                            class="form-control @error('judul_sekunder_en') is-invalid @enderror"
+                                            id="judul_sekunder_en" name="judul_sekunder_en" value="{{ old('judul_sekunder_en') }}">
+                                        @error('judul_sekunder_en')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="slogan_en" class="form-label">Slogan (EN)</label>
+                                <input type="text" class="form-control @error('slogan_en') is-invalid @enderror" id="slogan_en"
+                                    name="slogan_en" value="{{ old('slogan_en') }}">
+                                @error('slogan_en')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="keterangan_en" class="form-label">Keterangan (EN)</label>
+                                <textarea class="form-control @error('keterangan_en') is-invalid @enderror" id="keterangan_en"
+                                    name="keterangan_en" rows="4">{{ old('keterangan_en') }}</textarea>
+                                @error('keterangan_en')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bx bx-save"></i> Simpan

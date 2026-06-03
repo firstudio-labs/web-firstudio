@@ -8,17 +8,17 @@
         <!-- Left Content -->
         <div class="flex-1 space-y-8">
           <div class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2">
-            <span class="text-sm font-semibold text-blue-400">Pembuatan Website & Web App</span>
+            <span class="text-sm font-semibold text-blue-400" data-i18n="nav.svc.website.title">Pembuatan Website & App</span>
           </div>
-          <h1 class="font-primary text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+          <h1 class="font-primary text-4xl font-bold leading-tight md:text-5xl lg:text-6xl" data-i18n="layanan.website.hero.h1">
             Layanan Website Profesional untuk Berbagai Skala Bisnis
           </h1>
-          <p class="font-secondary text-lg leading-relaxed text-white/80">
+          <p class="font-secondary text-lg leading-relaxed text-white/80" data-i18n="layanan.website.hero.subtitle">
             Kami merancang dan membangun website yang responsif, aman, dan mudah dikelola. Dari company profile hingga
             sistem informasi khusus, kami siap mewujudkan kebutuhan digital Anda dengan teknologi terkini.
           </p>
           <div class="btn-group">
-            <a href="#process" class="btn btn-primary">Pelajari Prosesnya</a>
+            <a href="#process" class="btn btn-primary" data-i18n="layanan.common.hero.cta.process">Pelajari Prosesnya</a>
           </div>
         </div>
 
@@ -38,10 +38,10 @@
   <section class="bg-white px-6 py-20 text-gray-900">
     <div class="mx-auto w-full max-w-6xl space-y-12">
       <div class="text-center space-y-4">
-        <h2 class="font-primary text-3xl font-bold md:text-4xl">
+        <h2 class="font-primary text-3xl font-bold md:text-4xl" data-i18n="layanan.website.options.title">
           Pilih Layanan Sesuai Kebutuhan Anda
         </h2>
-        <p class="font-secondary text-lg text-gray-600 max-w-3xl mx-auto">
+        <p class="font-secondary text-lg text-gray-600 max-w-3xl mx-auto" data-i18n="layanan.website.options.subtitle">
           Kami menyediakan solusi fleksibel, mulai dari website instan untuk peluncuran cepat hingga ekosistem custom app
           web yang kompleks.
         </p>
@@ -54,23 +54,23 @@
           <div class="mb-6 inline-block rounded-2xl bg-blue-50/50 p-4">
             <i data-lucide="layout" class="h-8 w-8 text-blue-600"></i>
           </div>
-          <h3 class="font-primary text-2xl font-bold mb-3">Website Mainstream</h3>
-          <p class="font-secondary text-gray-600 mb-6 flex-grow">
+          <h3 class="font-primary text-2xl font-bold mb-3" data-i18n="layanan.website.options.mainstream.title">Website Mainstream</h3>
+          <p class="font-secondary text-gray-600 mb-6 flex-grow" data-i18n="layanan.website.options.mainstream.desc">
             Solusi tepat untuk kebutuhan <strong>company profile, landing page, atau blog</strong>. Dibuat dengan cepat
             menggunakan Web Builder dan CMS seperti WordPress untuk hasil yang elegan dan mudah dikelola.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Waktu pengerjaan cepat (1-3 minggu)</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.mainstream.bullet1">Waktu pengerjaan cepat (1-3 minggu)</span>
             </li>
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Biaya lebih efisien (Cocok untuk UMKM)</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.mainstream.bullet2">Biaya lebih efisien (Cocok untuk UMKM)</span>
             </li>
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Menggunakan Premium Template / Web Builder</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.mainstream.bullet3">Menggunakan Premium Template / Web Builder</span>
             </li>
           </ul>
           <!-- <div class="space-y-3 mt-auto">
@@ -78,7 +78,7 @@
                 Mainstream</a>
             </div> -->
           <div class="space-y-3 mt-3">
-            <a href="{{ route('web.layanan.website.katalog') }}" class="btn btn-primary w-full text-center">Pilih Template
+            <a href="{{ route('web.layanan.website.katalog') }}" class="btn btn-primary w-full text-center" data-i18n="layanan.website.options.mainstream.cta">Pilih Template
               Website</a>
           </div>
         </div>
@@ -89,27 +89,27 @@
           <div class="mb-6 inline-block rounded-2xl bg-blue-100 p-4">
             <i data-lucide="code-2" class="h-8 w-8 text-blue-600"></i>
           </div>
-          <h3 class="font-primary text-2xl font-bold mb-3">Custom Website App</h3>
-          <p class="font-secondary text-gray-600 mb-6 flex-grow">
+          <h3 class="font-primary text-2xl font-bold mb-3" data-i18n="layanan.website.options.custom.title">Custom Website App</h3>
+          <p class="font-secondary text-gray-600 mb-6 flex-grow" data-i18n="layanan.website.options.custom.desc">
             Sistem aplikasi berbasis web yang kompleks seperti <strong>Sistem Informasi (ERP/CRM), SaaS, atau Portal
               Custom</strong>. Dibangun dari nol menggunakan framework modern menyesuaikan bisnis Anda.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Custom Business Logic & Skalabilitas Tinggi</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.custom.bullet1">Custom Business Logic & Skalabilitas Tinggi</span>
             </li>
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Teknologi Modern (Laravel, React, Node.js)</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.custom.bullet2">Teknologi Modern (Laravel, React, Node.js)</span>
             </li>
             <li class="flex items-start gap-3">
               <i data-lucide="check-circle-2" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"></i>
-              <span class="text-gray-700">Database Kompleks & Integrasi API Eksternal</span>
+              <span class="text-gray-700" data-i18n="layanan.website.options.custom.bullet3">Database Kompleks & Integrasi API Eksternal</span>
             </li>
           </ul>
           <a href="https://wa.me/6285117494221" target="_blank"
-            class="btn btn-primary w-full text-center mt-auto">Konsultasi Custom App</a>
+            class="btn btn-primary w-full text-center mt-auto" data-i18n="layanan.website.options.custom.cta">Konsultasi Custom App</a>
         </div>
       </div>
     </div>
@@ -119,10 +119,10 @@
   <section id="process" class="bg-gray-50 px-6 py-20 text-gray-900">
     <div class="mx-auto w-full max-w-6xl space-y-12">
       <div class="text-center space-y-4">
-        <h2 class="font-primary text-3xl font-bold md:text-4xl">
+        <h2 class="font-primary text-3xl font-bold md:text-4xl" data-i18n="layanan.common.process.title">
           Proses Pengerjaan
         </h2>
-        <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="layanan.common.process.subtitle">
           Kami mengikuti metodologi terstruktur untuk memastikan proyek Anda selesai tepat waktu dengan kualitas terbaik
         </p>
       </div>
@@ -131,8 +131,8 @@
         <!-- Step 1 -->
         <div class="process-card">
           <div class="process-card__step">1</div>
-          <h3 class="mb-4 text-xl font-bold">Konsultasi & Discovery</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step1.title">Konsultasi & Discovery</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step1.desc">
             Kami mendengarkan kebutuhan bisnis Anda, menganalisis target audiens, dan merencanakan struktur website yang
             optimal.
           </p>
@@ -141,8 +141,8 @@
         <!-- Step 2 -->
         <div class="process-card">
           <div class="process-card__step">2</div>
-          <h3 class="mb-4 text-xl font-bold">Design & Wireframe / Template</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step2.title">Design & Wireframe / Template</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step2.desc">
             Tim desainer kami membuat mockup UI/UX khusus untuk Web App, atau pemilihan Premium Template yang sesuai
             identitas brand untuk Website Mainstream.
           </p>
@@ -151,8 +151,8 @@
         <!-- Step 3 -->
         <div class="process-card">
           <div class="process-card__step">3</div>
-          <h3 class="mb-4 text-xl font-bold">Development & Integration</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step3.title">Development & Integration</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step3.desc">
             Kustomisasi WordPress/Web Builder (Mainstream) atau pengembangan custom backend/frontend dengan teknologi
             modern seperti Laravel dan React (Web App).
           </p>
@@ -161,8 +161,8 @@
         <!-- Step 4 -->
         <div class="process-card">
           <div class="process-card__step">4</div>
-          <h3 class="mb-4 text-xl font-bold">Testing & QA</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step4.title">Testing & QA</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step4.desc">
             Pengujian menyeluruh untuk memastikan website berfungsi sempurna di semua device dan browser populer.
           </p>
         </div>
@@ -170,8 +170,8 @@
         <!-- Step 5 -->
         <div class="process-card">
           <div class="process-card__step">5</div>
-          <h3 class="mb-4 text-xl font-bold">Deploy & Launch</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step5.title">Deploy & Launch</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step5.desc">
             Website di-deploy ke server dengan konfigurasi optimal, SSL certificate, dan optimasi performa untuk kecepatan
             loading maksimal.
           </p>
@@ -180,8 +180,8 @@
         <!-- Step 6 -->
         <div class="process-card">
           <div class="process-card__step">6</div>
-          <h3 class="mb-4 text-xl font-bold">Maintenance & Support</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 class="mb-4 text-xl font-bold" data-i18n="layanan.website.process.step6.title">Maintenance & Support</h3>
+          <p class="text-gray-600 leading-relaxed" data-i18n="layanan.website.process.step6.desc">
             Dukungan teknis berkelanjutan, update konten, dan pemeliharaan rutin untuk memastikan website selalu optimal.
           </p>
         </div>
@@ -194,33 +194,33 @@
     <div class="mx-auto w-full max-w-6xl space-y-12">
       <div class="text-center space-y-4">
         <div class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2">
-          <span class="text-sm font-semibold text-blue-400" data-lang-id="domain-section-tag">CEK NAMA DOMAIN</span>
+          <span class="text-sm font-semibold text-blue-400" data-i18n="layanan.website.domain.tag">CEK NAMA DOMAIN</span>
         </div>
-        <h2 class="font-primary text-3xl font-bold md:text-4xl" data-lang-id="domain-section-title">Cari & Cek
+        <h2 class="font-primary text-3xl font-bold md:text-4xl" data-i18n="layanan.website.domain.title">Cari & Cek
           Ketersediaan Domain</h2>
-        <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto" data-lang-id="domain-section-desc">Masukkan nama
+        <p class="font-secondary text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="layanan.website.domain.desc">Masukkan nama
           domain yang Anda inginkan lalu pilih ekstensi (TLD). Kami akan mengecek ketersediaannya secara real-time.</p>
       </div>
 
       <div class="rounded-[32px] border border-gray-200 bg-white p-8 shadow-lg">
         <form id="domain-form" class="space-y-6">
           <div>
-            <label for="domain-name" class="sr-only" data-lang-id="domain-name-label">Nama Domain</label>
+            <label for="domain-name" class="sr-only" data-i18n="layanan.website.domain.nameLabel">Nama Domain</label>
             <div class="relative">
               <i data-lucide="globe" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
               <input id="domain-name" type="text" placeholder="contoh: namabisnis.com"
                 class="w-full rounded-2xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-12 pr-4 py-3.5 placeholder-gray-400 font-secondary"
-                required data-lang-id="domain-name-placeholder" data-placeholder="true">
+                required data-i18n-placeholder="layanan.website.domain.placeholder">
             </div>
           </div>
           <div class="flex flex-wrap gap-4">
             <button id="check-domain-btn" type="submit" class="btn btn-primary">
               <i data-lucide="search" class="w-5 h-5 mr-2"></i>
-              <span data-lang-id="domain-check-btn">Cek Ketersediaan</span>
+              <span data-i18n="layanan.website.domain.checkBtn">Cek Ketersediaan</span>
             </button>
             <button id="clear-domain-btn" type="button" class="btn btn-secondary">
               <i data-lucide="x-circle" class="w-5 h-5 mr-2"></i>
-              <span data-lang-id="domain-clear-btn">Bersihkan</span>
+              <span data-i18n="layanan.website.domain.clearBtn">Bersihkan</span>
             </button>
           </div>
         </form>
@@ -233,7 +233,7 @@
 
       <!-- Popular TLD Pricing -->
       <div class="space-y-4">
-        <h3 class="font-primary text-xl font-semibold text-gray-900" data-lang-id="domain-pricing-title">Harga Domain
+        <h3 class="font-primary text-xl font-semibold text-gray-900" data-i18n="layanan.website.domain.pricingTitle">Harga Domain
           Populer (per tahun)</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="flex items-center justify-between rounded-2xl border border-gray-200 bg-white px-5 py-4 shadow-sm">
@@ -255,7 +255,7 @@
         </div>
       </div>
 
-      <p class="font-secondary text-xs text-gray-400 text-center" data-lang-id="domain-data-source">Sumber data: RDAP &
+      <p class="font-secondary text-xs text-gray-400 text-center" data-i18n="layanan.website.domain.dataSource">Sumber data: RDAP &
         DNS Google • Hasil hanya indikatif, ketersediaan final mengikuti registrar.</p>
     </div>
   </section>
@@ -264,149 +264,32 @@
   <section class="cta-section cta-section--dark px-6 py-20">
     <div class="mx-auto w-full max-w-4xl">
       <div class="cta-content">
-        <h2 class="font-primary text-3xl font-bold md:text-4xl lg:text-5xl">
+        <h2 class="font-primary text-3xl font-bold md:text-4xl lg:text-5xl" data-i18n="layanan.website.cta.title">
           Siap Memulai Proyek Website Anda?
         </h2>
-        <p class="font-secondary text-lg text-white/80">
+        <p class="font-secondary text-lg text-white/80" data-i18n="layanan.website.cta.subtitle">
           Konsultasikan kebutuhan website Anda dengan tim profesional kami. Dapatkan solusi terbaik untuk mengembangkan
           bisnis digital Anda.
         </p>
         <div class="cta-actions">
-          <a href="https://wa.me/" target="_blank" class="btn btn-primary">Konsultasi Gratis</a>
-          <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-secondary">WhatsApp Kami</a>
+          <a href="https://wa.me/" target="_blank" class="btn btn-primary" data-i18n="layanan.cta.consult">Konsultasi Gratis</a>
+          <a href="https://wa.me/6285117494221" target="_blank" class="btn btn-secondary" data-i18n="layanan.cta.whatsapp">WhatsApp Kami</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="bg-gray-50 px-6 py-20 text-gray-900">
-    <div class="mx-auto w-full max-w-4xl space-y-12">
-      <div class="text-center space-y-4">
-        <h2 class="font-primary text-3xl font-bold md:text-4xl">
-          Frequently Asked Questions
-        </h2>
-        <p class="font-secondary text-lg text-gray-600">
-          Pertanyaan yang sering diajukan tentang layanan website development kami
-        </p>
-      </div>
-
-      <div class="space-y-4">
-        <!-- FAQ 1 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="1">
-            <span class="font-semibold text-lg">Berapa lama waktu pengerjaan website?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Waktu pengerjaan sangat bergantung pada layanan yang dipilih. Untuk <strong>Website Mainstream</strong>
-              biasanya rilis dalam 1-3 minggu. Sedangkan untuk <strong>Custom Website App</strong> membutuhkan waktu 4-12
-              minggu karena kompleksitas pembuatan sistem dari nol.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="2">
-            <span class="font-semibold text-lg">Apakah saya bisa request revisi?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Ya, tentu! Jumlah revisi menyesuaikan tingkat proyek. Website Mainstream umumnya mencakup 2-3x revisi tata
-              letak/konten. Untuk Website App, kami mengadopsi sistem UAT (User Acceptance Testing) di mana perbaikan bug
-              dan penyesuaian fungsi ditangani sebelum rilis akhir.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="3">
-            <span class="font-semibold text-lg">Apakah harga sudah termasuk domain dan hosting?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Harga yang tertera adalah untuk jasa pembuatan website saja. Domain dan hosting dibeli terpisah. Namun kami
-              akan membantu Anda memilih dan setup domain & hosting yang sesuai kebutuhan. Biaya domain sekitar
-              150rb-500rb/tahun dan hosting mulai dari 500rb/tahun.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="4">
-            <span class="font-semibold text-lg">Bagaimana sistem pembayarannya?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Sistem pembayaran dibagi 3 tahap: 30% DP di awal, 40% setelah desain disetujui, dan 30% sisanya setelah
-              website selesai dan siap launch. Kami menerima transfer bank, e-wallet, dan virtual account.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="5">
-            <span class="font-semibold text-lg">Apakah website bisa di-update sendiri?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Pasti! Untuk <strong>Website Mainstream</strong>, Anda mendapat akses ke CMS intuitif (seperti WordPress)
-              untuk update teks dan gambar dengan mudah. Untuk <strong>Website App</strong>, kami membangun custom
-              Dashboard Admin (Panel Kontrol) untuk manajemen data terpadu sesuai level otorisasi staf Anda.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <button class="faq-button flex w-full items-center justify-between p-6 text-left transition hover:bg-gray-50"
-            data-faq="6">
-            <span class="font-semibold text-lg">Bagaimana dengan maintenance setelah project selesai?</span>
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-500 transition-transform duration-200" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">
-              Setiap paket sudah include support/maintenance gratis sesuai durasi yang tertera. Setelah periode gratis
-              berakhir, Anda bisa berlangganan maintenance plan mulai dari 500rb/bulan untuk update rutin, backup, dan
-              technical support.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  @include('components.web.faq-section', [
+    'subtitleKey' => 'faq.subtitle.website',
+    'items' => [
+      ['questionKey' => 'faq.website.q1', 'answerKey' => 'faq.website.a1'],
+      ['questionKey' => 'faq.website.q2', 'answerKey' => 'faq.website.a2'],
+      ['questionKey' => 'faq.website.q3', 'answerKey' => 'faq.website.a3'],
+      ['questionKey' => 'faq.website.q4', 'answerKey' => 'faq.website.a4'],
+      ['questionKey' => 'faq.website.q5', 'answerKey' => 'faq.website.a5'],
+      ['questionKey' => 'faq.website.q6', 'answerKey' => 'faq.website.a6'],
+    ],
+  ])
 @endsection
 
 @section('script')

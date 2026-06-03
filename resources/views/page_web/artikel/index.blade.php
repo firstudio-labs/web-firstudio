@@ -5,12 +5,12 @@
  <section class="hero-section hero-section--slim text-white">
       <div class="mx-auto w-full max-w-6xl">
         <h1 class="hero-heading">
-          Articles
+          <span data-i18n="nav.articles">Artikel</span>
           <span class="flip-words-container text-blue-500">
             <span class="flip-word" data-word="Artikel">Artikel</span>
           </span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n="articles.hero.subtitle">
           Temukan artikel menarik tentang teknologi, tips bisnis digital, dan insight terbaru dari tim Firstudio.
         </p>
       </div>
