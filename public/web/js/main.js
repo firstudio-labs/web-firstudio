@@ -11,6 +11,7 @@
     DEFAULT_SCROLL_AMOUNT: 380,
     CHEVRON_ROTATION_OPEN: '180deg',
     CHEVRON_ROTATION_CLOSE: '0deg',
+    TESTIMONIAL_AUTOPLAY_MS: 6000,
   };
 
   // Selectors
@@ -34,7 +35,9 @@
     portfolioItem: '#portfolio-grid article[data-category]',
     emptyState: '#empty-state',
     flipWord: '.flip-word',
-    testimonialPicker: '#testimonial-picker',
+    testimonialCarousel: '#testimonial-carousel',
+    testimonialNext: '[data-testimonial-next]',
+    testimonialPrev: '[data-testimonial-prev]',
     testimonialQuote: '#testimonial-quote',
     testimonialAuthorPill: '#testimonial-author-pill',
     testimonialAvatar: '.testimonial-avatar',
@@ -512,57 +515,143 @@
   }
 
   /**
-   * Testimonial avatar picker
+   * Testimonial carousel — picker layout with auto-play
    */
-  class TestimonialPicker {
+  class TestimonialCarousel {
     constructor() {
-      this.root = document.querySelector(SELECTORS.testimonialPicker);
-      if (!this.root) return;
+      this.root = null;
+      this.quoteEl = null;
+      this.pillEl = null;
+      this.avatars = [];
+      this.nextButton = null;
+      this.prevButton = null;
+      this.currentIndex = 0;
+      this.autoplayTimer = null;
+      this.init();
+    }
+
+    init() {
+      this.root = document.querySelector(SELECTORS.testimonialCarousel);
+      if (!this.root) {
+        return;
+      }
 
       this.quoteEl = document.querySelector(SELECTORS.testimonialQuote);
       this.pillEl = document.querySelector(SELECTORS.testimonialAuthorPill);
       this.avatars = Array.from(this.root.querySelectorAll(SELECTORS.testimonialAvatar));
-      this.currentIndex = 0;
+      this.nextButton = document.querySelector(SELECTORS.testimonialNext);
+      this.prevButton = document.querySelector(SELECTORS.testimonialPrev);
 
+      if (this.avatars.length <= 1) {
+        this.nextButton?.setAttribute('hidden', '');
+        this.prevButton?.setAttribute('hidden', '');
+        return;
+      }
+
+      this.attachEventListeners();
+      this.startAutoplay();
+    }
+
+    attachEventListeners() {
       this.avatars.forEach((btn, index) => {
-        btn.addEventListener('click', () => this.select(index));
+        btn.addEventListener('click', () => {
+          this.goTo(index);
+          this.restartAutoplay();
+        });
+      });
+
+      this.nextButton?.addEventListener('click', () => {
+        this.goTo(this.currentIndex + 1);
+        this.restartAutoplay();
+      });
+
+      this.prevButton?.addEventListener('click', () => {
+        this.goTo(this.currentIndex - 1);
+        this.restartAutoplay();
       });
 
       this.root.addEventListener('keydown', (e) => this.handleKeydown(e));
-      this.avatars.forEach((btn) => btn.setAttribute('tabindex', '0'));
-      if (this.avatars[0]) {
-        this.avatars[0].setAttribute('tabindex', '0');
-      }
+      this.root.addEventListener('mouseenter', () => this.stopAutoplay());
+      this.root.addEventListener('mouseleave', () => this.startAutoplay());
+      this.root.addEventListener('focusin', () => this.stopAutoplay());
+      this.root.addEventListener('focusout', () => this.startAutoplay());
     }
 
-    select(index) {
-      if (!this.avatars[index]) return;
-      this.currentIndex = index;
-      const btn = this.avatars[index];
+    goTo(index) {
+      if (!this.avatars.length) {
+        return;
+      }
+
+      const normalized = ((index % this.avatars.length) + this.avatars.length) % this.avatars.length;
+      this.currentIndex = normalized;
+      const btn = this.avatars[normalized];
       const quote = btn.getAttribute('data-quote');
       const author = btn.getAttribute('data-author');
 
-      if (this.quoteEl && quote) {
-        this.quoteEl.textContent = quote;
-      }
-      if (this.pillEl && author) {
-        this.pillEl.textContent = author;
-      }
+      this.updateContent(quote, author);
 
       this.avatars.forEach((avatar, i) => {
-        const active = i === index;
+        const active = i === normalized;
         avatar.classList.toggle('testimonial-avatar--active', active);
         avatar.setAttribute('aria-selected', active ? 'true' : 'false');
       });
     }
 
+    updateContent(quote, author) {
+      if (!this.quoteEl || !this.pillEl) {
+        return;
+      }
+
+      this.quoteEl.classList.add('is-changing');
+      this.pillEl.classList.add('is-changing');
+
+      window.setTimeout(() => {
+        if (quote) {
+          this.quoteEl.textContent = quote;
+        }
+        if (author) {
+          this.pillEl.textContent = author;
+        }
+        this.quoteEl.classList.remove('is-changing');
+        this.pillEl.classList.remove('is-changing');
+      }, 180);
+    }
+
     handleKeydown(e) {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+        return;
+      }
       e.preventDefault();
       const delta = e.key === 'ArrowRight' ? 1 : -1;
-      const next = (this.currentIndex + delta + this.avatars.length) % this.avatars.length;
-      this.select(next);
-      this.avatars[next]?.focus();
+      this.goTo(this.currentIndex + delta);
+      this.restartAutoplay();
+      this.avatars[this.currentIndex]?.focus();
+    }
+
+    startAutoplay() {
+      if (this.avatars.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+      this.stopAutoplay();
+      this.autoplayTimer = window.setInterval(() => {
+        this.goTo(this.currentIndex + 1);
+      }, CONSTANTS.TESTIMONIAL_AUTOPLAY_MS);
+    }
+
+    stopAutoplay() {
+      if (this.autoplayTimer) {
+        window.clearInterval(this.autoplayTimer);
+        this.autoplayTimer = null;
+      }
+    }
+
+    restartAutoplay() {
+      this.stopAutoplay();
+      this.startAutoplay();
+    }
+
+    destroy() {
+      this.stopAutoplay();
     }
   }
 
@@ -576,7 +665,7 @@
       this.articleCarousel = null;
       this.portfolioFilter = null;
       this.flipWordsAnimation = null;
-      this.testimonialPicker = null;
+      this.testimonialCarousel = null;
     }
 
     init() {
@@ -598,7 +687,7 @@
         this.articleCarousel = new ArticleCarousel();
         this.portfolioFilter = new PortfolioFilter();
         this.flipWordsAnimation = new FlipWordsAnimation();
-        this.testimonialPicker = new TestimonialPicker();
+        this.testimonialCarousel = new TestimonialCarousel();
       } catch (error) {
         console.error('Error initializing components:', error);
       }

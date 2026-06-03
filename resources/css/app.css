@@ -368,14 +368,28 @@ li {
   );
 }
 
-/* Testimonials Section — picker layout */
+/* Testimonials Section — picker layout + carousel */
 .testimonials-section {
   background-color: #f1f5f9;
+}
+
+.testimonial-picker {
+  position: relative;
 }
 
 .testimonial-quote-block {
   position: relative;
   min-height: 6rem;
+}
+
+.testimonial-quote-text {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+.testimonial-quote-text.is-changing {
+  opacity: 0;
 }
 
 .testimonial-quote-mark {
@@ -398,11 +412,6 @@ li {
   right: 0;
 }
 
-.testimonial-quote-text {
-  position: relative;
-  z-index: 1;
-}
-
 .testimonial-author-pill {
   position: relative;
   display: inline-block;
@@ -413,6 +422,11 @@ li {
   font-size: 0.9rem;
   font-weight: 600;
   box-shadow: 0 4px 14px rgba(51, 126, 255, 0.35);
+  transition: opacity 0.35s ease;
+}
+
+.testimonial-author-pill.is-changing {
+  opacity: 0;
 }
 
 .testimonial-author-pill::before {
@@ -468,6 +482,51 @@ li {
   font-weight: 700;
   color: #1e40af;
   background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.testimonial-nav-btn {
+  position: absolute;
+  top: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: #ffffff;
+  color: #1f2937;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  z-index: 2;
+}
+
+.testimonial-nav-btn:hover {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.testimonial-nav-btn--prev {
+  left: 0;
+}
+
+.testimonial-nav-btn--next {
+  right: 0;
+}
+
+@media (max-width: 640px) {
+  .testimonial-nav-btn {
+    top: auto;
+    bottom: 0;
+  }
+
+  .testimonial-nav-btn--prev {
+    left: calc(50% - 3.5rem);
+  }
+
+  .testimonial-nav-btn--next {
+    right: calc(50% - 3.5rem);
+  }
 }
 
 /* CTA Section Styles */
@@ -949,9 +1008,9 @@ li {
     height: 350px;
   }
 
-  .testimonial-slider::before,
-  .testimonial-slider::after {
-    width: 50px;
+  .testimonial-nav-btn {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 

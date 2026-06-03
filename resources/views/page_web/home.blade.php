@@ -597,13 +597,25 @@
           Apa Kata Klien Kami
         </h2>
 
-        <div id="testimonial-picker" class="testimonial-picker">
-          <blockquote class="testimonial-quote-block relative mx-auto max-w-3xl px-8">
-            <span class="testimonial-quote-mark testimonial-quote-mark--open" aria-hidden="true">"</span>
+        <div id="testimonial-carousel" class="testimonial-picker relative">
+          <button
+            type="button"
+            class="testimonial-nav-btn testimonial-nav-btn--prev"
+            data-testimonial-prev
+            data-i18n-aria="home.testimonials.prev"
+            aria-label="Testimoni sebelumnya"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+              <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 010 1.06L8.06 10l3.72 3.72a.75.75 0 11-1.06 1.06l-4.25-4.25a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <blockquote class="testimonial-quote-block relative mx-auto max-w-3xl px-8 md:px-14">
+            <span class="testimonial-quote-mark testimonial-quote-mark--open" aria-hidden="true">&ldquo;</span>
             <p id="testimonial-quote" class="testimonial-quote-text text-xl font-bold leading-relaxed text-gray-900 md:text-2xl lg:text-3xl">
               {{ $testimoni->first()->testimoni }}
             </p>
-            <span class="testimonial-quote-mark testimonial-quote-mark--close" aria-hidden="true">"</span>
+            <span class="testimonial-quote-mark testimonial-quote-mark--close" aria-hidden="true">&rdquo;</span>
           </blockquote>
 
           <div class="mt-8 flex flex-col items-center">
@@ -643,6 +655,18 @@
               </button>
             @endforeach
           </div>
+
+          <button
+            type="button"
+            class="testimonial-nav-btn testimonial-nav-btn--next"
+            data-testimonial-next
+            data-i18n-aria="home.testimonials.next"
+            aria-label="Testimoni berikutnya"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 11-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 010-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
