@@ -515,6 +515,10 @@ li {
 }
 
 @media (max-width: 640px) {
+  .testimonial-picker {
+    padding-bottom: 3rem;
+  }
+
   .testimonial-nav-btn {
     top: auto;
     bottom: 0;
