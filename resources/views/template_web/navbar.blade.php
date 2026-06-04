@@ -6,11 +6,11 @@
 @endphp
 
 <header class="navbar">
-  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4" aria-label="Navigasi utama">
-    <a href="{{ route('web.beranda.index') }}" class="flex items-center text-2xl font-semibold tracking-tight"
+  <nav class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 py-0" aria-label="Navigasi utama">
+    <a href="{{ route('web.beranda.index') }}" class="flex items-center text-lg font-semibold tracking-tight"
       aria-label="Firstudio - Beranda">
       <img src="{{ asset('web/assets/logo-white.png') }}" alt="Firstudio Logo - Digital Agency Profesional"
-        class="h-14 w-auto" width="56" height="56" />
+        class="h-8 w-auto" width="32" height="32" />
       <span class="text-white">Firstudio</span>
     </a>
 
@@ -31,7 +31,7 @@
         </button>
 
         <div
-          class="nav-services-panel pointer-events-none absolute left-1/2 top-12 w-80 -translate-x-1/2 p-3 opacity-0 transition-all duration-200 data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0 translate-y-[-10px] z-[110]"
+          class="nav-services-panel pointer-events-none absolute left-1/2 top-full mt-1 w-80 -translate-x-1/2 p-3 opacity-0 transition-all duration-200 data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0 translate-y-[-10px] z-[110]"
           data-services-panel data-open="false">
           <ul class="space-y-2">
             <li>
@@ -162,7 +162,7 @@
         <button type="button" class="locale-toggle__btn" data-locale-toggle="en" aria-pressed="false">EN</button>
       </div>
       <button class="md:hidden" id="mobile-toggle" data-i18n-aria="nav.open" aria-label="Buka navigasi">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-white" fill="none"
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-white" fill="none"
           stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
