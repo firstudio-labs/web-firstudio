@@ -2,7 +2,7 @@
 
 @section('content')
   <x-web.page-hero title="Ceritakan sistem yang Anda punya." title-i18n="rb.contact.hero.title" crumb="Kontak"
-    crumb-i18n="nav.contact" eyebrow="Kontak" eyebrow-i18n="nav.contact"
+    crumb-i18n="nav.contact"
     subtitle="Isi formulir atau hubungi kami langsung. Konsultasi awal gratis." subtitle-i18n="rb.contact.hero.desc" />
 
   <section class="rb-section rb-paper px-6 !pt-20">

@@ -7,7 +7,7 @@
   @endphp
 
   <x-web.page-hero title="Catatan dari tim Firstudio." title-i18n="rb.blog.hero.title" crumb="Blog"
-    crumb-i18n="nav.blog" eyebrow="Blog" eyebrow-i18n="nav.blog"
+    crumb-i18n="nav.blog"
     subtitle="Tulisan tentang AI, sistem web, dan aplikasi mobile, dari proyek yang kami kerjakan sendiri."
     subtitle-i18n="rb.blog.hero.desc" />
 

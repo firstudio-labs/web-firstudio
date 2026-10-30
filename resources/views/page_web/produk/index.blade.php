@@ -2,7 +2,7 @@
 
 @section('content')
   <x-web.page-hero title="Lihat apa yang sudah kami bangun untuk klien." title-i18n="rb.cases.hero.title"
-    crumb="Studi Kasus" crumb-i18n="nav.cases" eyebrow="Studi Kasus" eyebrow-i18n="nav.cases"
+    crumb="Studi Kasus" crumb-i18n="nav.cases"
     subtitle="Pilih kategori untuk melihat proyek di bidang yang paling dekat dengan bisnis Anda."
     subtitle-i18n="rb.cases.hero.desc" />
 
