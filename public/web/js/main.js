@@ -235,7 +235,7 @@
           if (isHidden) {
             content.classList.remove('hidden');
             if (icon) {
-              icon.style.transform = 'rotate(180deg)';
+              icon.style.transform = `rotate(${icon.dataset.rotate || '180'}deg)`;
             }
           } else {
             content.classList.add('hidden');
@@ -769,6 +769,65 @@
   }
 
   /**
+   * Home projects showcase carousel
+   */
+  class ProjectsShowcase {
+    constructor() {
+      this.root = document.getElementById('projects-showcase');
+      if (!this.root) return;
+      this.track = this.root.querySelector('.projects-showcase__track');
+      this.cards = Array.from(this.root.querySelectorAll('.project-showcase-card'));
+      this.index = 0;
+      this.prev = this.root.querySelector('[data-projects-prev]');
+      this.next = this.root.querySelector('[data-projects-next]');
+      this.bind();
+      this.update();
+    }
+
+    bind() {
+      this.prev?.addEventListener('click', () => this.go(-1));
+      this.next?.addEventListener('click', () => this.go(1));
+    }
+
+    go(delta) {
+      if (this.cards.length === 0) return;
+      this.index = (this.index + delta + this.cards.length) % this.cards.length;
+      this.update();
+    }
+
+    update() {
+      this.cards.forEach((card, i) => {
+        card.classList.toggle('is-active', i === this.index);
+      });
+      const card = this.cards[this.index];
+      if (!card || !this.track) return;
+      const offset = card.offsetLeft - (this.track.parentElement.clientWidth - card.offsetWidth) / 2;
+      this.track.style.transform = `translateX(${-offset}px)`;
+    }
+  }
+
+  /**
+   * Navbar transparan di atas hero, solid saat di-scroll
+   */
+  class NavbarScroll {
+    constructor() {
+      this.header = document.querySelector('.navbar--figma');
+      if (!this.header || !document.querySelector('.rb-hero')) return;
+      this.menu = document.querySelector(SELECTORS.mobileMenu);
+      this.header.classList.add('is-overlay');
+      this.update = this.update.bind(this);
+      window.addEventListener('scroll', this.update, { passive: true });
+      document.querySelector(SELECTORS.mobileToggle)?.addEventListener('click', () => setTimeout(this.update));
+      this.update();
+    }
+
+    update() {
+      this.header.classList.toggle('is-scrolled', window.scrollY > 8);
+      this.header.classList.toggle('is-menu-open', !!this.menu && !this.menu.hidden);
+    }
+  }
+
+  /**
    * Main Application Controller
    */
   class App {
@@ -801,6 +860,8 @@
         this.portfolioFilter = new PortfolioFilter();
         this.flipWordsAnimation = new FlipWordsAnimation();
         this.testimonialCarousel = new TestimonialCarousel();
+        this.projectsShowcase = new ProjectsShowcase();
+        this.navbarScroll = new NavbarScroll();
       } catch (error) {
         console.error('Error initializing components:', error);
       }

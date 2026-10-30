@@ -17,18 +17,22 @@ class WebArtikelController extends Controller
         $kategori = $request->get('kategori', 'all');
         $kategori_artikels = KategoriArtikel::all();
         
-        $query = Artikel::with('kategoriArtikel')
-            ->where('status', 'Publik');
-        
+        $baseQuery = Artikel::with('kategoriArtikel')->where('status', 'Publik');
+
         if ($kategori !== 'all') {
-            $query->whereHas('kategoriArtikel', function($q) use ($kategori) {
+            $baseQuery->whereHas('kategoriArtikel', function ($q) use ($kategori) {
                 $q->where('slug', $kategori);
             });
         }
-        
-        $artikels = $query->latest()->paginate(12);
-        
-        return view('page_web.artikel.index', compact('artikels', 'kategori_artikels', 'kategori'));
+
+        $featured = (clone $baseQuery)->latest()->first();
+        $listQuery = clone $baseQuery;
+        if ($featured) {
+            $listQuery->where('id', '!=', $featured->id);
+        }
+        $artikels = $listQuery->latest()->paginate(12);
+
+        return view('page_web.artikel.index', compact('artikels', 'kategori_artikels', 'kategori', 'featured'));
     }
 
     /**

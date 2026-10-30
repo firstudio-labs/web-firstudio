@@ -31,6 +31,9 @@ class WebKontakController extends Controller
             'email' => 'required|email|max:255',
             'no_hp' => 'required|string|max:20',
             'pesan' => 'required|string',
+            'perusahaan' => 'nullable|string|max:255',
+            'kebutuhan' => 'nullable|array',
+            'kebutuhan.*' => 'string|max:50',
         ];
 
         if ($useHCaptcha) {
@@ -49,11 +52,22 @@ class WebKontakController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'no_hp' => $request->no_hp,
-            'pesan' => $request->pesan
+            'pesan' => $this->composePesan($request),
         ]);
 
         return redirect()->route('web.contact.index')
             ->with('success', 'Pesan Anda berhasil dikirim. Kami akan menghubungi Anda segera.');
+    }
+
+    // Kolom perusahaan & kebutuhan belum punya field di tabel kontak, jadi dilipat ke pesan.
+    protected function composePesan(Request $request): string
+    {
+        $extra = array_filter([
+            $request->filled('perusahaan') ? 'Perusahaan: ' . $request->perusahaan : null,
+            $request->filled('kebutuhan') ? 'Kebutuhan: ' . implode(', ', $request->kebutuhan) : null,
+        ]);
+
+        return $extra ? implode("\n", $extra) . "\n\n" . $request->pesan : $request->pesan;
     }
 
     protected function verifyHCaptcha(?string $token): bool

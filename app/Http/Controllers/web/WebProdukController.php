@@ -25,7 +25,7 @@ class WebProdukController extends Controller
             });
         }
         
-        $produks = $query->latest()->get();
+        $produks = $query->latest()->paginate(9)->withQueryString();
         
         return view('page_web.produk.index', compact('produks', 'kategori_produks', 'kategori'));
     }

@@ -1,194 +1,99 @@
 @php
   $currentRoute = Route::currentRouteName();
-  $isActive = function ($route) use ($currentRoute) {
-    return in_array($currentRoute, (array) $route) ? 'nav-active' : '';
-  };
+  $isActive = fn ($route) => in_array($currentRoute, (array) $route) ? 'nav-active' : '';
+  $layananRoutes = ['web.layanan.website', 'web.layanan.mobile', 'web.layanan.company', 'web.layanan.itconsul', 'web.layanan.itoutsourcing', 'web.layanan.website.katalog'];
 @endphp
 
-<header class="navbar">
-  <nav class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 py-0" aria-label="Navigasi utama">
-    <a href="{{ route('web.beranda.index') }}" class="flex items-center text-lg font-semibold tracking-tight"
-      aria-label="Firstudio - Beranda">
-      <img src="{{ asset('web/assets/logo-white.png') }}" alt="Firstudio Logo - Digital Agency Profesional"
-        class="h-8 w-auto" width="32" height="32" />
-      <span class="text-white">Firstudio</span>
+<header class="navbar navbar--figma">
+  <nav class="page-container flex h-24 items-center justify-between gap-4" aria-label="Navigasi utama">
+    <a href="{{ route('web.beranda.index') }}" class="flex shrink-0 items-center gap-2">
+      <img src="{{ asset('web/assets/logo-white.png') }}" alt="" class="h-8 w-8 object-contain" width="32"
+        height="32" />
+      <span class="text-sm font-bold tracking-wider text-white">FIRSTUDIO</span>
     </a>
 
-    <div class="hidden items-center gap-6 md:flex">
-      <a href="{{ route('web.beranda.index') }}"
-        class="{{ $isActive('web.beranda.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.home">Beranda</a>
-      <a href="{{ route('web.about.index') }}"
-        class="{{ $isActive('web.about.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.about">Tentang Kami</a>
+    <div class="hidden flex-1 items-center justify-center gap-8 lg:flex">
+      <a href="{{ route('web.beranda.index') }}" class="nav-link {{ $isActive('web.beranda.index') }}"
+        data-i18n="nav.home">Beranda</a>
+      <a href="{{ route('web.about.index') }}" class="nav-link {{ $isActive('web.about.index') }}"
+        data-i18n="nav.aboutShort">Tentang</a>
       <div class="relative" id="services-menu">
-        <button
-          class="relative top-[1px] flex items-center gap-1 text-sm font-medium text-white/80 transition hover:text-white {{ $isActive(['web.layanan.website', 'web.layanan.mobile', 'web.layanan.company', 'web.layanan.itconsul', 'web.layanan.itoutsourcing']) }}"
+        <button type="button"
+          class="nav-link flex items-center gap-1 {{ $isActive($layananRoutes) }}"
           data-services-button aria-expanded="false">
-          <span data-i18n="nav.services">Layanan</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200"
-            fill="none" stroke="currentColor" stroke-width="1.5" data-chevron>
+          <span data-i18n="nav.solusi">Solusi</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none"
+            stroke="currentColor" stroke-width="2" data-chevron>
             <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
           </svg>
         </button>
-
         <div
-          class="nav-services-panel pointer-events-none absolute left-1/2 top-full mt-1 w-80 -translate-x-1/2 p-3 opacity-0 transition-all duration-200 data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0 translate-y-[-10px] z-[110]"
+          class="nav-services-panel nav-services-panel--figma pointer-events-none absolute left-1/2 top-full z-[110] mt-2 w-72 -translate-x-1/2 py-2 opacity-0 transition-all duration-200 data-[open=true]:pointer-events-auto data-[open=true]:opacity-100"
           data-services-panel data-open="false">
-          <ul class="space-y-2">
-            <li>
-              <a href="{{ route('web.layanan.website') }}"
-                class="nav-services-item group flex items-start gap-4 p-4 transition">
-                <div class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                    <path
-                      d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                    <path
-                      d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.website.title">
-                    Pembuatan Website & App
-                  </p>
-                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.website.desc">
-                    Website responsif dan mudah dikelola
-                  </p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('web.layanan.mobile') }}"
-                class="nav-services-item group flex items-start gap-4 p-4 transition">
-                <div class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                    <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" />
-                    <path fill-rule="evenodd"
-                      d="M8.625.75A3.375 3.375 0 005.25 4.125v15.75a3.375 3.375 0 003.375 3.375h6.75a3.375 3.375 0 003.375-3.375V4.125A3.375 3.375 0 0015.375.75h-6.75zM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 017.5 19.875V4.125z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.mobile.title">
-                    Pengembangan Aplikasi Mobile
-                  </p>
-                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.mobile.desc">
-                    Aplikasi native dan cross-platform
-                  </p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('web.layanan.company') }}"
-                class="nav-services-item group flex items-start gap-4 p-4 transition">
-                <div class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                    <path fill-rule="evenodd"
-                      d="M4.5 3.75a3 3 0 00-3 3v10.5a3 3 0 003 3h15a3 3 0 003-3V6.75a3 3 0 00-3-3h-15zm4.125 3a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm-3.873 8.703a4.126 4.126 0 017.746 0 .75.75 0 01-.351.92 7.47 7.47 0 01-3.522.877 7.47 7.47 0 01-3.522-.877.75.75 0 01-.351-.92zM15 8.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15zM14.25 12a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.company.title">
-                    Company Profile
-                  </p>
-                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.company.desc">
-                    Tampilkan identitas bisnis secara profesional
-                  </p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('web.layanan.itconsul') }}"
-                class="nav-services-item group flex items-start gap-4 p-4 transition">
-                <div class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                    <path fill-rule="evenodd"
-                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-                      clip-rule="evenodd" />
-                    <path fill-rule="evenodd"
-                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.itconsul.title">
-                    Konsultasi IT
-                  </p>
-                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.itconsul.desc">
-                    Solusi teknologi untuk efisiensi bisnis
-                  </p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="{{ route('web.layanan.itoutsourcing') }}"
-                class="nav-services-item group flex items-start gap-4 p-4 transition">
-                <div class="nav-services-icon flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                    <path
-                      d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c1.68 0 3.282.515 4.75 1.407A.75.75 0 0024 19.5V5.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3c-1.995 0-3.823.707-5.25 1.886v15.75z" />
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <p class="nav-services-title text-sm font-semibold" data-i18n="nav.svc.outsourcing.title">
-                    IT Outsourcing
-                  </p>
-                  <p class="nav-services-desc text-xs" data-i18n="nav.svc.outsourcing.desc">
-                    Tim developer profesional & dedicated
-                  </p>
-                </div>
-              </a>
-            </li>
+          <ul>
+            <li><a href="{{ route('web.layanan.itconsul') }}" class="block px-4 py-2.5 text-[0.8125rem] text-white/80 transition hover:bg-white/10 hover:text-white"
+                data-i18n="rb.home.services.ai.title">AI Integration</a></li>
+            <li><a href="{{ route('web.layanan.website') }}" class="block px-4 py-2.5 text-[0.8125rem] text-white/80 transition hover:bg-white/10 hover:text-white"
+                data-i18n="rb.home.services.web.title">Sistem Berbasis Web</a></li>
+            <li><a href="{{ route('web.layanan.mobile') }}" class="block px-4 py-2.5 text-[0.8125rem] text-white/80 transition hover:bg-white/10 hover:text-white"
+                data-i18n="rb.home.services.mobile.title">Mobile Apps</a></li>
+            <li><a href="{{ route('web.layanan.company') }}" class="block px-4 py-2.5 text-[0.8125rem] text-white/80 transition hover:bg-white/10 hover:text-white"
+                data-i18n="rb.home.services.site.title">Pembuatan Website</a></li>
           </ul>
         </div>
       </div>
-      <a href="{{ route('web.produk.index') }}"
-        class="{{ $isActive(['web.produk.index', 'web.produk.show']) }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.portfolio">Portofolio</a>
-      <a href="{{ route('web.artikel.index') }}"
-        class="{{ $isActive(['web.artikel.index', 'web.artikel.show']) }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.articles">Artikel</a>
-      <a href="{{ route('web.contact.index') }}"
-        class="{{ $isActive('web.contact.index') }} text-sm font-medium text-white/80 hover:text-white" data-i18n="nav.contact">Kontak</a>
-
-      <div class="locale-toggle" role="group" aria-label="Pilih bahasa">
-        <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id" aria-pressed="true">ID</button>
-        <span class="locale-toggle__sep" aria-hidden="true">|</span>
-        <button type="button" class="locale-toggle__btn" data-locale-toggle="en" aria-pressed="false">EN</button>
-      </div>
+      <a href="{{ route('web.produk.index') }}" class="nav-link {{ $isActive(['web.produk.index', 'web.produk.show']) }}"
+        data-i18n="nav.cases">Studi Kasus</a>
+      <a href="{{ route('web.artikel.index') }}" class="nav-link {{ $isActive(['web.artikel.index', 'web.artikel.show']) }}"
+        data-i18n="nav.blog">Blog</a>
+      <a href="{{ route('web.contact.index') }}" class="nav-link {{ $isActive('web.contact.index') }}"
+        data-i18n="nav.contact">Kontak</a>
     </div>
 
-    <div class="flex items-center gap-3 md:hidden">
-      <div class="locale-toggle" role="group" aria-label="Pilih bahasa">
-        <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id" aria-pressed="true">ID</button>
-        <span class="locale-toggle__sep" aria-hidden="true">|</span>
+    <div class="hidden items-center gap-6 lg:flex">
+      <div class="figma-lang-pill locale-toggle" role="group" aria-label="Pilih bahasa">
+        <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id"
+          aria-pressed="true">ID</button>
+        <span aria-hidden="true">|</span>
         <button type="button" class="locale-toggle__btn" data-locale-toggle="en" aria-pressed="false">EN</button>
       </div>
-      <button class="md:hidden" id="mobile-toggle" data-i18n-aria="nav.open" aria-label="Buka navigasi">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-white" fill="none"
-          stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <a href="{{ route('web.contact.index') }}" class="rb-btn rb-btn--sky !py-2.5 !text-xs"
+        data-i18n="nav.cta">Konsultasi Gratis</a>
     </div>
-  </nav>
 
-  <div id="mobile-menu" class="border-t border-white/10 bg-black px-6 py-4 text-sm text-white/80 md:hidden" hidden>
-    <a href="{{ route('web.beranda.index') }}" class="{{ $isActive('web.beranda.index') }} block py-2" data-i18n="nav.home">Beranda</a>
-    <a href="{{ route('web.about.index') }}" class="{{ $isActive('web.about.index') }} block py-2" data-i18n="nav.about">Tentang Kami</a>
-    <button class="flex w-full items-center justify-between py-2" data-mobile-services>
-      <span data-i18n="nav.services">Layanan</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
-        stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+    <button type="button" class="rounded-lg p-2 lg:hidden" id="mobile-toggle" data-i18n-aria="nav.open"
+      aria-label="Buka navigasi">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
-    <div class="space-y-3 border-l border-white/10 pl-4 text-xs" hidden data-mobile-services-panel>
-      <a href="{{ route('web.layanan.website') }}" class="block py-2" data-i18n="nav.svc.website.title">Pembuatan Website & App</a>
-      <a href="{{ route('web.layanan.mobile') }}" class="block py-2" data-i18n="nav.svc.mobile.title">Pengembangan Aplikasi Mobile</a>
-      <a href="{{ route('web.layanan.company') }}" class="block py-2" data-i18n="nav.svc.company.title">Company Profile</a>
-      <a href="{{ route('web.layanan.itconsul') }}" class="block py-2" data-i18n="nav.svc.itconsul.title">Konsultasi IT</a>
-      <a href="{{ route('web.layanan.itoutsourcing') }}" class="block py-2" data-i18n="nav.svc.outsourcing.title">IT Outsourcing</a>
+  </nav>
+
+  <div id="mobile-menu" class="border-t border-white/10 px-6 py-4 text-sm lg:hidden" hidden>
+    <a href="{{ route('web.beranda.index') }}" class="{{ $isActive('web.beranda.index') }} block py-2.5"
+      data-i18n="nav.home">Beranda</a>
+    <a href="{{ route('web.about.index') }}" class="{{ $isActive('web.about.index') }} block py-2.5"
+      data-i18n="nav.aboutShort">Tentang</a>
+    <button type="button" class="flex w-full items-center justify-between py-2.5" data-mobile-services>
+      <span data-i18n="nav.solusi">Solusi</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+    <div class="mb-2 hidden space-y-1 border-l-2 border-sky pl-4" data-mobile-services-panel>
+      <a href="{{ route('web.layanan.itconsul') }}" class="block py-1.5 text-white/70" data-i18n="rb.home.services.ai.title">AI Integration</a>
+      <a href="{{ route('web.layanan.website') }}" class="block py-1.5 text-white/70" data-i18n="rb.home.services.web.title">Sistem Berbasis Web</a>
+      <a href="{{ route('web.layanan.mobile') }}" class="block py-1.5 text-white/70" data-i18n="rb.home.services.mobile.title">Mobile Apps</a>
+      <a href="{{ route('web.layanan.company') }}" class="block py-1.5 text-white/70" data-i18n="rb.home.services.site.title">Pembuatan Website</a>
     </div>
-    <a href="{{ route('web.produk.index') }}" class="block py-2" data-i18n="nav.portfolio">Portofolio</a>
-    <a href="{{ route('web.artikel.index') }}" class="block py-2" data-i18n="nav.articles">Artikel</a>
-    <a href="{{ route('web.contact.index') }}" class="block py-2" data-i18n="nav.contact">Kontak</a>
+    <a href="{{ route('web.produk.index') }}" class="block py-2.5" data-i18n="nav.cases">Studi Kasus</a>
+    <a href="{{ route('web.artikel.index') }}" class="block py-2.5" data-i18n="nav.blog">Blog</a>
+    <a href="{{ route('web.contact.index') }}" class="block py-2.5" data-i18n="nav.contact">Kontak</a>
+    <div class="figma-lang-pill locale-toggle mt-4 inline-flex">
+      <button type="button" class="locale-toggle__btn locale-toggle__btn--active" data-locale-toggle="id">ID</button>
+      <span>|</span>
+      <button type="button" class="locale-toggle__btn" data-locale-toggle="en">EN</button>
+    </div>
   </div>
 </header>

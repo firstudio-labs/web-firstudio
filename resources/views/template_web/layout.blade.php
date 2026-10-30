@@ -194,7 +194,7 @@
   <script src="https://aksita.ai/embed.js" async></script> -->
 </head>
 
-<body class="min-h-screen bg-surface text-brand">
+<body class="figma-theme min-h-screen bg-white text-slate-900 antialiased">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSW99PRB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>

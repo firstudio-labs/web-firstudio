@@ -10,19 +10,24 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                brand: {
-                    DEFAULT: '#fdfdfd',
-                    accent: '#3b82f6',
-                },
-                surface: '#000000',
-                surfaceDim: '#0a0a0a',
+                navy: { DEFAULT: '#001F54', dark: '#00122e' },
+                primary: { DEFAULT: '#003CA3', hover: '#002f80' },
+                accentSoft: '#EAF1FF',
+                sky: '#70A5FF',
+                paper: '#F8F9FA',
+                tint: '#EAF1FF',
+                ink: '#0B1B3A',
+                muted: '#5B6B8C',
+                line: '#DCE4F2',
+                figmaGray: '#D9D9D9',
             },
             fontFamily: {
                 primary: ['Poppins', ...defaultTheme.fontFamily.sans],
-                secondary: ['"Clear Sans"', ...defaultTheme.fontFamily.sans],
+                secondary: ['Poppins', ...defaultTheme.fontFamily.sans],
+                mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
             },
+            maxWidth: { page: '83rem' },
         },
     },
     plugins: [],
 };
-
